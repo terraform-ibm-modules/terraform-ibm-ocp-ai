@@ -55,6 +55,15 @@
               ]
             },
             "configuration": [
+              {
+                "key": "default_worker_pool_machine_type"
+              },
+              {
+                "key": "default_worker_pool_workers_per_zone"
+              },
+              {
+                "key": "default_worker_pool_operating_system"
+              }
             ],
             "dependencies": [
               {
