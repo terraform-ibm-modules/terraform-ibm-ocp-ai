@@ -1,5 +1,5 @@
 <!-- Update this title with a descriptive name. Use sentence case. -->
-# Terraform modules template project
+# RedHat OpenShift AI (RHOS.ai) 
 
 <!--
 Update status and "latest release" badges:
