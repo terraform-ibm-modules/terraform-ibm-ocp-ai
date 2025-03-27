@@ -1,0 +1,5 @@
+{
+  "default_worker_pool_machine_type": "bx2.8x32",
+  "default_worker_pool_workers_per_zone": 2,
+  "default_worker_pool_operating_system": "RHEL_9_64"
+}
