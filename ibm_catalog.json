@@ -63,6 +63,9 @@
               },
               {
                 "key": "default_worker_pool_operating_system"
+              },
+              {
+                "key": "additional_worker_pools"
               }
             ],
             "dependencies": [
@@ -72,7 +75,7 @@
                 "flavors": [
                   "fully-configurable"
                 ],
-                "id": "c4ae4f34-21e7-4696-b1e5-1e0e5bb8a6ca",
+                "id": "7877e016-ba49-4fd8-a776-5d9618923c65",
                 "ignore_auto_referencing": [
                   "*"
                 ],
@@ -98,6 +101,11 @@
                   {
                     "dependency_input": "default_worker_pool_operating_system",
                     "version_input": "default_worker_pool_operating_system",
+                    "reference_version": true
+                  },
+                  {
+                    "dependency_input": "additional_worker_pools",
+                    "version_input": "additional_worker_pools",
                     "reference_version": true
                   }
                 ],
