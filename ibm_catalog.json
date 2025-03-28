@@ -86,6 +86,9 @@
                 "key": "default_worker_pool_operating_system"
               },
               {
+                "key": "default_gpu_worker_pool_storage"
+              },
+              {
                 "key": "additional_worker_pools"
               }
             ],
@@ -122,6 +125,11 @@
                   {
                     "dependency_input": "default_worker_pool_operating_system",
                     "version_input": "default_worker_pool_operating_system",
+                    "reference_version": true
+                  },
+                  {
+                    "dependency_input": "default_gpu_worker_pool_storage",
+                    "version_input": "default_gpu_worker_pool_storage",
                     "reference_version": true
                   },
                   {
