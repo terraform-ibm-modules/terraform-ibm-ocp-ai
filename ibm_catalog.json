@@ -128,7 +128,7 @@
                     "reference_version": true
                   },
                   {
-                    "dependency_input": "default_gpu_worker_pool_storage",
+                    "dependency_input": "default_worker_pool_secondary_storage",
                     "version_input": "default_gpu_worker_pool_storage",
                     "reference_version": true
                   },
