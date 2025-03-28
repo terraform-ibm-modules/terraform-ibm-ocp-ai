@@ -7,6 +7,7 @@
         "tags": [
           "containers",
           "target_terraform",
+          "target_roks",
           "terraform",
           "solution",
           "ibm_created",
@@ -39,8 +40,8 @@
         ],
         "flavors": [
           {
-            "label": "Openshift AI",
-            "name": "openshift-ai",
+            "label": "Fully configurable",
+            "name": "fully-configurable",
             "install_type": "fullstack",
             "working_directory": "solutions/fully-configurable",
             "architecture": {
