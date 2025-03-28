@@ -1,14 +1,14 @@
 # tflint-ignore: all
 variable "default_worker_pool_machine_type" {
   type        = string
-  description = "The machine type for worker nodes."
+  description = "Specifies the machine type for the default worker pool. This determines the CPU, memory, and disk resources available to each worker node. For Openshift AI installation, machines should have atleast 8 vcpu, 32GB RAM and GPU. Refer [IBM Cloud documentation for available machine types](https://cloud.ibm.com/docs/openshift?topic=openshift-vpc-flavors)"
   default     = "bx2.8x32"
 }
 
 # tflint-ignore: all
 variable "default_worker_pool_workers_per_zone" {
   type        = number
-  description = "Number of worker nodes in each zone of the cluster."
+  description = "Defines the number of worker nodes to provision in each zone for the default worker pool. The cluster must have at least 2 worker nodes. [Learn More](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui#ai-min)"
   default     = 2
   validation {
     condition     = var.default_worker_pool_workers_per_zone >= 2
@@ -19,7 +19,7 @@ variable "default_worker_pool_workers_per_zone" {
 # tflint-ignore: all
 variable "default_worker_pool_operating_system" {
   type        = string
-  description = "The operating system installed on the worker nodes."
+  description = "Provide the operating system for the worker nodes in the default worker pool. Ensure that the selected operating system is compatible with your AI framework and dependencies. Refer [here](https://cloud.ibm.com/docs/openshift?topic=openshift-openshift_versions) for supported Operating Systems"
   default     = "RHEL_9_64"
 }
 
@@ -48,7 +48,7 @@ variable "additional_worker_pools" {
     }))
     additional_security_group_ids = optional(list(string))
   }))
-  description = "List of additional worker pools. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-base-ocp-vpc/blob/main/solutions/fully-configurable/DA_docs.md#options-with-worker-pools)"
+  description = "List of additional worker pools with custom configurations to accommodate diverse AI workload requirements within the cluster. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/blob/main/solutions/fully-configurable/DA_docs.md#options-with-worker-pools)"
   default = [
     {
       subnet_prefix     = "default"

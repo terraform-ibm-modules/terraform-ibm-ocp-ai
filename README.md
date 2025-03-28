@@ -12,9 +12,10 @@ Update status and "latest release" badges:
 [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
+Red Hat OpenShift AI on IBM Cloud is a platform for managing the lifecycle of predictive and generative AI models, at scale. It enables data acquisition and preparation, model training and fine-tuning, model serving and model monitoring, and hardware acceleration.
 This repository contains the following infrastructure as code solutions:
 
-- [Red Hat OpenShift AI](./solutions/ocp-ai)
+- [Red Hat OpenShift AI](./solutions/fully-configurable)
 
 <!-- Leave this section as is so that your module has a link to local development environment set up steps for contributors to follow -->
 ## Contributing

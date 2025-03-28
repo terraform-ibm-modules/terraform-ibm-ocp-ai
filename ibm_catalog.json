@@ -27,7 +27,7 @@
           "AI",
           "artificial intelligence"
         ],
-        "short_description": "Rapidly deploy Red Hat OpenShift clusters pre-configured with AI capabilities for accelerated machine learning workloads.",
+        "short_description": "Rapidly deploy Red Hat OpenShift clusters on Virtual Private Cloud (VPC) pre-configured with AI capabilities for accelerated machine learning workloads.",
         "long_description": "This automation streamlines the deployment of Red Hat OpenShift cluster with Artifical Intelligence (AI) on IBM Cloud. It accelerates the setup of machine learning environments, reducing the complexity of AI infrastructure management and allowing data scientists and developers to focus on model development and deployment. This is an experimental tile and not suitable for production workloads. Stay here if you want to try an experimental version with the [Optional and swappable components](https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-choose-plan-process#optional-swappable) capability. Refer [here](https://cloud.ibm.com/docs/containers?topic=containers-supported-cluster-addon-versions#openshift-ai-416) for supported AI addon versions.",
         "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/blob/main/README.md",
         "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/main/images/rh_ocp_ai.svg",
@@ -43,7 +43,7 @@
             "label": "Openshift AI",
             "name": "openshift-ai",
             "install_type": "fullstack",
-            "working_directory": "solutions/ocp-ai",
+            "working_directory": "solutions/fully-configurable",
             "architecture": {
               "descriptions": "This architecture deploys Red Hat OpenShift Cluster on VPC enhanced with AI, accelerating machine learning and AI workload deployments. It outlines the necessary infrastructure components for AI-powered applications and provides a streamlined setup for data science and AI development.",
               "features": [
@@ -56,19 +56,11 @@
                   "description": "Yes"
                 },
                 {
-                  "title": "Create Virtual Private Cloud (VPC)",
-                  "description": "Yes"
-                },
-                {
-                  "title": "Use Existing VPC instance",
-                  "description": "Yes"
-                },
-                {
                   "title": "Create Red Hat OpenShift Cluster",
                   "description": "Yes"
                 },
                 {
-                  "title": "Use Existing Openshift Cluster",
+                  "title": "Use Existing Red Hat Openshift Cluster",
                   "description": "No"
                 }
               ],
@@ -85,20 +77,16 @@
             },
             "configuration": [
               {
-                "key": "default_worker_pool_machine_type",
-                "description": "Specifies the machine type for the default worker pool. This determines the CPU, memory, and disk resources available to each worker node. Choose a machine type that is suitable for your AI workload's computational requirements. Refer [IBM Cloud documentation for available machine types](https://cloud.ibm.com/docs/openshift?topic=openshift-vpc-flavors)"
+                "key": "default_worker_pool_machine_type"
               },
               {
-                "key": "default_worker_pool_workers_per_zone",
-                "description": "Defines the number of worker nodes to provision in each zone for the default worker pool. The cluster must have at least 2 worker nodes. Each worker node must have 8vCPU and 32GB memory and a GPU. [Learn More](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui#ai-min)"
+                "key": "default_worker_pool_workers_per_zone"
               },
               {
-                "key": "default_worker_pool_operating_system",
-                "description": "Selects the operating system for the worker nodes in the default worker pool. Ensure that the selected operating system is compatible with your AI framework and dependencies. Refer [here](https://cloud.ibm.com/docs/openshift?topic=openshift-openshift_versions) for supported Operating Systems"
+                "key": "default_worker_pool_operating_system"
               },
               {
-                "key": "additional_worker_pools",
-                "description": "Define additional worker pools with custom configurations (e.g., different machine types or operating systems) to accommodate diverse AI workload requirements within the cluster, such as GPU-optimized pools for deep learning tasks."
+                "key": "additional_worker_pools"
               }
             ],
             "dependencies": [
