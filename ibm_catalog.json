@@ -1,0 +1,145 @@
+{
+    "products": [
+      {
+        "name": "deploy-arch-ibm-ocp-ai",
+        "label": "[Add-ons Beta] Cloud automation for Red Hat OpenShift AI",
+        "product_kind": "solution",
+        "tags": [
+          "containers",
+          "target_terraform",
+          "target_roks",
+          "terraform",
+          "solution",
+          "ibm_created",
+          "ibm_beta"
+        ],
+        "keywords": [
+          "openshift",
+          "openshift-ai",
+          "ocp-ai",
+          "cluster",
+          "IaC",
+          "infrastructure as code",
+          "terraform",
+          "solution"
+        ],
+        "short_description": "Rapidly deploy Red Hat OpenShift clusters on Virtual Private Cloud (VPC) pre-configured with AI capabilities for accelerated machine learning workloads.",
+        "long_description": "This automation streamlines the deployment of Red Hat OpenShift cluster with Artifical Intelligence (AI) on IBM Cloud. It accelerates the setup of machine learning environments, reducing the complexity of AI infrastructure management and allowing data scientists and developers to focus on model development and deployment. This is an experimental tile and not suitable for production workloads. Stay here if you want to try an experimental version with the [Optional and swappable components](https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-choose-plan-process#optional-swappable) capability. Refer [here](https://cloud.ibm.com/docs/containers?topic=containers-supported-cluster-addon-versions#openshift-ai-416) for supported AI addon versions.",
+        "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/blob/main/README.md",
+        "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/main/images/rh_ocp_ai.svg",
+        "provider_name": "IBM",
+        "features": [
+          {
+            "title": "AI-Enhanced Red Hat OpenShift Deployment",
+            "description": "Automates the provisioning of a fully configured Red Hat OpenShift Cluster on VPC with integrated AI capabilities on IBM Cloud. This includes optimized configurations for machine learning frameworks and simplified deployment of AI-driven applications. Refer the documentation to better understand the service and its capabilities: https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-about"
+          }
+        ],
+        "flavors": [
+          {
+            "label": "Fully configurable",
+            "name": "fully-configurable",
+            "install_type": "fullstack",
+            "working_directory": "solutions/fully-configurable",
+            "architecture": {
+              "descriptions": "This architecture deploys Red Hat OpenShift Cluster on VPC enhanced with AI, accelerating machine learning and AI workload deployments. It outlines the necessary infrastructure components for AI-powered applications and provides a streamlined setup for data science and AI development.",
+              "features": [
+                {
+                  "title": "Create Resource Group",
+                  "description": "No"
+                },
+                {
+                  "title": "Use Existing Resource Group",
+                  "description": "Yes"
+                },
+                {
+                  "title": "Create Red Hat OpenShift Cluster",
+                  "description": "Yes"
+                },
+                {
+                  "title": "Use Existing Red Hat Openshift Cluster",
+                  "description": "No"
+                }
+              ],
+              "diagrams": [
+                {
+                  "diagram": {
+                    "caption": "Red Hat OpenShift cluster with AI for IBM Cloud.",
+                    "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/blob/main/reference-architecture/deployable-architecture-ocp-ai-cluster.svg",
+                    "type": "image/svg+xml"
+                  },
+                  "description": "This architecture illustrates the deployment of Red Hat OpenShift cluster integrated with an AI, showcasing the key components and their interactions for AI workload support."
+                }
+              ]
+            },
+            "configuration": [
+              {
+                "key": "default_worker_pool_machine_type"
+              },
+              {
+                "key": "default_worker_pool_workers_per_zone"
+              },
+              {
+                "key": "default_worker_pool_operating_system"
+              },
+              {
+                "key": "default_gpu_worker_pool_storage"
+              },
+              {
+                "key": "additional_worker_pools"
+              }
+            ],
+            "dependencies": [
+              {
+                "name": "add-ons-beta-deploy-arch-ibm-base-ocp-vpc",
+                "catalog_id": "49e71b32-78af-46b4-9869-388c17fff716",
+                "flavors": [
+                  "fully-configurable"
+                ],
+                "id": "8b923e4d-fdf2-428b-9de5-df06489f9aab",
+                "ignore_auto_referencing": [
+                  "*"
+                ],
+                "optional": false,
+                "on_by_default": true,
+                "input_mapping": [
+                  {
+                      "dependency_input": "addons",
+                      "value": {
+                        "openshift-ai" : "416"
+                      }
+                  },
+                  {
+                    "dependency_input": "default_worker_pool_machine_type",
+                    "version_input": "default_worker_pool_machine_type",
+                    "reference_version": true
+                  },
+                  {
+                    "dependency_input": "default_worker_pool_workers_per_zone",
+                    "version_input": "default_worker_pool_workers_per_zone",
+                    "reference_version": true
+                  },
+                  {
+                    "dependency_input": "default_worker_pool_operating_system",
+                    "version_input": "default_worker_pool_operating_system",
+                    "reference_version": true
+                  },
+                  {
+                    "dependency_input": "default_worker_pool_secondary_storage",
+                    "version_input": "default_gpu_worker_pool_storage",
+                    "reference_version": true
+                  },
+                  {
+                    "dependency_input": "additional_worker_pools",
+                    "version_input": "additional_worker_pools",
+                    "reference_version": true
+                  }
+                ],
+                "version": "^v1.0.0"
+              }
+            ],
+            "dependency_version_2": true
+          }
+        ]
+      }
+    ]
+  }
