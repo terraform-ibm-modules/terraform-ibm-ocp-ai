@@ -21,11 +21,7 @@
           "IaC",
           "infrastructure as code",
           "terraform",
-          "solution",
-          "machine learning",
-          "deep learning",
-          "AI",
-          "artificial intelligence"
+          "solution"
         ],
         "short_description": "Rapidly deploy Red Hat OpenShift clusters on Virtual Private Cloud (VPC) pre-configured with AI capabilities for accelerated machine learning workloads.",
         "long_description": "This automation streamlines the deployment of Red Hat OpenShift cluster with Artifical Intelligence (AI) on IBM Cloud. It accelerates the setup of machine learning environments, reducing the complexity of AI infrastructure management and allowing data scientists and developers to focus on model development and deployment. This is an experimental tile and not suitable for production workloads. Stay here if you want to try an experimental version with the [Optional and swappable components](https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-choose-plan-process#optional-swappable) capability. Refer [here](https://cloud.ibm.com/docs/containers?topic=containers-supported-cluster-addon-versions#openshift-ai-416) for supported AI addon versions.",
