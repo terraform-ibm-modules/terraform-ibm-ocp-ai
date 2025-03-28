@@ -51,7 +51,6 @@ variable "additional_worker_pools" {
   description = "List of additional worker pools with custom configurations to accommodate diverse AI workload requirements within the cluster. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/blob/main/solutions/fully-configurable/DA_docs.md#options-with-worker-pools)"
   default = [
     {
-      subnet_prefix     = "default"
       pool_name         = "GPU"
       machine_type      = "gx3.16x80.l4"
       operating_system  = "RHEL_9_64"
