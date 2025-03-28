@@ -1,0 +1,61 @@
+# Configuring complex inputs for OCP in IBM Cloud projects
+
+Several optional input variables in the OCP cluster [deployable architecture](https://cloud.ibm.com/catalog#deployable_architecture) use complex object types. You can specify these inputs when you configure your deployable architecture.
+- [Additional Worker Pools](#options-with-additional-worker-pools) (`additional_worker_pools`)
+
+
+## Options with additional_worker_pools <a name="options-with-additional-worker-pools"></a>
+
+This variable defines the worker node pools for your OCP cluster, with each pool having its own configuration settings.
+
+- Variable name: `additional_worker_pools`.
+- Type: A list of objects. Each object represents a worker_pool configuration.
+- Default value: An empty list (`[]`).
+
+### Options for additional_worker_pools
+
+- `vpc_subnets` (optional): (List) A list of object which specify which all subnets the worker pool should deploy its nodes.
+      - `id` (required): A unique identifier for the VPC subnet.
+      - `zone` (required): The zone where the subnet is located.
+      - `cidr_block` (required): This defines the IP address range for the subnet in CIDR notation.
+- `pool_name` (required): The name of the worker pool.
+- `machine_type` (required): The machine type for worker nodes.
+- `workers_per_zone` (required): Number of worker nodes in each zone of the cluster.
+- `operating_system` (required): The operating system installed on the worker nodes.
+- `labels` (optional): A set of key-value labels assigned to the worker pool for identification.
+- `minSize` (optional): The minimum number of worker nodes allowed in the pool.
+- `maxSize` (optional): The maximum number of worker nodes allowed in the pool.
+- `secondary_storage` (optional): The secondary storage attached to the worker nodes. Secondary storage is immutable and can't be changed after provisioning.
+- `enableAutoscaling` (optional): Set `true` to enable automatic scaling of worker based on workload demand.
+- `boot_volume_encryption_kms_config` (optional): to configure the encryption for the boot volume of worker nodes.
+      - `crk` (required): The customer root key used to encrypt to ensure the boot volume is securely encrypted.
+      - `kms_instance_id`(required): The ID of the KMS instance managing the encryption keys.
+- `additional_security_group_ids` (optional): A list of security group IDs that are attached to the worker nodes for additional network security controls.
+
+### Example for additional_worker_pools configuration
+
+```hcl
+[
+  {
+    pool_name                         = "logging"
+    machine_type                      = "bx2.4x16"
+    workers_per_zone                  = 1
+    secondary_storage                 = "300gb.5iops-tier"
+    operating_system                  = "REDHAT_9_64"
+    boot_volume_encryption_kms_config = {
+      crk             = "83df6f1c-b2a2-4fff-b39b-b999a59b309c"
+      kms_instance_id = "c123f59b-b7ce-4893-abd8-03089b34f49c"
+    }
+  },
+  {
+    pool_name                         = "zone-3"
+    machine_type                      = "bx2.4x16"
+    workers_per_zone                  = 1
+    operating_system                  = "REDHAT_9_64"
+    boot_volume_encryption_kms_config = {
+      crk             = "83df6f1c-b2a2-4fff-b39b-b999a59b301c"
+      kms_instance_id = "c123f59b-b7ce-4893-abd8-03089b34f49c"
+    }
+  }
+]
+```

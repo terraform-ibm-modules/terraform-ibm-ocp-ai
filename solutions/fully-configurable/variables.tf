@@ -1,11 +1,9 @@
-# tflint-ignore: all
 variable "default_worker_pool_machine_type" {
   type        = string
-  description = "The machine type for worker nodes."
+  description = "The machine type for worker nodes. For AI addon installation machines should have atleast 8 vcpu, 32GB RAM and GPU. Refer this page for choosing [machine type](https://cloud.ibm.com/docs/openshift?topic=openshift-vpc-flavors)"
   default     = "bx2.8x32"
 }
 
-# tflint-ignore: all
 variable "default_worker_pool_workers_per_zone" {
   type        = number
   description = "Number of worker nodes in each zone of the cluster."
@@ -16,14 +14,12 @@ variable "default_worker_pool_workers_per_zone" {
   }
 }
 
-# tflint-ignore: all
 variable "default_worker_pool_operating_system" {
   type        = string
   description = "The operating system installed on the worker nodes."
   default     = "RHEL_9_64"
 }
 
-# tflint-ignore: all
 variable "additional_worker_pools" {
   type = list(object({
     vpc_subnets = optional(list(object({
@@ -48,6 +44,6 @@ variable "additional_worker_pools" {
     }))
     additional_security_group_ids = optional(list(string))
   }))
-  description = "List of additional worker pools. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-base-ocp-vpc/blob/main/solutions/fully-configurable/DA_docs.md#options-with-worker-pools)"
+  description = "List of additional worker pools. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/blob/main/solutions/fully-configurable/DA_docs.md#options-with-worker-pools)"
   default     = []
 }
