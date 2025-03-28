@@ -28,14 +28,14 @@
           "artificial intelligence"
         ],
         "short_description": "Rapidly deploy Red Hat OpenShift clusters pre-configured with AI capabilities for accelerated machine learning workloads.",
-        "long_description": "This automation streamlines the deployment of Red Hat OpenShift cluster with Artifical Intelligence (AI) addon on IBM Cloud. It accelerates the setup of machine learning environments, reducing the complexity of AI infrastructure management and allowing data scientists and developers to focus on model development and deployment. This offering depends on 'Cloud automation for Red Hat OpenShift VPC' to create a base OCP cluster. Please refer to the released version here (link to OCP DA release). Refer [here](https://cloud.ibm.com/docs/containers?topic=containers-supported-cluster-addon-versions#openshift-ai-416) for supported AI addon versions.",
+        "long_description": "This automation streamlines the deployment of Red Hat OpenShift cluster with Artifical Intelligence (AI) on IBM Cloud. It accelerates the setup of machine learning environments, reducing the complexity of AI infrastructure management and allowing data scientists and developers to focus on model development and deployment. This is an experimental tile and not suitable for production workloads. Stay here if you want to try an experimental version with the [Optional and swappable components](https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-choose-plan-process#optional-swappable) capability. Refer [here](https://cloud.ibm.com/docs/containers?topic=containers-supported-cluster-addon-versions#openshift-ai-416) for supported AI addon versions.",
         "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/blob/main/README.md",
         "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/main/images/rh_ocp_ai.svg",
         "provider_name": "IBM",
         "features": [
           {
             "title": "AI-Enhanced Red Hat OpenShift Deployment",
-            "description": "Automates the provisioning of a fully configured Red Hat OpenShift on VPC cluster with integrated AI capabilities on IBM Cloud. This includes optimized configurations for machine learning frameworks and simplified deployment of AI-driven applications. Refer the documentation to better understand the service and its capabilities: https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-about"
+            "description": "Automates the provisioning of a fully configured Red Hat OpenShift Cluster on VPC with integrated AI capabilities on IBM Cloud. This includes optimized configurations for machine learning frameworks and simplified deployment of AI-driven applications. Refer the documentation to better understand the service and its capabilities: https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-about"
           }
         ],
         "flavors": [
@@ -45,33 +45,41 @@
             "install_type": "fullstack",
             "working_directory": "solutions/ocp-ai",
             "architecture": {
-              "descriptions": "This architecture deploys a single-zone Red Hat OpenShift on VPC cluster enhanced with an AI addon, accelerating machine learning and AI workload deployments. It outlines the necessary infrastructure components for AI-powered applications and provides a streamlined setup for data science and AI development.",
+              "descriptions": "This architecture deploys Red Hat OpenShift Cluster on VPC enhanced with AI, accelerating machine learning and AI workload deployments. It outlines the necessary infrastructure components for AI-powered applications and provides a streamlined setup for data science and AI development.",
               "features": [
                 {
-                  "title": "Create Virtual Private Cloud (VPC)",
+                  "title": "Create Resource Group",
                   "description": "No"
+                },
+                {
+                  "title": "Use Existing Resource Group",
+                  "description": "Yes"
+                },
+                {
+                  "title": "Create Virtual Private Cloud (VPC)",
+                  "description": "Yes"
+                },
+                {
+                  "title": "Use Existing VPC instance",
+                  "description": "Yes"
                 },
                 {
                   "title": "Create Red Hat OpenShift Cluster",
                   "description": "Yes"
                 },
                 {
-                  "title": "Use Existing VPC instance",
-                  "description": "No"
-                },
-                {
-                  "title": "New Resource Group Creation",
+                  "title": "Use Existing Openshift Cluster",
                   "description": "No"
                 }
               ],
               "diagrams": [
                 {
                   "diagram": {
-                    "caption": "Red Hat OpenShift cluster with AI addon for IBM Cloud.",
+                    "caption": "Red Hat OpenShift cluster with AI for IBM Cloud.",
                     "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/blob/main/reference-architecture/deployable-architecture-ocp-cluster-qs.svg",
                     "type": "image/svg+xml"
                   },
-                  "description": "This architecture illustrates the deployment of a single-zone Red Hat OpenShift cluster integrated with an AI addon, showcasing the key components and their interactions for AI workload support."
+                  "description": "This architecture illustrates the deployment of Red Hat OpenShift cluster integrated with an AI, showcasing the key components and their interactions for AI workload support."
                 }
               ]
             },

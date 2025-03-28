@@ -49,5 +49,14 @@ variable "additional_worker_pools" {
     additional_security_group_ids = optional(list(string))
   }))
   description = "List of additional worker pools. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-base-ocp-vpc/blob/main/solutions/fully-configurable/DA_docs.md#options-with-worker-pools)"
-  default     = []
+  default = [
+    {
+      subnet_prefix     = "default"
+      pool_name         = "GPU"
+      machine_type      = "gx3.16x80.l4"
+      operating_system  = "RHEL_9_64"
+      workers_per_zone  = 2
+      secondary_storage = "300gb.5iops-tier"
+    }
+  ]
 }

@@ -14,7 +14,7 @@ Update status and "latest release" badges:
 
 This repository contains the following infrastructure as code solutions:
 
-- [Red Hat Openshift AI addon](./solutions/ocp-ai)
+- [Red Hat OpenShift AI](./solutions/ocp-ai)
 
 <!-- Leave this section as is so that your module has a link to local development environment set up steps for contributors to follow -->
 ## Contributing
