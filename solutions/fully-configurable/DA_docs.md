@@ -37,8 +37,8 @@ This variable defines the worker node pools for the Red Hat Openshift cluster, w
 ```hcl
 [
   {
-    pool_name                         = "logging"
-    machine_type                      = "bx2.4x16"
+    pool_name                         = "ai-workload"
+    machine_type                      = "gx3.16x80.l4"
     workers_per_zone                  = 1
     secondary_storage                 = "300gb.5iops-tier"
     operating_system                  = "REDHAT_9_64"
@@ -48,9 +48,9 @@ This variable defines the worker node pools for the Red Hat Openshift cluster, w
     }
   },
   {
-    pool_name                         = "zone-3"
-    machine_type                      = "bx2.4x16"
-    workers_per_zone                  = 1
+    pool_name                         = "balanced-pool"
+    machine_type                      = "bx2.8x32"
+    workers_per_zone                  = 2
     operating_system                  = "REDHAT_9_64"
     boot_volume_encryption_kms_config = {
       crk             = "83df6f1c-b2a2-4fff-b39b-b999a59b301c"
