@@ -48,10 +48,6 @@ variable "default_worker_pool_workers_per_zone" {
   type        = number
   description = "Defines the number of worker nodes to provision in each zone for the default worker pool. Overall cluster must have at least 2 worker nodes, but individual worker pools may have fewer nodes per zone. [Learn More](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui#ai-min)"
   default     = 2
-  validation {
-    condition     = var.default_worker_pool_workers_per_zone >= 2
-    error_message = "Each worker pool must have at least 2 worker node per zone."
-  }
 }
 
 # tflint-ignore: all
