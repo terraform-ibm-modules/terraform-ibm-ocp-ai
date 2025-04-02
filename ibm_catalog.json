@@ -73,16 +73,43 @@
             },
             "configuration": [
               {
-                "key": "default_worker_pool_machine_type"
+                "key": "prefix",
+                "required": true,
+                "description": "The prefix to add to all resources that this solution creates. To not use any prefix value, you can enter the string `__NULL__`."
               },
               {
-                "key": "default_worker_pool_workers_per_zone"
+                "key": "existing_resource_group_name",
+                "required": true
               },
               {
-                "key": "default_worker_pool_operating_system"
+                "key": "default_worker_pool_machine_type",
+                "required": true
               },
               {
-                "key": "default_gpu_worker_pool_storage"
+                "key": "default_worker_pool_workers_per_zone",
+                "required": true
+              },
+              {
+                "key": "default_worker_pool_operating_system",
+                "options": [
+                  {
+                    "displayname": "RHEL 9",
+                    "value": "RHEL_9_64"
+                  },
+                  {
+                    "displayname": "Red Hat CoreOS",
+                    "value": "RHCOS"
+                  },
+                  {
+                    "displayname": "RHEL 8",
+                    "value": "REDHAT_8_64"
+                  }
+                ],
+                "required": true
+              },
+              {
+                "key": "default_gpu_worker_pool_storage",
+                "required": true
               },
               {
                 "key": "additional_worker_pools"
@@ -107,6 +134,16 @@
                       "value": {
                         "openshift-ai" : "416"
                       }
+                  },
+                  {
+                    "dependency_input": "prefix",
+                    "version_input": "prefix",
+                    "reference_version": true
+                  },
+                  {
+                    "dependency_input": "existing_resource_group_name",
+                    "version_input": "existing_resource_group_name",
+                    "reference_version": true
                   },
                   {
                     "dependency_input": "default_worker_pool_machine_type",
