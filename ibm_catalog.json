@@ -30,7 +30,7 @@
         "provider_name": "IBM",
         "features": [
           {
-            "title": "AI-Enhanced Red Hat OpenShift Deployment",
+            "title": "AI-enhanced Red Hat OpenShift Deployment",
             "description": "Automates the provisioning of a fully configured Red Hat OpenShift Cluster on VPC with integrated AI capabilities on IBM Cloud. This includes optimized configurations for machine learning frameworks and simplified deployment of AI-driven applications. Refer the documentation to better understand the service and its capabilities: https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-about"
           }
         ],
@@ -56,8 +56,12 @@
                   "description": "Yes"
                 },
                 {
-                  "title": "Use Existing Red Hat Openshift Cluster",
+                  "title": "Use Existing Red Hat OpenShift Cluster",
                   "description": "No"
+                },
+                {
+                  "title": "Enable OpenShift AI on Cluster",
+                  "description": "Yes"
                 }
               ],
               "diagrams": [
@@ -79,7 +83,15 @@
               },
               {
                 "key": "existing_resource_group_name",
-                "required": true
+                "required": true,
+                "custom_config": {
+                  "type": "resource_group",
+                  "grouping": "deployment",
+                  "original_grouping": "deployment",
+                  "config_constraints": {
+                    "identifier": "rg_name"
+                  }
+                }
               },
               {
                 "key": "default_worker_pool_machine_type",
@@ -91,6 +103,7 @@
               },
               {
                 "key": "default_worker_pool_operating_system",
+                "required": true,
                 "options": [
                   {
                     "displayname": "RHEL 9",
@@ -104,8 +117,7 @@
                     "displayname": "RHEL 8",
                     "value": "REDHAT_8_64"
                   }
-                ],
-                "required": true
+                ]
               },
               {
                 "key": "default_gpu_worker_pool_storage",
@@ -118,11 +130,11 @@
             "dependencies": [
               {
                 "name": "add-ons-beta-deploy-arch-ibm-base-ocp-vpc",
-                "catalog_id": "47481623-c14b-4f04-81c4-50bb0cc7d046",
+                "catalog_id": "f64499c8-eb50-4985-bf91-29f9e605a433",
                 "flavors": [
                   "fully-configurable"
                 ],
-                "id": "892ed5b9-8b4e-49d1-956f-3abc45585d5a",
+                "id": "1728a4fd-f561-4cf9-82ef-2b1eeb5da1a8",
                 "ignore_auto_referencing": [
                   "*"
                 ],

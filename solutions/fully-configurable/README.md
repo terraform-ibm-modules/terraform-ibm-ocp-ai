@@ -10,7 +10,7 @@ For more information about Red Hat OpenShift AI please refer the [documentation]
 
 ## Features and Capabilities
 
--  **AI-Enhanced Red Hat OpenShift Deployment**: Automates the provisioning of a fully configured Red Hat OpenShift Cluster on VPC with integrated AI capabilities on IBM Cloud. This includes optimized configurations for machine learning frameworks and simplified deployment of AI-driven applications.
+-  **AI-enhanced Red Hat OpenShift Deployment**: Automates the provisioning of a fully configured Red Hat OpenShift Cluster on VPC with integrated AI capabilities on IBM Cloud. This includes optimized configurations for machine learning frameworks and simplified deployment of AI-driven applications.
 
 
 ## Architecture
