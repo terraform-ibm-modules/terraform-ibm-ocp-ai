@@ -1,38 +1,32 @@
 package test
 
 import (
+	"fmt"
 	"log"
+	"strings"
 	"testing"
 
-	"github.com/gruntwork-io/terratest/modules/terraform"
+	"github.com/gruntwork-io/terratest/modules/random"
+	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/testhelper"
 )
 
-const fullyConfigurableTerraformDir = "./../solutions/fully-configurable"
-
-type TerraformTestConfig struct {
-	TerraformDir string
-	Vars         map[string]interface{}
-}
+const fullyConfigurableTerraformDir = "solutions/fully-configurable"
 
 func TestTerraformCompleteTest(t *testing.T) {
 	t.Parallel()
-	options := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
+	options := testhelper.TestOptionsDefault(&testhelper.TestOptions{
+		Testing:      t,
 		TerraformDir: fullyConfigurableTerraformDir,
-		Vars: map[string]interface{}{
-			"prefix":                               "test-prefix",
-			"existing_resource_group_name":         "Default",
-			"default_worker_pool_machine_type":     "gx3.16x80.l4",
-			"default_worker_pool_workers_per_zone": 2,
-			"default_worker_pool_operating_system": "RHEL_9_64",
-			"default_gpu_worker_pool_storage":      "300gb.5iops-tier",
-		},
-		Upgrade: true,
 	})
-	_, err := terraform.InitAndApplyE(t, options)
-	if err != nil {
-		log.Fatal("Terraform apply failed")
+
+	prefix := fmt.Sprintf("ocp-ai-da-%s", strings.ToLower(random.UniqueId()))
+
+	options.TerraformVars = map[string]interface{}{
+		"prefix": prefix,
 	}
 
-	terraform.Destroy(t, options)
-
+	_, err := options.RunTestConsistency()
+	if err != nil {
+		log.Fatal(err)
+	}
 }
