@@ -41,6 +41,42 @@
             "name": "fully-configurable",
             "install_type": "fullstack",
             "working_directory": "solutions/fully-configurable",
+            "iam_permissions": [
+              {
+                "role_crns": [
+                  "crn:v1:bluemix:public:iam::::role:Administrator"
+                ],
+                "service_name": "iam-identity"
+              },
+              {
+                "role_crns": [
+                  "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                  "crn:v1:bluemix:public:iam::::role:Editor"
+                ],
+                "service_name": "hs-crypto"
+              },
+              {
+                "role_crns": [
+                  "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                  "crn:v1:bluemix:public:iam::::role:Editor"
+                ],
+                "service_name": "kms"
+              },
+              {
+                "role_crns": [
+                  "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                  "crn:v1:bluemix:public:iam::::role:Editor"
+                ],
+                "service_name": "cloud-object-storage"
+              },
+              {
+                "service_name": "containers-kubernetes",
+                "role_crns": [
+                  "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                  "crn:v1:bluemix:public:iam::::role:Editor"
+                ]
+              }
+            ],
             "architecture": {
               "descriptions": "This architecture deploys Red Hat OpenShift Cluster on VPC enhanced with AI, accelerating machine learning and AI workload deployments. It outlines the necessary infrastructure components for AI-powered applications and provides a streamlined setup for data science and AI development.",
               "features": [
@@ -131,11 +167,11 @@
             "dependencies": [
               {
                 "name": "add-ons-beta-deploy-arch-ibm-base-ocp-vpc",
-                "catalog_id": "47481623-c14b-4f04-81c4-50bb0cc7d046",
+                "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
                 "flavors": [
                   "fully-configurable"
                 ],
-                "id": "fbd05e9c-aeae-41fb-9e0e-702a2612ef99",
+                "id": "1728a4fd-f561-4cf9-82ef-2b1eeb5da1a8-global",
                 "ignore_auto_referencing": [
                   "*"
                 ],
@@ -192,4 +228,4 @@
         ]
       }
     ]
-  }
+}
