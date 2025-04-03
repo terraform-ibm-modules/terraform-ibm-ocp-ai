@@ -4,7 +4,7 @@
 
 This solution simplifies the deployment of Red Hat OpenShift clusters on IBM Cloud, pre-integrating them with essential AI components. It accelerates the setup of machine learning environments, reducing the complexity of AI infrastructure management and allowing data scientists and developers to focus on model development and deployment.
 
-**Note:** This offering depends on 'Cloud automation for Red Hat OpenShift VPC' to create a Red Hat Openshift Cluster with AI.
+**Note:** This offering depends on 'Cloud automation for Red Hat OpenShift VPC' to create a Red Hat OpenShift Cluster with AI.
 
 For more information about Red Hat OpenShift AI please refer the [documentation](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-about&interface=ui)
 
@@ -25,4 +25,4 @@ This architecture consists of:
 
 ## Dependencies
 
-This solution depends on the `Cloud automation for Red Hat OpenShift Container Platform on VPC` to create Red Hat Openshift cluster.
+This solution depends on the `Cloud automation for Red Hat OpenShift Container Platform on VPC` to create Red Hat OpenShift cluster.

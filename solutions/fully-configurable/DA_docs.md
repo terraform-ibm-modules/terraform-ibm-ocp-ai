@@ -1,13 +1,13 @@
 # Configuring complex inputs for OCP in IBM Cloud projects
 
-Several optional input variables in the Red Hat Openshift cluster [Deployable Architecture](https://cloud.ibm.com/catalog#deployable_architecture) use complex object types. You can specify these inputs when you configure your deployable architecture.
+Several optional input variables in the Red Hat OpenShift cluster [Deployable Architecture](https://cloud.ibm.com/catalog#deployable_architecture) use complex object types. You can specify these inputs when you configure your deployable architecture.
 
 - [Additional Worker Pools](#options-with-additional-worker-pools) (`additional_worker_pools`)
 
 
 ## Options with additional_worker_pools <a name="options-with-additional-worker-pools"></a>
 
-This variable defines the worker node pools for the Red Hat Openshift cluster, with each pool having its own configuration settings.
+This variable defines the worker node pools for the Red Hat OpenShift cluster, with each pool having its own configuration settings.
 
 - Variable name: `additional_worker_pools`.
 - Type: A list of objects. Each object represents a `worker_pool` configuration.

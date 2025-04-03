@@ -22,7 +22,7 @@ repository:
 
   # Uncomment this description property
   # and update the description to the current repo description.
-  description: "Deploys a OpenShift.ai addon on the Red Hat OpenShift VPC cluster on IBM Cloud"
+  description: "Deploys an OpenShift AI add-on on the Red Hat OpenShift VPC cluster on IBM Cloud."
 
   # Use a comma-separated list of topics to set on the repo (ensure not to use any caps in the topic string).
   topics: core-team, terraform, ibm-cloud, openshift-cluster, ocp, ai, ai-addon, deployable-architecture
