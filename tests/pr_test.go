@@ -41,7 +41,7 @@ func TestRunFullyConfigurable(t *testing.T) {
 func TestRunUpgradeExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, "ocp-ai-upg", fullyConfigurableTerraformDir)
+	options := setupOptions(t, "ai-upg", fullyConfigurableTerraformDir)
 	options.TerraformVars = map[string]interface{}{
 		"prefix":                       options.Prefix,
 		"existing_resource_group_name": resourceGroup,
