@@ -25,4 +25,4 @@ repository:
   description: "Deploys a OpenShift.ai addon on the Red Hat OpenShift VPC cluster on IBM Cloud"
 
   # Use a comma-separated list of topics to set on the repo (ensure not to use any caps in the topic string).
-  topics: core-team, terraform, ibm-cloud, terraform-module, openshift-cluster, ocp
+  topics: core-team, terraform, ibm-cloud, openshift-cluster, ocp, ai, ai-addon, deployable-architecture
