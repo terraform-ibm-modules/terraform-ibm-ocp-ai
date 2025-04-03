@@ -1,32 +1,53 @@
+// Tests in this file are run in the PR pipeline and the continuous testing pipeline
 package test
 
 import (
-	"fmt"
-	"log"
-	"strings"
 	"testing"
 
-	"github.com/gruntwork-io/terratest/modules/random"
+	"github.com/stretchr/testify/assert"
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/testhelper"
 )
 
+// Use existing resource group
+const resourceGroup = "geretain-test-resources"
+
 const fullyConfigurableTerraformDir = "solutions/fully-configurable"
 
-func TestTerraformCompleteTest(t *testing.T) {
-	t.Parallel()
-	options := testhelper.TestOptionsDefault(&testhelper.TestOptions{
+func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptions {
+	options := testhelper.TestOptionsDefaultWithVars(&testhelper.TestOptions{
 		Testing:      t,
-		TerraformDir: fullyConfigurableTerraformDir,
+		TerraformDir: dir,
+		Prefix:       prefix,
 	})
+	return options
+}
 
-	prefix := fmt.Sprintf("ocp-ai-da-%s", strings.ToLower(random.UniqueId()))
+// Consistency test
+func TestRunFullyConfigurable(t *testing.T) {
+	t.Parallel()
+	options := setupOptions(t, "ocp-ai", fullyConfigurableTerraformDir)
 
 	options.TerraformVars = map[string]interface{}{
-		"prefix": prefix,
+		"prefix":                       options.Prefix,
+		"existing_resource_group_name": resourceGroup,
 	}
+	output, err := options.RunTestConsistency()
+	assert.Nil(t, err, "This should not have errored")
+	assert.NotNil(t, output, "Expected some output")
+}
 
-	_, err := options.RunTestConsistency()
-	if err != nil {
-		log.Fatal(err)
+// Upgrade test
+func TestRunUpgradeExample(t *testing.T) {
+	t.Parallel()
+
+	options := setupOptions(t, "ocp-ai-upg", fullyConfigurableTerraformDir)
+	options.TerraformVars = map[string]interface{}{
+		"prefix":                       options.Prefix,
+		"existing_resource_group_name": resourceGroup,
+	}
+	output, err := options.RunTestUpgrade()
+	if !options.UpgradeTestSkipped {
+		assert.Nil(t, err, "This should not have errored")
+		assert.NotNil(t, output, "Expected some output")
 	}
 }
