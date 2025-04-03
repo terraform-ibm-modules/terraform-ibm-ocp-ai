@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+offerings:
+  - name: deploy-arch-ibm-ocp-ai
+    kind: solution
+    catalog_id: f64499c8-eb50-4985-bf91-29f9e605a433
+    offering_id: e221fc14-094f-4b1e-ab21-d884378230e7
+    variations:
+      - name: fully-configurable
+        mark_ready: true
+        install_type: fullstack
