@@ -1,5 +1,5 @@
 <!-- Update this title with a descriptive name. Use sentence case. -->
-# Red Hat Openshift AI on IBM Cloud
+# Red Hat OpenShift AI on IBM Cloud
 
 <!--
 Update status and "latest release" badges:
