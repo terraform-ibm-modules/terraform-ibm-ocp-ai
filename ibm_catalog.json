@@ -105,7 +105,7 @@
                 {
                   "diagram": {
                     "caption": "Red Hat OpenShift cluster with AI for IBM Cloud.",
-                    "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/blob/main/reference-architecture/deployable-architecture-ocp-ai-cluster.svg",
+                    "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/main/reference-architecture/deployable-architecture-ocp-ai-cluster.svg",
                     "type": "image/svg+xml"
                   },
                   "description": "This architecture illustrates the deployment of Red Hat OpenShift cluster integrated with an AI, showcasing the key components and their interactions for AI workload support."
@@ -220,7 +220,7 @@
                     "reference_version": true
                   }
                 ],
-                "version": "^v1.0.0"
+                "version": "^v3.43.1"
               }
             ],
             "dependency_version_2": true
