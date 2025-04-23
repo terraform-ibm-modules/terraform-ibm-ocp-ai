@@ -54,7 +54,7 @@ variable "default_worker_pool_workers_per_zone" {
 variable "default_worker_pool_operating_system" {
   type        = string
   description = "Provide the operating system for the worker nodes in the default worker pool. Ensure that the selected operating system is compatible with your AI framework and dependencies. Refer [here](https://cloud.ibm.com/docs/openshift?topic=openshift-openshift_versions) for supported Operating Systems"
-  default     = "RHEL_9_64"
+  default     = "RHCOS"
 
   validation {
     condition     = contains(["REDHAT_8_64", "RHCOS", "RHEL_9_64"], var.default_worker_pool_operating_system)
