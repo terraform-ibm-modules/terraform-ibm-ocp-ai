@@ -161,7 +161,8 @@
                 "required": true
               },
               {
-                "key": "additional_worker_pools"
+                "key": "additional_worker_pools",
+                "required": true
               }
             ],
             "dependencies": [
