@@ -25,12 +25,12 @@ variable "existing_resource_group_name" {
 variable "default_worker_pool_machine_type" {
   type        = string
   description = "Specifies the machine type for the default worker pool. This determines the CPU, memory, and disk resources available to each worker node. For OpenShift AI installation, machines should have atleast 8 vcpu, 32GB RAM and GPU. Refer [IBM Cloud documentation for available machine types](https://cloud.ibm.com/docs/openshift?topic=openshift-vpc-flavors)"
-  default     = "gx3.16x80.l4"
+  default     = "bx2.8x32"
 
-  validation {
-    condition     = startswith(var.default_worker_pool_machine_type, "gx2") || startswith(var.default_worker_pool_machine_type, "gx3") || startswith(var.default_worker_pool_machine_type, "gx4")
-    error_message = "The machine type must be from the 'gx2', 'gx3', or 'gx4' series. Please choose a valid machine type with GPU support."
-  }
+  # validation {
+  #   condition     = startswith(var.default_worker_pool_machine_type, "gx2") || startswith(var.default_worker_pool_machine_type, "gx3") || startswith(var.default_worker_pool_machine_type, "gx4")
+  #   error_message = "The machine type must be from the 'gx2', 'gx3', or 'gx4' series. Please choose a valid machine type with GPU support."
+  # }
 
   validation {
     condition     = tonumber(split("x", split(".", var.default_worker_pool_machine_type)[1])[0]) >= 8
