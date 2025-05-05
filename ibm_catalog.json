@@ -23,7 +23,7 @@
           "terraform",
           "solution"
         ],
-        "short_description": "Efficiently deploy Red Hat OpenShift clusters on Virtual Private Cloud (VPC) pre-configured with AI capabilities and GPU-enabled clusters to accelerate machine learning workloads.",
+        "short_description": "Rapidly deploy Red Hat OpenShift clusters on Virtual Private Cloud (VPC) pre-configured with AI capabilities for accelerated machine learning workloads.",
         "long_description": "This automation streamlines the deployment of Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on. It accelerates the setup of machine learning environments by leveraging the capabilities of the OpenShift AI add-on on Virtual Private Cloud (VPC) infrastructure with GPU-enabled clusters, reducing the complexity of AI infrastructure management and allowing data scientists and developers to focus on model development and deployment. Learn more about [Red Hat OpenShift on IBM Cloud](https://cloud.ibm.com/docs/openshift?topic=openshift-getting-started) and the [OpenShift AI add-on](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-about). \n This is an experimental tile and not suitable for production workloads. Stay here if you want to try an experimental version with the [Optional and swappable components](https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-choose-plan-process#optional-swappable) capability. Refer [here](https://cloud.ibm.com/docs/containers?topic=containers-supported-cluster-addon-versions#openshift-ai-416) for supported AI addon versions.",
         "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/blob/main/README.md",
         "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/main/images/rh_ocp_ai.svg",
@@ -63,7 +63,7 @@
                   "crn:v1:bluemix:public:iam::::role:Editor"
                 ],
                 "service_name": "hs-crypto",
-                "notes": "This role is only required if you are using Hyper Protect for encryption"
+                "notes": "[Optional] If you are using Hyper Protect for encryption"
               },
               {
                 "role_crns": [
@@ -71,7 +71,7 @@
                   "crn:v1:bluemix:public:iam::::role:Editor"
                 ],
                 "service_name": "kms",
-                "notes": "This role is only required if you are using Key Protect for encryption"
+                "notes": "[Optional] If you are using Key Protect for encryption"
               },
               {
                 "role_crns": [
@@ -101,19 +101,7 @@
                 },
                 {
                   "title": "Create or Use Existing Red Hat OpenShift Cluster",
-                  "description": {
-                    "type" : "dropdown",
-                    "options" : [
-                      {
-                        "label": "Create Red Hat OpenShift Cluster",
-                        "value": "create"
-                      },
-                      {
-                        "label": "Use Existing Red Hat OpenShift Cluster",
-                        "value": "use_existing"
-                      }
-                    ]
-                  }
+                  "description": "Yes"
                 },
                 {
                   "title": "Install OpenShift AI on Cluster",
@@ -123,11 +111,11 @@
               "diagrams": [
                 {
                   "diagram": {
-                    "caption": "Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on",
+                    "caption": "Red Hat OpenShift cluster with AI for IBM Cloud.",
                     "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/main/reference-architecture/deployable-architecture-ocp-ai-cluster.svg",
                     "type": "image/svg+xml"
                   },
-                  "description": "This architecture illustrates a Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on, enabling efficient management of AI/ML workloads. It optionally integrates key IBM Cloud services such as Key Management Services for encryption, Secrets Manager for secure credential storage, and Cloud Object Storage for scalable data storage. Additionally, it supports IBM Cloud Observability for monitoring, logging, and tracking activities, and includes an VPC configuration for isolated network setup."
+                  "description": "This architecture illustrates the deployment of Red Hat OpenShift cluster integrated with an AI, showcasing the key components and their interactions for AI workload support."
                 }
               ]
             },
@@ -341,8 +329,7 @@
                 "required": true
               },
               {
-                "key": "additional_worker_pools",
-                "required": true
+                "key": "additional_worker_pools"
               }
             ],
             "dependencies": [
