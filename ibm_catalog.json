@@ -235,34 +235,6 @@
                   "value": "cx3d.96x240"
                 },
                 {
-                  "displayname": "gx3.16x80.l4 [Except Osaka (jp-osa)]",
-                  "value": "gx3.16x80.l4"
-                },
-                {
-                  "displayname": "gx3.24x120.l40s [Except Osaka (jp-osa)]",
-                  "value": "gx3.24x120.l40s"
-                },
-                {
-                  "displayname": "gx3.32x160.2l4 [Except Osaka (jp-osa)]",
-                  "value": "gx3.32x160.2l4"
-                },
-                {
-                  "displayname": "gx3.48x240.2l40s [Except Osaka (jp-osa)]",
-                  "value": "gx3.48x240.2l40s"
-                },
-                {
-                  "displayname": "gx3.64x320.4l4 [Except Osaka (jp-osa)]",
-                  "value": "gx3.64x320.4l4"
-                },
-                {
-                  "displayname": "gx3d.160x1792.8h100 [Except Osaka (jp-osa)]",
-                  "value": "gx3d.160x1792.8h100"
-                },
-                {
-                  "displayname": "gx3d.160x1792.8h200 [Except Osaka (jp-osa),Sao Paulo (br-sao),Madrid (eu-es),Tokyo (jp-tok),Dallas (us-south)]",
-                  "value": "gx3d.160x1792.8h200"
-                },
-                {
                   "displayname": "mx2.128x1024",
                   "value": "mx2.128x1024"
                 },
@@ -367,7 +339,8 @@
                 "required": true
               },
               {
-                "key": "additional_worker_pools"
+                "key": "additional_worker_pools",
+                "required": true
               }
             ],
             "dependencies": [
