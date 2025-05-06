@@ -63,7 +63,7 @@
                   "crn:v1:bluemix:public:iam::::role:Editor"
                 ],
                 "service_name": "hs-crypto",
-                "notes": "[Optional] If you are using Hyper Protect for encryption"
+                "notes": "[Optional] if KMS encryption is enabled and you are using Hyper Protect for encryption"
               },
               {
                 "role_crns": [
@@ -71,7 +71,7 @@
                   "crn:v1:bluemix:public:iam::::role:Editor"
                 ],
                 "service_name": "kms",
-                "notes": "[Optional] If you are using Key Protect for encryption"
+                "notes": "[Optional] if KMS encryption is enabled and you are using Key Protect for encryption"
               },
               {
                 "role_crns": [
@@ -100,18 +100,18 @@
                   "description": "Yes"
                 },
                 {
-                  "title": "Create or Use Existing Red Hat OpenShift Cluster",
+                  "title": "Create Red Hat OpenShift Cluster",
                   "description": "Yes"
                 },
                 {
-                  "title": "Install OpenShift AI on Cluster",
+                  "title": "Install OpenShift AI Addon",
                   "description": "Yes"
                 }
               ],
               "diagrams": [
                 {
                   "diagram": {
-                    "caption": "Red Hat OpenShift cluster with AI for IBM Cloud.",
+                    "caption": "Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on",
                     "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/main/reference-architecture/deployable-architecture-ocp-ai-cluster.svg",
                     "type": "image/svg+xml"
                   },
@@ -158,6 +158,14 @@
                   "value": "bx2.8x32"
                 },
                 {
+                  "displayname": "bx2d.metal.96x384 (only Toronto (ca-tor))",
+                  "value": "bx2d.metal.96x384"
+                },
+                {
+                  "displayname": "bx3d.128x640",
+                  "value": "bx3d.128x640"
+                },
+                {
                   "displayname": "bx3d.16x80",
                   "value": "bx3d.16x80"
                 },
@@ -197,6 +205,10 @@
                   "value": "cx2.48x96"
                 },
                 {
+                  "displayname": "cx2d.metal.96x192 (only Toronto (ca-tor)) ",
+                  "value": "cx2d.metal.96x192"
+                },
+                {
                   "displayname": "cx3d.128x320",
                   "value": "cx3d.128x320"
                 },
@@ -233,7 +245,7 @@
                   "value": "mx2.16x128"
                 },
                 {
-                  "displayname": "mx2.16x128.2000gb [Except Sao Paulo (br-sao),Madrid (eu-es),Osaka (jp-osa)]",
+                  "displayname": "mx2.16x128.2000gb (only Sydney (au-syd),Frankfurt (eu-de),Toronto (ca-tor),London (eu-gb),Tokyo (jp-tok),Dallas (us-south),Washington DC (us-east))",
                   "value": "mx2.16x128.2000gb"
                 },
                 {
@@ -251,6 +263,10 @@
                 {
                   "displayname": "mx2.8x64",
                   "value": "mx2.8x64"
+                },
+                {
+                  "displayname": "mx2d.metal.96x768 (only Toronto (ca-tor))) ",
+                  "value": "mx2d.metal.96x768"
                 },
                 {
                   "displayname": "mx3d.128x1280",
@@ -277,27 +293,27 @@
                   "value": "mx3d.96x960"
                 },
                 {
-                  "displayname": "ox2.128x1024 [Except Sao Paulo (br-sao)] ",
+                  "displayname": "ox2.128x1024 (only Sydney (au-syd),Toronto (ca-tor),London (eu-gb),Dallas (us-south),Tokyo (jp-tok),Osaka (jp-osa),Madrid (eu-es),Frankfurt (eu-de),Washington DC (us-east)) ",
                   "value": "ox2.128x1024"
                 },
                 {
-                  "displayname": "ox2.16x128 [Except Sao Paulo (br-sao)]",
+                  "displayname": "ox2.16x128 (only Sydney (au-syd),Toronto (ca-tor),London (eu-gb),Dallas (us-south),Tokyo (jp-tok),Osaka (jp-osa),eu-es,Frankfurt (eu-de),Washington DC (us-east))",
                   "value": "ox2.16x128"
                 },
                 {
-                  "displayname": "ox2.32x256 [Except Sao Paulo (br-sao)]",
+                  "displayname": "ox2.32x256 (only Sydney (au-syd),Toronto (ca-tor),London (eu-gb),Dallas (us-south),Tokyo (jp-tok),Osaka (jp-osa),Madrid (eu-es),Frankfurt (eu-de),Washington DC (us-east))",
                   "value": "ox2.32x256"
                 },
                 {
-                  "displayname": "ox2.64x512 [Except Sao Paulo (br-sao)]",
+                  "displayname": "ox2.64x512 (only Sydney (au-syd),Toronto (ca-tor),London (eu-gb),Dallas (us-south),Tokyo (jp-tok),Osaka (jp-osa),Madrid (eu-es),Frankfurt (eu-de),Washington DC (us-east))",
                   "value": "ox2.64x512"
                 },
                 {
-                  "displayname": "ox2.8x64 [Except Sao Paulo (br-sao)]",
+                  "displayname": "ox2.8x64 (only Sydney (au-syd),Toronto (ca-tor),London (eu-gb),Dallas (us-south),Tokyo (Tokyo (jp-tok)),Osaka (jp-osa),Madrid (eu-es),Frankfurt (eu-de),Washington DC (us-east))",
                   "value": "ox2.8x64"
                 },
                 {
-                  "displayname": "ox2.96x768 [Except Sao Paulo (br-sao)]",
+                  "displayname": "ox2.96x768 (only Sydney (au-syd),Toronto (ca-tor),London (eu-gb),Dallas (us-south),Tokyo (jp-tok),Osaka (jp-osa),Madrid (eu-es),Frankfurt (eu-de),Washington DC (us-east))",
                   "value": "ox2.96x768"
                 }
               ]
