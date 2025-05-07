@@ -23,7 +23,7 @@
           "terraform",
           "solution"
         ],
-        "short_description": "Rapidly deploy Red Hat OpenShift clusters on Virtual Private Cloud (VPC) pre-configured with AI capabilities for accelerated machine learning workloads.",
+        "short_description": "Efficiently deploy Red Hat OpenShift clusters on Virtual Private Cloud (VPC) pre-configured with AI capabilities and GPU-enabled clusters to accelerate machine learning workloads.",
         "long_description": "This automation streamlines the deployment of Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on. It accelerates the setup of machine learning environments by leveraging the capabilities of the OpenShift AI add-on on Virtual Private Cloud (VPC) infrastructure with GPU-enabled clusters, reducing the complexity of AI infrastructure management and allowing data scientists and developers to focus on model development and deployment. Learn more about [Red Hat OpenShift on IBM Cloud](https://cloud.ibm.com/docs/openshift?topic=openshift-getting-started) and the [OpenShift AI add-on](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-about). Refer [here](https://cloud.ibm.com/docs/containers?topic=containers-supported-cluster-addon-versions#openshift-ai-416) for supported AI addon versions.",
         "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/blob/main/README.md",
         "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/main/images/rh_ocp_ai.svg",
@@ -31,7 +31,19 @@
         "features": [
           {
             "title": "AI-enhanced Red Hat OpenShift Deployment",
-            "description": "Automates the provisioning of a fully configured Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on. This includes optimized configurations for machine learning frameworks and simplified deployment of AI-driven applications. Refer this [documentation](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-about) to better understand the service and its capabilities."
+            "description": "Automates the provisioning of a fully configured GPU enabled Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on. This includes optimized configurations for machine learning frameworks and simplified deployment of AI-driven applications. Refer this [documentation](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-about) to better understand the service and its capabilities."
+          },
+          {
+            "title": "Cloud Object Storage",
+            "description": "Create and configure Object Storage instance, cross-region and single-region bucket for data storage. [Learn more](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage)."
+          },
+          {
+            "title": "VPC",
+            "description": "Create and configure a VPC isolated network on IBM Cloud to secure and manage resources.[Learn More](https://cloud.ibm.com/docs/vpc?topic=vpc-getting-started&interface=ui)"
+          },
+          {
+            "title": "Optional integrations",
+            "description": "Optional dependencies that can be integrated include Secrets Manager, Observability, Key Management Services, and Account Configuration."
           }
         ],
         "support_details": "This product is in the community registry, as such support is handled through the originated repo. If you experience issues please open an issue in this [repository](https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/issues). Please note this product is not supported via the IBM Cloud Support Center.",
@@ -106,7 +118,25 @@
                 {
                   "title": "Install OpenShift AI Addon",
                   "description": "Yes"
+                },
+                {
+                  "title": "KMS can be created optionally",
+                  "description": "No"
+                },
+                {
+                  "title": "Cos can be created optionally",
+                  "description": "No"
+                },
+                {
+                  "title": "Observability resource can be created optionally",
+                  "description": "Yes"
+                },
+                {
+                  "title": "Account configuration can be created optionally",
+                  "description": "Yes"
                 }
+
+
               ],
               "diagrams": [
                 {
@@ -115,7 +145,7 @@
                     "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/main/reference-architecture/deployable-architecture-ocp-ai-cluster.svg",
                     "type": "image/svg+xml"
                   },
-                  "description": "This architecture illustrates the deployment of Red Hat OpenShift cluster integrated with an AI, showcasing the key components and their interactions for AI workload support."
+                  "description": "This architecture illustrates the deployment of GPU enabled Red Hat OpenShift cluster integrated with an AI, showcasing the key and optional components their interactions for AI workload support. <br>It supports the creation of:<br>- Account configuration for creating foundational components.<br>- A Key Management Services (KMS) configuring key rings and keys for encryption.<br>- A secrets Manager instance for secure credential storage.<br>- A observability resources (cloud logs,cloud monitoring,Activity event tracker) for monitoring, logging, and tracking activities."
                 }
               ]
             },
