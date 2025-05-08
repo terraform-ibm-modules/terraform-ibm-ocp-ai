@@ -245,10 +245,6 @@
                   "value": "mx2.16x128"
                 },
                 {
-                  "displayname": "mx2.16x128.2000gb (only Sydney (au-syd),Frankfurt (eu-de),Toronto (ca-tor),London (eu-gb),Tokyo (jp-tok),Dallas (us-south),Washington DC (us-east))",
-                  "value": "mx2.16x128.2000gb"
-                },
-                {
                   "displayname": "mx2.32x256",
                   "value": "mx2.32x256"
                 },
