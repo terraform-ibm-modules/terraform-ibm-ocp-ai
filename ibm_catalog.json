@@ -61,7 +61,7 @@
                 "profile_version": "1.7.0"
               }
             ]
-          },
+            },
             "iam_permissions": [
               {
                 "role_crns": [
