@@ -27,15 +27,15 @@ variable "default_worker_pool_machine_type" {
   description = "Specifies the machine type for the default worker pool. This determines the CPU, memory, and disk resources available to each worker node. For OpenShift AI installation, machines should have atleast 8 vcpu, 32GB RAM and GPU. Refer [IBM Cloud documentation for available machine types](https://cloud.ibm.com/docs/openshift?topic=openshift-vpc-flavors)"
   default     = "bx2.8x32"
 
-  validation {
-    condition     = tonumber(split("x", split(".", var.default_worker_pool_machine_type)[1])[0]) >= 8
-    error_message = "To install Red Hat OpenShift AI , all worker nodes in all pools must have at least 8-core CPU."
-  }
+  # validation {
+  #   condition     = tonumber(split("x", split(".", var.default_worker_pool_machine_type)[1])[0]) >= 8
+  #   error_message = "To install Red Hat OpenShift AI , all worker nodes in all pools must have at least 8-core CPU."
+  # }
 
-  validation {
-    condition     = tonumber(split("x", split(".", var.default_worker_pool_machine_type)[1])[1]) >= 32
-    error_message = "To install Red Hat OpenShift AI, all worker nodes in all pools must have at least 32GB memory."
-  }
+  # validation {
+  #   condition     = tonumber(split("x", split(".", var.default_worker_pool_machine_type)[1])[1]) >= 32
+  #   error_message = "To install Red Hat OpenShift AI, all worker nodes in all pools must have at least 32GB memory."
+  # }
 }
 
 # tflint-ignore: all
@@ -87,29 +87,18 @@ variable "additional_worker_pools" {
     },
   ]
 
-  validation {
-    condition = alltrue([
-      for pool in var.additional_worker_pools : (
-        startswith(pool.machine_type, "gx2") ||
-        startswith(pool.machine_type, "gx3") ||
-        startswith(pool.machine_type, "gx4")
-      )
-    ])
-    error_message = "All machine types must be from the 'gx2', 'gx3', or 'gx4' series. Please choose valid machine types with GPU support."
-  }
+  # validation {
+  #   condition = alltrue([
+  #     for pool in var.additional_worker_pools : tonumber(split("x", split(".", pool.machine_type)[1])[0]) >= 8
+  #   ])
+  #   error_message = "To install Red Hat OpenShift AI, all worker nodes in all pools must have at least an 8-core CPU."
+  # }
 
-  validation {
-    condition = alltrue([
-      for pool in var.additional_worker_pools : tonumber(split("x", split(".", pool.machine_type)[1])[0]) >= 8
-    ])
-    error_message = "To install Red Hat OpenShift AI, all worker nodes in all pools must have at least an 8-core CPU."
-  }
-
-  validation {
-    condition = alltrue([
-      for pool in var.additional_worker_pools : tonumber(split("x", split(".", pool.machine_type)[1])[1]) >= 32
-    ])
-    error_message = "To install Red Hat OpenShift AI, all worker nodes in all pools must have at least 32GB memory."
-  }
+  # validation {
+  #   condition = alltrue([
+  #     for pool in var.additional_worker_pools : tonumber(split("x", split(".", pool.machine_type)[1])[1]) >= 32
+  #   ])
+  #   error_message = "To install Red Hat OpenShift AI, all worker nodes in all pools must have at least 32GB memory."
+  # }
 
 }
