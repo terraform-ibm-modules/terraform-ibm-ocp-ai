@@ -1,6 +1,7 @@
 locals {
-  config_regex = "^.*?(\\d+)x(\\d+)"
-  gpu_prefix   = ["gx2", "gx3", "gx4"]
+  config_regex  = "^.*?(\\d+)x(\\d+)"
+  gpu_prefix    = ["gx2", "gx3", "gx4"]
+  machine_regex = "^[a-z0-9]+(?:\\.[a-z0-9]+)*\\.\\d+x\\d+(?:\\.[a-z0-9]+)?$"
 }
 
 # tflint-ignore: all
@@ -32,15 +33,21 @@ variable "default_worker_pool_machine_type" {
   description = "Specifies the machine type for the default worker pool. This determines the CPU, memory, and disk resources available to each worker node. For OpenShift AI installation, machines should have atleast 8 vcpu, 32GB RAM and GPU. Refer [IBM Cloud documentation for available machine types](https://cloud.ibm.com/docs/openshift?topic=openshift-vpc-flavors)"
   default     = "bx2.8x32"
 
+  # Validate machine type
+  validation {
+    condition     = length(regexall(local.machine_regex, var.default_worker_pool_machine_type)) > 0
+    error_message = "Invalid value provided for the machine type."
+  }
+
   # CPU validation
   validation {
-    condition     = can(regex(local.config_regex, var.default_worker_pool_machine_type)) && tonumber(regex(local.config_regex, var.default_worker_pool_machine_type)[0]) >= 8
+    condition     = tonumber(regex(local.config_regex, var.default_worker_pool_machine_type)[0]) >= 8
     error_message = "To install Red Hat OpenShift AI , all worker nodes in all pools must have at least 8-core CPU."
   }
 
   # RAM validation
   validation {
-    condition     = can(regex(local.config_regex, var.default_worker_pool_machine_type)) && tonumber(regex(local.config_regex, var.default_worker_pool_machine_type)[1]) >= 32
+    condition     = tonumber(regex(local.config_regex, var.default_worker_pool_machine_type)[1]) >= 32
     error_message = "To install Red Hat OpenShift AI, all worker nodes in all pools must have at least 32GB memory."
   }
 }
@@ -55,12 +62,12 @@ variable "default_worker_pool_workers_per_zone" {
 # tflint-ignore: all
 variable "default_worker_pool_operating_system" {
   type        = string
-  description = "Provide the operating system for the worker nodes in the default worker pool. Ensure that the selected operating system is compatible with your AI framework and dependencies. Refer [here](https://cloud.ibm.com/docs/openshift?topic=openshift-openshift_versions) for supported Operating Systems"
+  description = "Provide the operating system for the worker nodes in the default worker pool. [Learn more](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui#ai-min)"
   default     = "RHCOS"
 
   validation {
-    condition     = contains(["REDHAT_8_64", "RHCOS", "RHEL_9_64"], var.default_worker_pool_operating_system)
-    error_message = "Invalid operating system. Allowed values are: 'REDHAT_8_64', 'RHCOS', 'RHEL_9_64'."
+    condition     = var.default_worker_pool_operating_system == "RHCOS"
+    error_message = "Worker nodes must use the RHCOS operating system. [Learn more](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui#ai-min)"
   }
 }
 
@@ -94,23 +101,22 @@ variable "additional_worker_pools" {
     },
   ]
 
+  # Machine Type
+
+  validation {
+    condition     = alltrue([for pool in var.additional_worker_pools : length(regexall(local.machine_regex, pool.machine_type)) >= 8])
+    error_message = "To install Red Hat OpenShift AI, all worker nodes in additional pools must have at least 8-core CPU."
+  }
+
   # CPU validation
   validation {
-    condition = alltrue([
-      for pool in var.additional_worker_pools :
-      can(regex(local.config_regex, pool.machine_type)) &&
-      tonumber(regex(local.config_regex, pool.machine_type)[0]) >= 8
-    ])
+    condition     = alltrue([for pool in var.additional_worker_pools : tonumber(regex(local.config_regex, pool.machine_type)[0]) >= 8])
     error_message = "To install Red Hat OpenShift AI, all worker nodes in additional pools must have at least 8-core CPU."
   }
 
   # RAM validation
   validation {
-    condition = alltrue([
-      for pool in var.additional_worker_pools :
-      can(regex(local.config_regex, pool.machine_type)) &&
-      tonumber(regex(local.config_regex, pool.machine_type)[1]) >= 32
-    ])
+    condition     = alltrue([for pool in var.additional_worker_pools : tonumber(regex(local.config_regex, pool.machine_type)[1]) >= 32])
     error_message = "To install Red Hat OpenShift AI, all worker nodes in additional pools must have at least 32 GB RAM."
   }
 
@@ -118,5 +124,11 @@ variable "additional_worker_pools" {
   validation {
     condition     = contains(local.gpu_prefix, split(".", var.default_worker_pool_machine_type)[0]) || anytrue([for pool in var.additional_worker_pools : contains(local.gpu_prefix, split(".", pool.machine_type)[0])])
     error_message = "At least one worker pool (default or additional) must be GPU-enabled."
+  }
+
+  # Operating system must be RHCOS
+  validation {
+    condition     = alltrue([for pool in var.additional_worker_pools : pool.operating_system == "RHCOS"])
+    error_message = "Worker nodes must use the RHCOS operating system. [Learn more](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui#ai-min)"
   }
 }
