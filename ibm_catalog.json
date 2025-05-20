@@ -161,6 +161,11 @@
             },
             {
               "key": "additional_worker_pools"
+            },
+            {
+              "key": "region",
+              "virtual": true,
+              "default_value": true
             }
           ],
           "dependencies": [
@@ -216,6 +221,11 @@
                 {
                   "dependency_input": "additional_worker_pools",
                   "version_input": "additional_worker_pools",
+                  "reference_version": true
+                },
+                {
+                  "dependency_input":"region",
+                  "version_input":"region",
                   "reference_version": true
                 }
               ],
