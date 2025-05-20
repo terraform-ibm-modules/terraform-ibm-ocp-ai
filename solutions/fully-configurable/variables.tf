@@ -104,8 +104,8 @@ variable "additional_worker_pools" {
   # Machine Type
 
   validation {
-    condition     = alltrue([for pool in var.additional_worker_pools : length(regexall(local.machine_regex, pool.machine_type)) >= 8])
-    error_message = "To install Red Hat OpenShift AI, all worker nodes in additional pools must have at least 8-core CPU."
+    condition     = alltrue([for pool in var.additional_worker_pools : length(regexall(local.machine_regex, pool.machine_type)) > 0])
+    error_message = "Invalid value provided for the machine type."
   }
 
   # CPU validation
