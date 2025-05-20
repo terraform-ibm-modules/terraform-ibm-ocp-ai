@@ -101,7 +101,6 @@
               }
             ],
             "architecture": {
-              "descriptions": "This architecture deploys Red Hat OpenShift Cluster on VPC enhanced with AI, accelerating machine learning and AI workload deployments. It outlines the necessary infrastructure components for AI-powered applications and provides a streamlined setup for data science and AI development.",
               "features": [
                 {
                   "title": "Create Resource Group",
