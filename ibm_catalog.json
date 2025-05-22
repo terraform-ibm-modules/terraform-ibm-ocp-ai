@@ -2,7 +2,7 @@
   "products": [
     {
       "name": "deploy-arch-ibm-ocp-ai",
-      "label": "[Add-ons Beta] Cloud automation for Red Hat OpenShift AI",
+      "label": "Cloud automation for Red Hat OpenShift AI",
       "product_kind": "solution",
       "tags": [
         "containers",
@@ -23,7 +23,7 @@
         "terraform",
         "solution"
       ],
-      "short_description": "Rapidly deploy Red Hat OpenShift clusters on Virtual Private Cloud (VPC) pre-configured with AI capabilities for accelerated machine learning workloads.",
+      "short_description": "Deploy Red Hat OpenShift cluster on Virtual Private Cloud (VPC) pre-configured with AI capabilities for accelerated machine learning workloads.",
       "long_description": "This automation streamlines the deployment of Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on. It accelerates the setup of machine learning environments by leveraging the capabilities of the OpenShift AI add-on on Virtual Private Cloud (VPC) infrastructure with GPU-enabled clusters, reducing the complexity of AI infrastructure management and allowing data scientists and developers to focus on model development and deployment. Learn more about [Red Hat OpenShift on IBM Cloud](https://cloud.ibm.com/docs/openshift?topic=openshift-getting-started) and the [OpenShift AI add-on](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-about). Refer [here](https://cloud.ibm.com/docs/containers?topic=containers-supported-cluster-addon-versions#openshift-ai-416) for supported AI addon versions.",
       "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/blob/main/README.md",
       "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/main/images/rh_ocp_ai.svg",
@@ -345,17 +345,14 @@
                 "fully-configurable"
               ],
               "id": "1728a4fd-f561-4cf9-82ef-2b1eeb5da1a8-global",
-              "ignore_auto_referencing": [
-                "*"
-              ],
               "optional": false,
               "on_by_default": true,
               "input_mapping": [
                 {
-                    "dependency_input": "addons",
-                    "value": {
-                      "openshift-ai" : "416"
-                    }
+                  "dependency_input": "addons",
+                  "value": {
+                    "openshift-ai" : "416"
+                  }
                 },
                 {
                   "dependency_input": "prefix",
