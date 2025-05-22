@@ -54,7 +54,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "hs-crypto",
-              "notes": "[Optional] if KMS encryption is enabled and Hyper Protect Crypto Services used for encryption."
+              "notes": "[Optional] If KMS encryption is enabled and Hyper Protect Crypto Service is used for encryption."
             },
             {
               "role_crns": [
@@ -62,7 +62,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "kms",
-              "notes": "[Optional] if KMS encryption is enabled and Key Protect used for encryption."
+              "notes": "[Optional] If KMS encryption is enabled and Key Protect Service is used for encryption."
             },
             {
               "role_crns": [
@@ -278,31 +278,31 @@
                 "displayname": "mx3d.96x960",
                 "value": "mx3d.96x960"
               },
-              { "displayname": "mx2.16x128.2000gb (Not available in Sao Paulo (br-sao),Montreal (ca-mon),Madrid (eu-es), Osaka (jp-osa))",
+              { "displayname": "mx2.16x128.2000gb (Not available in Sao Paulo (br-sao), Montreal (ca-mon), Madrid (eu-es), Osaka (jp-osa))",
                 "value": "mx2.16x128.2000gb"
               },
               {
-                "displayname": "ox2.128x1024 (Not available in Sao Paulo (br-sao),Montreal (ca-mon))",
+                "displayname": "ox2.128x1024 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
                 "value": "ox2.128x1024"
               },
               {
-                "displayname": "ox2.16x128 (Not available in Sao Paulo (br-sao),Montreal (ca-mon))",
+                "displayname": "ox2.16x128 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
                 "value": "ox2.16x128"
               },
               {
-                "displayname": "ox2.32x256 (Not available in Sao Paulo (br-sao),Montreal (ca-mon))",
+                "displayname": "ox2.32x256 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
                 "value": "ox2.32x256"
               },
               {
-                "displayname": "ox2.64x512 (Not available in Sao Paulo (br-sao),Montreal (ca-mon))",
+                "displayname": "ox2.64x512 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
                 "value": "ox2.64x512"
               },
               {
-                "displayname": "ox2.8x64 (Not available in Sao Paulo (br-sao),Montreal (ca-mon))",
+                "displayname": "ox2.8x64 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
                 "value": "ox2.8x64"
               },
               {
-                "displayname": "ox2.96x768 (Not available in Sao Paulo (br-sao),Montreal (ca-mon))",
+                "displayname": "ox2.96x768 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
                 "value": "ox2.96x768"
               }
             ]
