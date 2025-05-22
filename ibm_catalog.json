@@ -160,10 +160,10 @@
               "on_by_default": true,
               "input_mapping": [
                 {
-                    "dependency_input": "addons",
-                    "value": {
-                      "openshift-ai" : "416"
-                    }
+                  "dependency_input": "addons",
+                  "value": {
+                    "openshift-ai" : "416"
+                  }
                 },
                 {
                   "dependency_input": "prefix",
