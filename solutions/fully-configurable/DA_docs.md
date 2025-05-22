@@ -8,7 +8,7 @@ Several optional input variables in the Red Hat OpenShift cluster [Deployable Ar
 ## Options with additional_worker_pools <a name="options-with-additional-worker-pools"></a>
 
 This variable defines the worker node pools for the Red Hat OpenShift cluster, with each pool having its own configuration settings.
-> **Note**: Atleast one of the worker pool (default or additional) must be GPU-enabled.
+> **Note**: At least one worker pool, whether default or additional, must have GPU enabled.
 
 - Variable name: `additional_worker_pools`.
 - Type: A list of objects. Each object represents a `worker_pool` configuration.
