@@ -24,17 +24,17 @@
         "solution"
       ],
       "short_description": "Deploy Red Hat OpenShift cluster on Virtual Private Cloud (VPC) pre-configured with AI capabilities for accelerated machine learning workloads.",
-      "long_description": "This automation streamlines the deployment of Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on. It accelerates the setup of machine learning environments by leveraging the capabilities of the OpenShift AI add-on on Virtual Private Cloud (VPC) infrastructure with GPU-enabled clusters, reducing the complexity of AI infrastructure management and allowing data scientists and developers to focus on model development and deployment. Learn more about [Red Hat OpenShift on IBM Cloud](https://cloud.ibm.com/docs/openshift?topic=openshift-getting-started) and the [OpenShift AI add-on](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-about). Refer [here](https://cloud.ibm.com/docs/containers?topic=containers-supported-cluster-addon-versions#openshift-ai-416) for supported AI addon versions.",
+      "long_description": "This automation streamlines the deployment of Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on. It accelerates the setup of machine learning environments by leveraging the capabilities of the OpenShift AI add-on with GPU-enabled clusters, reducing the complexity of AI infrastructure management and allowing data scientists and developers to focus on model development and deployment. Learn more about [Red Hat OpenShift on IBM Cloud](https://cloud.ibm.com/docs/openshift?topic=openshift-getting-started) and the [OpenShift AI add-on](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-about). Refer [here](https://cloud.ibm.com/docs/containers?topic=containers-supported-cluster-addon-versions#openshift-ai-416) for the supported AI addon versions.",
       "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/blob/main/README.md",
       "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/main/images/rh_ocp_ai.svg",
       "provider_name": "IBM",
       "features": [
         {
-          "title": "AI-enhanced Red Hat OpenShift Deployment",
-          "description": "Automates the provisioning of a fully configured Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on. This includes optimized configurations for machine learning frameworks and simplified deployment of AI-driven applications. Refer this [documentation](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-about) to better understand the service and its capabilities."
+          "title": "Integrating Red Hat OpenShift AI Add-on",
+          "description": "Automates the provisioning of a fully configured Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on. This includes optimized configurations for machine learning frameworks and simplified deployment of AI-driven applications. Refer [here](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui) to learn the service and its capabilities."
         }
       ],
-      "support_details": "This product is in the community registry, as such support is handled through the originated repo. If you experience issues please open an issue in this [repository](https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/issues). Please note this product is not supported via the IBM Cloud Support Center.",
+      "support_details": "This product is in the community registry, as such support is handled through the originated repo. If you experience issues kindly open an issue [here](https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/issues). Please note that this product is not currently supported through the IBM Cloud Support Center.",
       "flavors": [
         {
           "label": "Fully configurable",
@@ -46,7 +46,8 @@
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::role:Administrator"
               ],
-              "service_name": "iam-identity"
+              "service_name": "iam-identity",
+              "notes": "[Optional] Required if Cloud automation for account configuration is enabled."
             },
             {
               "role_crns": [
@@ -69,7 +70,8 @@
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager",
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
-              "service_name": "cloud-object-storage"
+              "service_name": "cloud-object-storage",
+              "notes": "[Optional] Required if Cloud automation for Cloud Object Storage is enabled."
             },
             {
               "service_name": "containers-kubernetes",
@@ -82,20 +84,12 @@
           "architecture": {
             "features": [
               {
-                "title": "Create Resource Group",
-                "description": "No"
-              },
-              {
-                "title": "Use Existing Resource Group",
-                "description": "Yes"
-              },
-              {
                 "title": "Create Red Hat OpenShift Cluster",
-                "description": "Yes"
+                "description": "Create and configures Red Hat Openshift Cluster"
               },
               {
                 "title": "Install OpenShift AI Addon",
-                "description": "Yes"
+                "description": "Create and configures Red Hat Openshift AI add-on on a GPU-enabled Cluster"
               }
             ],
             "diagrams": [
