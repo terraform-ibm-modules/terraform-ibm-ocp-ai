@@ -139,24 +139,6 @@
             },
             {
               "key": "default_worker_pool_operating_system",
-              "required": true,
-              "options": [
-                {
-                  "displayname": "RHEL 9",
-                  "value": "RHEL_9_64"
-                },
-                {
-                  "displayname": "Red Hat CoreOS",
-                  "value": "RHCOS"
-                },
-                {
-                  "displayname": "RHEL 8",
-                  "value": "REDHAT_8_64"
-                }
-              ]
-            },
-            {
-              "key": "default_gpu_worker_pool_storage",
               "required": true
             },
             {
@@ -180,7 +162,7 @@
                 {
                   "dependency_input": "addons",
                   "value": {
-                    "openshift-ai": "416"
+                    "openshift-ai" : "416"
                   }
                 },
                 {
@@ -206,11 +188,6 @@
                 {
                   "dependency_input": "default_worker_pool_operating_system",
                   "version_input": "default_worker_pool_operating_system",
-                  "reference_version": true
-                },
-                {
-                  "dependency_input": "default_worker_pool_secondary_storage",
-                  "version_input": "default_gpu_worker_pool_storage",
                   "reference_version": true
                 },
                 {
