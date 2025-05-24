@@ -34,12 +34,12 @@ variable "default_worker_pool_machine_type" {
 
   validation {
     condition     = tonumber(split("x", split(".", var.default_worker_pool_machine_type)[1])[0]) >= 8
-    error_message = "To install Red Hat OpenShift AI , all worker nodes in all pools must have at least 8-core CPU."
+    error_message = "To install Red Hat OpenShift AI addon, all worker nodes in all pools must have at least 8-core CPU."
   }
 
   validation {
     condition     = tonumber(split("x", split(".", var.default_worker_pool_machine_type)[1])[1]) >= 32
-    error_message = "To install Red Hat OpenShift AI, all worker nodes in all pools must have at least 32GB memory."
+    error_message = "To install Red Hat OpenShift AI addon, all worker nodes in all pools must have at least 32GB memory."
   }
 }
 
@@ -54,7 +54,7 @@ variable "default_worker_pool_workers_per_zone" {
 variable "default_worker_pool_operating_system" {
   type        = string
   description = "Provide the operating system for the worker nodes in the default worker pool. Ensure that the selected operating system is compatible with your AI framework and dependencies. Refer [here](https://cloud.ibm.com/docs/openshift?topic=openshift-openshift_versions) for supported Operating Systems"
-  default     = "RHEL_9_64"
+  default     = "RHCOS"
 
   validation {
     condition     = contains(["REDHAT_8_64", "RHCOS", "RHEL_9_64"], var.default_worker_pool_operating_system)
@@ -65,7 +65,7 @@ variable "default_worker_pool_operating_system" {
 # tflint-ignore: all
 variable "default_gpu_worker_pool_storage" {
   type        = string
-  description = "Defines the storage configuration for GPU workloads in Red Hat OpenShift AI. This storage is critical for AI/ML workloads, ensuring optimal data processing and model training efficiency. [Learn More](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles&interface=ui#tiers)"
+  description = "Defines the storage configuration for GPU workloads in Red Hat OpenShift AI addon. This storage is critical for AI/ML workloads, ensuring optimal data processing and model training efficiency. [Learn More](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles&interface=ui#tiers)"
   default     = "300gb.5iops-tier"
 }
 
