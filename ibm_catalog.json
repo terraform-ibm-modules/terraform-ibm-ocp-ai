@@ -2,7 +2,7 @@
   "products": [
     {
       "name": "deploy-arch-ibm-ocp-ai",
-      "label": "Cloud automation for Red Hat OpenShift AI",
+      "label": "[Add-ons Beta] Cloud automation for Red Hat OpenShift AI",
       "product_kind": "solution",
       "tags": [
         "containers",
@@ -71,7 +71,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "cloud-object-storage",
-              "notes": "[Optional] Required if Cloud automation for Cloud Object Storage is enabled."
+              "notes": "[Optional] [Optional] Required if COS is chosen for target of Activity Tracker Event routing or Cloud logs data or cloud logs metrics or storing data from openshift AI add-on"
             },
             {
               "service_name": "containers-kubernetes",
