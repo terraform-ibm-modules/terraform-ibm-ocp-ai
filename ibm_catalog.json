@@ -47,7 +47,7 @@
                 "crn:v1:bluemix:public:iam::::role:Administrator"
               ],
               "service_name": "iam-identity",
-              "notes": "[Optional] Required if Cloud automation for account configuration is enabled."
+              "notes": "[Optional] Required if users and services need to securely access cloud resources"
             },
             {
               "role_crns": [
