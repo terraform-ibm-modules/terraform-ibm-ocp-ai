@@ -8,6 +8,7 @@ Several optional input variables in the Red Hat OpenShift cluster [Deployable Ar
 ## Options with additional_worker_pools <a name="options-with-additional-worker-pools"></a>
 
 This variable defines the worker node pools for the Red Hat OpenShift cluster, with each pool having its own configuration settings.
+> **Note**: At least one worker pool, whether default or additional, must have GPU enabled.
 
 - Variable name: `additional_worker_pools`.
 - Type: A list of objects. Each object represents a `worker_pool` configuration.
@@ -20,7 +21,7 @@ This variable defines the worker node pools for the Red Hat OpenShift cluster, w
   - `zone` (required): The zone where the subnet is located.
   - `cidr_block` (required): This defines the IP address range for the subnet in CIDR notation.
 - `pool_name` (required): The name of the worker pool.
-- `machine_type` (required): The machine type for worker nodes.
+- `machine_type` (required): The machine type for worker nodes. Preferred machine type is GPU.
 - `workers_per_zone` (required): Number of worker nodes in each zone of the cluster.
 - `operating_system` (required): The operating system installed on the worker nodes.
 - `labels` (optional): A set of key-value labels assigned to the worker pool for identification.
@@ -39,13 +40,15 @@ This variable defines the worker node pools for the Red Hat OpenShift cluster, w
     machine_type                      = "gx3.16x80.l4"
     workers_per_zone                  = 2
     secondary_storage                 = "300gb.5iops-tier"
-    operating_system                  = "REDHAT_9_64"
+    operating_system                  = "RHCOS"
   },
   {
     pool_name                         = "balanced-pool"
     machine_type                      = "bx2.8x32"
     workers_per_zone                  = 2
-    operating_system                  = "REDHAT_9_64"
+    operating_system                  = "RHCOS"
   }
 ]
 ```
+
+---
