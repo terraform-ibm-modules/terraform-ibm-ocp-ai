@@ -46,13 +46,13 @@ variable "default_worker_pool_machine_type" {
   # CPU validation
   validation {
     condition     = tonumber(regex(local.config_regex, var.default_worker_pool_machine_type)[0]) >= 8
-    error_message = "To install Red Hat OpenShift AI , all worker nodes in all pools must have at least 8-core CPU."
+    error_message = "To install Red Hat OpenShift AI add-on , all worker nodes in all pools must have at least 8-core CPU."
   }
 
   # RAM validation
   validation {
     condition     = tonumber(regex(local.config_regex, var.default_worker_pool_machine_type)[1]) >= 32
-    error_message = "To install Red Hat OpenShift AI, all worker nodes in all pools must have at least 32GB memory."
+    error_message = "To install Red Hat OpenShift AI add-on, all worker nodes in all pools must have at least 32GB memory."
   }
 }
 
@@ -114,13 +114,13 @@ variable "additional_worker_pools" {
   # CPU validation
   validation {
     condition     = alltrue([for pool in var.additional_worker_pools : tonumber(regex(local.config_regex, pool.machine_type)[0]) >= 8])
-    error_message = "To install Red Hat OpenShift AI, all worker nodes in additional pools must have at least 8-core CPU."
+    error_message = "To install Red Hat OpenShift AI add-on, all worker nodes in additional pools must have at least 8-core CPU."
   }
 
   # RAM validation
   validation {
     condition     = alltrue([for pool in var.additional_worker_pools : tonumber(regex(local.config_regex, pool.machine_type)[1]) >= 32])
-    error_message = "To install Red Hat OpenShift AI, all worker nodes in additional pools must have at least 32 GB RAM."
+    error_message = "To install Red Hat OpenShift AI add-on, all worker nodes in additional pools must have at least 32 GB RAM."
   }
 
   # Ensure atleast one GPU is present
