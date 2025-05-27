@@ -139,7 +139,21 @@
             },
             {
               "key": "default_worker_pool_operating_system",
-              "required": true
+              "required": true,
+              "options": [
+                {
+                  "displayname": "RHEL 9",
+                  "value": "RHEL_9_64"
+                },
+                {
+                  "displayname": "Red Hat CoreOS",
+                  "value": "RHCOS"
+                },
+                {
+                  "displayname": "RHEL 8",
+                  "value": "REDHAT_8_64"
+                }
+              ]
             },
             {
               "key": "additional_worker_pools"
@@ -153,9 +167,6 @@
                 "fully-configurable"
               ],
               "id": "1728a4fd-f561-4cf9-82ef-2b1eeb5da1a8-global",
-              "ignore_auto_referencing": [
-                "*"
-              ],
               "optional": false,
               "on_by_default": true,
               "input_mapping": [

@@ -23,7 +23,7 @@ This variable defines the worker node pools for the Red Hat OpenShift cluster, w
 - `pool_name` (required): The name of the worker pool.
 - `machine_type` (required): The machine type for worker nodes. Preferred machine type is GPU.
 - `workers_per_zone` (required): Number of worker nodes in each zone of the cluster.
-- `operating_system` (required): The operating system installed on the worker nodes. All worker nodes must use the `RHCOS` operating system. [Learn more](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui#ai-min)
+- `operating_system` (required): The operating system installed on the worker nodes.
 - `labels` (optional): A set of key-value labels assigned to the worker pool for identification.
 - `minSize` (optional): The minimum number of worker nodes allowed in the pool.
 - `maxSize` (optional): The maximum number of worker nodes allowed in the pool.
@@ -50,4 +50,5 @@ This variable defines the worker node pools for the Red Hat OpenShift cluster, w
   }
 ]
 ```
+
 ---

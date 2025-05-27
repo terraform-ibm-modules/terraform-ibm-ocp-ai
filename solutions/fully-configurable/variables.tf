@@ -64,10 +64,9 @@ variable "default_worker_pool_operating_system" {
   type        = string
   description = "Provide the operating system for the worker nodes in the default worker pool. [Learn more](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui#ai-min)"
   default     = "RHCOS"
-
   validation {
-    condition     = var.default_worker_pool_operating_system == "RHCOS"
-    error_message = "Worker nodes must use the RHCOS operating system. [Learn more](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui#ai-min)"
+    condition     = contains(["REDHAT_8_64", "RHCOS", "RHEL_9_64"], var.default_worker_pool_operating_system)
+    error_message = "Invalid operating system. Allowed values are: 'REDHAT_8_64', 'RHCOS', 'RHEL_9_64'."
   }
 }
 
@@ -126,9 +125,11 @@ variable "additional_worker_pools" {
     error_message = "At least one worker pool (default or additional) must be GPU-enabled."
   }
 
-  # Operating system must be RHCOS
+  # Operating System validation
   validation {
-    condition     = alltrue([for pool in var.additional_worker_pools : pool.operating_system == "RHCOS"])
-    error_message = "Worker nodes must use the RHCOS operating system. [Learn more](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui#ai-min)"
+    condition = alltrue([
+      for pool in var.additional_worker_pools : contains(["REDHAT_8_64", "RHCOS", "RHEL_9_64"], pool.operating_system)
+    ])
+    error_message = "Additional worker pool must specify a valid operating system. Allowed values are :  'REDHAT_8_64', 'RHCOS', or 'RHEL_9_64'."
   }
 }
