@@ -47,7 +47,7 @@
                 "crn:v1:bluemix:public:iam::::role:Administrator"
               ],
               "service_name": "iam-identity",
-              "notes": "[Optional] Required if users and services need to securely access cloud resources"
+              "notes": "[Optional] Required if users and services need to securely access cloud resources."
             },
             {
               "role_crns": [
@@ -71,7 +71,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "cloud-object-storage",
-              "notes": "[Optional] [Optional] Required if COS is chosen for target of Activity Tracker Event routing or Cloud logs data or cloud logs metrics or storing data from openshift AI add-on"
+              "notes": "[Optional] Required if COS is chosen for target of Activity Tracker Event routing or Cloud logs data or cloud logs metrics or storing data from openshift AI add-on."
             },
             {
               "service_name": "containers-kubernetes",
@@ -85,11 +85,11 @@
             "features": [
               {
                 "title": "Create Red Hat OpenShift Cluster",
-                "description": "Create and configures Red Hat Openshift Cluster"
+                "description": "Creates and configures Red Hat Openshift Cluster."
               },
               {
-                "title": "Install OpenShift AI Addon",
-                "description": "Create and configures Red Hat Openshift AI add-on on a GPU-enabled Cluster"
+                "title": "Install OpenShift AI Add-on",
+                "description": "Creates and configures Red Hat Openshift AI add-on on a GPU-enabled Cluster."
               }
             ],
             "diagrams": [
