@@ -48,7 +48,7 @@
                 "crn:v1:bluemix:public:iam-identity::::serviceRole:UserApiKeyCreator"
               ],
               "service_name": "iam-identity",
-              "notes": "Allows IBM Cloud OpenShift to create the containers-kubernetes-key required by the service"
+              "notes": "Allows IBM Cloud OpenShift to create the containers-kubernetes-key required by the service."
             },
             {
               "role_crns": [
@@ -72,7 +72,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "cloud-object-storage",
-              "notes": "[Optional] Required if COS is chosen for target of Activity Tracker Event routing or Cloud logs data or cloud logs metrics or storing data from openshift AI add-on."
+              "notes": "[Optional] Required if COS is chosen for target of Activity Tracker Event routing or Cloud logs data or storing data from Openshift AI add-on."
             },
             {
               "service_name": "containers-kubernetes",
