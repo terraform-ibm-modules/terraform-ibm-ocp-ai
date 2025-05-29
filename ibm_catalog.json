@@ -72,7 +72,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "cloud-object-storage",
-              "notes": "[Optional] Required if COS is chosen for target of Activity Tracker Event routing or Cloud logs data or storing data from Openshift AI add-on."
+              "notes": "[Optional] Required if COS is selected to store data from the OpenShift AI add-on, Cloud logs, or Activity Tracker events."
             },
             {
               "service_name": "containers-kubernetes",
