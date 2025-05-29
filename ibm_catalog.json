@@ -167,26 +167,17 @@
               "type": "string",
               "description": "Region for OCP AI.",
               "virtual": true,
-              "required": true,
-              "default_value": "us-south",
-              "custom_config": {
-                "config_constraints": {
-                  "generationType": "2"
-                },
-                "grouping": "deployment",
-                "original_grouping": "deployment",
-                "type": "vpc_region"
-              }
+              "default_value": "us-south"
             }
           ],
           "dependencies": [
             {
               "name": "add-ons-beta-deploy-arch-ibm-base-ocp-vpc",
-              "catalog_id": "5aa45502-98da-4ee7-93ec-eed99990487a",
+              "catalog_id": "3fc9e2f7-b472-494f-bd33-d74ee36c8225",
               "flavors": [
                 "fully-configurable"
               ],
-              "id": "3c5f9a87-4935-4c7a-bff4-20951fa2a4d4",
+              "id": "1077c418-8744-42aa-8c8a-654d5e6d5d5a",
               "ignore_auto_referencing": [
                 "*"
               ],
