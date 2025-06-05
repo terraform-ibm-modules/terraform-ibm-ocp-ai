@@ -140,7 +140,16 @@
             {
               "key": "region",
               "virtual": true,
-              "default_value": "us-south"
+              "required":true,
+              "default_value": "us-south",
+              "custom_config": {
+                "config_constraints": {
+                  "generationType": "2"
+                },
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "type": "vpc_region"
+              }
             },
             {
               "key": "default_worker_pool_operating_system",
