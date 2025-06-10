@@ -56,7 +56,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "hs-crypto",
-              "notes": "[Optional] Required If KMS encryption is enabled and Hyper Protect Crypto Service is used for encryption."
+              "notes": "[Optional] Required if KMS encryption is enabled and Hyper Protect Crypto Service is used for encryption."
             },
             {
               "role_crns": [
@@ -64,7 +64,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "kms",
-              "notes": "[Optional] Required If KMS encryption is enabled and Key Protect Service is used for encryption."
+              "notes": "[Optional] Required if KMS encryption is enabled and Key Protect Service is used for encryption."
             },
             {
               "role_crns": [
