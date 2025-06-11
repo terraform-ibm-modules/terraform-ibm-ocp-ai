@@ -30,8 +30,20 @@
       "provider_name": "IBM",
       "features": [
         {
-          "title": "Integrating Red Hat OpenShift AI Add-on",
-          "description": "Automates the provisioning of a fully configured Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on. This includes optimized configurations for machine learning frameworks and simplified deployment of AI-driven applications. Refer [here](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui) to learn the service and its capabilities."
+          "title": "Red Hat OpenShift Cluster",
+          "description": "Creates and configures a GPU-enabled Red Hat OpenShift cluster on a Virtual Private Cloud (VPC) to enable the installation of the OpenShift AI Add-on for integrating advanced artificial intelligence capabilities. [Learn more.](https://cloud.ibm.com/docs/openshift?topic=openshift-cluster-create-vpc-gen2&interface=ui)"
+        },
+        {
+          "title": "OpenShift AI Add-on",
+          "description": "Automates the provisioning of an OpenShift AI add-on on the Red Hat OpenShift cluster on IBM Cloud. This includes optimized configurations for machine learning frameworks and simplified deployment of AI-driven applications. Refer [here](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui) to learn the service and its capabilities."
+        },
+        {
+          "title": "Virtual Private Cloud",
+          "description": "Creates and configures a Virtual Private Cloud (VPC) network on IBM Cloud for deploying the OpenShift AI cluster in a secure and isolated network environment. [Learn more.](https://cloud.ibm.com/docs/vpc?topic=vpc-getting-started&interface=cli#create-and-configure-vpc)"
+        },
+        {
+          "title": "Optional Integrations",
+          "description": "This deployable architecture can  be integrated with [Cloud Object Storage (COS)](https://cloud.ibm.com/docs/openshift?topic=openshift-storage-cos-understand&interface=ui), [Secrets Manager (SM)](https://cloud.ibm.com/docs/openshift?topic=openshift-secrets-mgr), [Observability](https://cloud.ibm.com/docs/openshift?topic=openshift-logging) and [Key Management Services (KMS)](https://cloud.ibm.com/docs/openshift?topic=openshift-encryption-setup)."
         }
       ],
       "support_details": "This product is in the community registry, as such support is handled through the originated repo. If you experience issues kindly open an issue [here](https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/issues). Please note that this product is not currently supported through the IBM Cloud Support Center.",
@@ -80,6 +92,31 @@
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager",
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ]
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Operator",
+                "crn:v1:bluemix:public:iam::::serviceRole:Writer",
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager"
+              ],
+              "service_name": "secrets-manager",
+              "notes": "[Optional] Required if you wish to write the credentials to an existing IBM Cloud Secrets Manager instance. 'Manager' access required if new secrets group creation is needed."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "sysdig-monitor",
+              "notes": "[Optional] Required if you are consuming Observability DA which sets up Cloud monitoring."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "logs",
+              "notes": "[Optional] Required if you are consuming Observability DA which sets up Cloud logs."
             }
           ],
           "architecture": {
@@ -100,7 +137,7 @@
                   "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/main/reference-architecture/deployable-architecture-ocp-ai-cluster.svg",
                   "type": "image/svg+xml"
                 },
-                "description": "This architecture illustrates the deployment of Red Hat OpenShift cluster integrated with an AI, showcasing the key components and their interactions for AI workload support."
+                "description": "This architecture illustrates the deployment of a GPU-enabled Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on, showcasing the key and optional components and their interactions for AI workload support. The deployment leverages the Red Hat OpenShift Cluster Deployable Architecture, which is required to create and configure the cluster. In this cluster, the OpenShift AI add-on will be installed. A Virtual Private Cloud (VPC) Deployable Architecture can be enabled to deploy the OpenShift AI cluster in a secure and isolated network environment. Users have the flexibility to either create a new VPC or use an existing one for the cluster deployment.<br><br>Optional resources include:<br><br>- <b>Cloud Object Storage</b>: Allows OpenShift AI workloads to efficiently manage large datasets and store logs.<br>- <b>Observability resources</b>: Enable logging, monitoring, and activity tracker event routing to enhance visibility and operational insights.<br>- <b>Key Management Services (KMS)</b>: Configure key rings and keys for encryption. If KMS encryption is enabled, either <a href='https://cloud.ibm.com/docs/hs-crypto?topic=hs-crypto-get-started'>Hyper Protect Services</a> or <a href='https://cloud.ibm.com/docs/key-protect?topic=key-protect-getting-started-tutorial'>Key Protect</a> is used for encryption.<br>- <b>Secrets Manager (SM)</b>: Stores and manages service credentials securely."
               }
             ]
           },
