@@ -24,7 +24,7 @@
         "solution"
       ],
       "short_description": "Deploy Red Hat OpenShift cluster on Virtual Private Cloud (VPC) pre-configured with AI capabilities for accelerated machine learning workloads.",
-      "long_description": "This automation streamlines the deployment of Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on. It accelerates the setup of machine learning environments by leveraging the capabilities of the OpenShift AI add-on with GPU-enabled clusters, reducing the complexity of AI infrastructure management and allowing data scientists and developers to focus on model development and deployment. Learn more about [Red Hat OpenShift on IBM Cloud](https://cloud.ibm.com/docs/openshift?topic=openshift-getting-started) and the [OpenShift AI add-on](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-about). Refer [here](https://cloud.ibm.com/docs/containers?topic=containers-supported-cluster-addon-versions#openshift-ai-416) for the supported AI addon versions.",
+      "long_description": "This automation streamlines the deployment of Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on. It accelerates the setup of machine learning environments by leveraging the capabilities of the OpenShift AI add-on with GPU-enabled clusters, reducing the complexity of AI infrastructure management and allowing data scientists and developers to focus on model development and deployment. Learn more about [Red Hat OpenShift on IBM Cloud](https://cloud.ibm.com/docs/openshift?topic=openshift-getting-started) and the [OpenShift AI add-on](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-about). Refer [here](https://cloud.ibm.com/docs/containers?topic=containers-supported-cluster-addon-versions#openshift-ai-416) for the supported OpenShift AI add-on versions.",
       "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/blob/main/README.md",
       "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/main/images/rh_ocp_ai.svg",
       "provider_name": "IBM",
@@ -34,7 +34,7 @@
           "description": "Creates and configures a GPU-enabled Red Hat OpenShift cluster on a Virtual Private Cloud (VPC) to enable the installation of the OpenShift AI Add-on for integrating advanced artificial intelligence capabilities. [Learn more.](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/deploy-arch-ibm-ocp-vpc-1728a4fd-f561-4cf9-82ef-2b1eeb5da1a8-global)"
         },
         {
-          "title": "Integrating Red Hat OpenShift AI Add-on",
+          "title": "Red Hat OpenShift AI Add-on",
           "description": "Automates the provisioning of a fully configured Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on. This includes optimized configurations for machine learning frameworks and simplified deployment of AI-driven applications. Refer [here](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui) to learn the service and its capabilities."
         },
         {
@@ -56,7 +56,7 @@
                 "crn:v1:bluemix:public:iam-identity::::serviceRole:UserApiKeyCreator"
               ],
               "service_name": "iam-identity",
-              "notes": "Allows IBM Cloud OpenShift to create the containers-kubernetes-key required by the service."
+              "notes": "Required for IBM Cloud OpenShift to create the containers-kubernetes-key required by the service."
             },
             {
               "role_crns": [
@@ -64,7 +64,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "hs-crypto",
-              "notes": "[Optional] If KMS encryption is enabled and Hyper Protect Crypto Service is used for encryption."
+              "notes": "[Optional] Required if KMS encryption is enabled and Hyper Protect Crypto Service is used for encryption."
             },
             {
               "role_crns": [
@@ -72,7 +72,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "kms",
-              "notes": "[Optional] If KMS encryption is enabled and Key Protect Service is used for encryption."
+              "notes": "[Optional] Required if KMS encryption is enabled and Key Protect Service is used for encryption."
             },
             {
               "role_crns": [
@@ -80,7 +80,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "cloud-object-storage",
-              "notes": "[Optional] Required if COS is selected to store data from the OpenShift AI add-on, Cloud logs, or Activity Tracker events."
+              "notes": "[Optional] Required if Cloud Object Storage is selected to store data from the OpenShift AI add-on, Cloud logs, or Activity Tracker events."
             },
             {
               "service_name": "containers-kubernetes",
@@ -93,12 +93,12 @@
           "architecture": {
             "features": [
               {
-                "title": "Create Red Hat OpenShift Cluster",
-                "description": "Creates and configures Red Hat Openshift Cluster."
+                "title": "Red Hat OpenShift Cluster",
+                "description": "Creates and configures GPU enabled Red Hat OpenShift Cluster."
               },
               {
-                "title": "Install OpenShift AI Add-on",
-                "description": "Creates and configures Red Hat Openshift AI add-on on a GPU-enabled Cluster."
+                "title": "OpenShift AI Add-on",
+                "description": "Installs the Red Hat OpenShift AI add-on."
               }
             ],
             "diagrams": [
