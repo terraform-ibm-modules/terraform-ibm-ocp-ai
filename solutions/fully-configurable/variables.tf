@@ -7,16 +7,20 @@ locals {
 # tflint-ignore: all
 variable "prefix" {
   type        = string
-  description = "The prefix to add to all resources that this solution creates (e.g `prod`, `test`, `dev`). To not use any prefix value, you can set this value to `null` or an empty string."
+  description = "The prefix to be added to all resources created by this solution. To skip using a prefix, set this value to null or an empty string. The prefix must begin with a lowercase letter and may contain only lowercase letters, digits, and hyphens '-'. It should not exceed 16 characters, must not end with a hyphen('-'), and can not contain consecutive hyphens ('--'). Example: `prod-0205-ocpfc`. [Learn more](https://terraform-ibm-modules.github.io/documentation/#/prefix.md)"
   nullable    = true
   validation {
-    condition = (var.prefix == null ? true :
+    condition = (var.prefix == null || var.prefix == "" ? true :
       alltrue([
-        can(regex("^[a-z]{0,1}[-a-z0-9]{0,14}[a-z0-9]{0,1}$", var.prefix)),
-        length(regexall("^.*--.*", var.prefix)) == 0
+        can(regex("^[a-z][-a-z0-9]*[a-z0-9]$", var.prefix)),
+        length(regexall("--", var.prefix)) == 0
       ])
     )
-    error_message = "Prefix must begin with a lowercase letter, contain only lowercase letters, numbers, and - characters. Prefixes must end with a lowercase letter or number and be 16 or fewer characters."
+    error_message = "Prefix must begin with a lowercase letter and may contain only lowercase letters, digits, and hyphens '-'. It must not end with a hyphen('-'), and cannot contain consecutive hyphens ('--')."
+  }
+  validation {
+    condition     = length(var.prefix) <= 16
+    error_message = "Prefix must not exceed 16 characters."
   }
 }
 
@@ -42,13 +46,13 @@ variable "default_worker_pool_machine_type" {
   # CPU validation
   validation {
     condition     = tonumber(regex(local.config_regex, var.default_worker_pool_machine_type)[0]) >= 8
-    error_message = "To install Red Hat OpenShift AI , all worker nodes in all pools must have at least 8-core CPU."
+    error_message = "To install Red Hat OpenShift AI add-on , all worker nodes in all pools must have at least 8-core CPU."
   }
 
   # RAM validation
   validation {
     condition     = tonumber(regex(local.config_regex, var.default_worker_pool_machine_type)[1]) >= 32
-    error_message = "To install Red Hat OpenShift AI, all worker nodes in all pools must have at least 32GB memory."
+    error_message = "To install Red Hat OpenShift AI add-on, all worker nodes in all pools must have at least 32GB memory."
   }
 }
 
@@ -110,13 +114,13 @@ variable "additional_worker_pools" {
   # CPU validation
   validation {
     condition     = alltrue([for pool in var.additional_worker_pools : tonumber(regex(local.config_regex, pool.machine_type)[0]) >= 8])
-    error_message = "To install Red Hat OpenShift AI, all worker nodes in additional pools must have at least 8-core CPU."
+    error_message = "To install Red Hat OpenShift AI add-on, all worker nodes in additional pools must have at least 8-core CPU."
   }
 
   # RAM validation
   validation {
     condition     = alltrue([for pool in var.additional_worker_pools : tonumber(regex(local.config_regex, pool.machine_type)[1]) >= 32])
-    error_message = "To install Red Hat OpenShift AI, all worker nodes in additional pools must have at least 32 GB RAM."
+    error_message = "To install Red Hat OpenShift AI add-on, all worker nodes in additional pools must have at least 32 GB RAM."
   }
 
   # Ensure atleast one GPU is present
