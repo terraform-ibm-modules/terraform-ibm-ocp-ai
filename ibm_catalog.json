@@ -380,7 +380,321 @@
             }
           ],
           "dependency_version_2": true
+        },
+        {
+          "label": "QuickStart",
+          "name": "quickstart",
+          "install_type": "fullstack",
+          "working_directory": "solutions/quickstart",
+          "iam_permissions": [
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
+              "service_name": "iam-identity"
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "cloud-object-storage"
+            },
+            {
+              "service_name": "containers-kubernetes",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ]
+            }
+          ],
+          "architecture": {
+            "features": [
+              {
+                "title": "Virtual Private Cloud",
+                "description": "Creates and configures GPU enabled Red Hat OpenShift Cluster."
+              },
+              {
+                "title": "Red Hat OpenShift Cluster",
+                "description": "Creates and configures GPU enabled Red Hat OpenShift Cluster."
+              },
+              {
+                "title": "OpenShift AI Add-on",
+                "description": "Installs the Red Hat OpenShift AI add-on."
+              }
+            ],
+            "diagrams": [
+              {
+                "diagram": {
+                  "caption": "Red Hat OpenShift cluster with AI for IBM Cloud.",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/main/reference-architecture/deployable-architecture-ocp-ai-cluster-qs.svg",
+                  "type": "image/svg+xml"
+                },
+                "description": "This solution centers on the OpenShift AI add-on, which is installed on a GPU-enabled Red Hat OpenShift cluster deployed within a secure and isolated Virtual Private Cloud (VPC) on IBM Cloud."
+              }
+            ]
+          },
+          "configuration": [
+            {
+              "key": "prefix",
+              "required": true,
+              "description": "The prefix to add to all resources that this solution creates. To not use any prefix value, you can enter the string `__NULL__`."
+            },
+            {
+              "key": "existing_resource_group_name",
+              "required": true,
+              "custom_config": {
+                "type": "resource_group",
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "identifier": "rg_name"
+                }
+              }
+            },
+            {
+              "key": "default_worker_pool_machine_type",
+              "required": true,
+              "options": [
+              {
+                "displayname": "bx2.16x64",
+                "value": "bx2.16x64"
+              },
+              {
+                "displayname": "bx2.32x128",
+                "value": "bx2.32x128"
+              },
+              {
+                "displayname": "bx2.48x192",
+                "value": "bx2.48x192"
+              },
+              {
+                "displayname": "bx2.8x32",
+                "value": "bx2.8x32"
+              },
+              {
+                "displayname": "bx2d.metal.96x384 (only Toronto (ca-tor))",
+                "value": "bx2d.metal.96x384"
+              },
+              {
+                "displayname": "bx3d.128x640",
+                "value": "bx3d.128x640"
+              },
+              {
+                "displayname": "bx3d.16x80",
+                "value": "bx3d.16x80"
+              },
+              {
+                "displayname": "bx3d.24x120",
+                "value": "bx3d.24x120"
+              },
+              {
+                "displayname": "bx3d.32x160",
+                "value": "bx3d.32x160"
+              },
+              {
+                "displayname": "bx3d.48x240",
+                "value": "bx3d.48x240"
+              },
+              {
+                "displayname": "bx3d.64x320",
+                "value": "bx3d.64x320"
+              },
+              {
+                "displayname": "bx3d.8x40",
+                "value": "bx3d.8x40"
+              },
+              {
+                "displayname": "bx3d.96x480",
+                "value": "bx3d.96x480"
+              },
+              {
+                "displayname": "cx2.16x32",
+                "value": "cx2.16x32"
+              },{
+                "displayname": "cx2.32x64",
+                "value": "cx2.32x64"
+              },
+              {
+                "displayname": "cx2.48x96",
+                "value": "cx2.48x96"
+              },
+              {
+                "displayname": "cx2d.metal.96x192 (only Toronto (ca-tor)) ",
+                "value": "cx2d.metal.96x192"
+              },
+              {
+                "displayname": "cx3d.128x320",
+                "value": "cx3d.128x320"
+              },
+              {
+                "displayname": "cx3d.16x40",
+                "value": "cx3d.16x40"
+              },
+              {
+                "displayname": "cx3d.24x60",
+                "value": "cx3d.24x60"
+              },
+              {
+                "displayname": "cx3d.32x80",
+                "value": "cx3d.32x80"
+              },
+              {
+                "displayname": "cx3d.48x120",
+                "value": "cx3d.48x120"
+              },
+              {
+                "displayname": "cx3d.64x160",
+                "value": "cx3d.64x160"
+              },
+              {
+                "displayname": "cx3d.96x240",
+                "value": "cx3d.96x240"
+              },
+              {
+                "displayname": "mx2.128x1024",
+                "value": "mx2.128x1024"
+              },
+              {
+                "displayname": "mx2.16x128",
+                "value": "mx2.16x128"
+              },
+              {
+                "displayname": "mx2.32x256",
+                "value": "mx2.32x256"
+              },
+              {
+                "displayname": "mx2.48x384",
+                "value": "mx2.48x384"
+              },
+              {
+                "displayname": "mx2.64x512",
+                "value": "mx2.64x512"
+              },
+              {
+                "displayname": "mx2.8x64",
+                "value": "mx2.8x64"
+              },
+              {
+                "displayname": "mx2d.metal.96x768 (only Toronto (ca-tor))) ",
+                "value": "mx2d.metal.96x768"
+              },
+              {
+                "displayname": "mx3d.128x1280",
+                "value": "mx3d.128x1280"
+              },
+              {
+                "displayname": "mx3d.24x240",
+                "value": "mx3d.24x240"
+              },
+              {
+                "displayname": "mx3d.32x320",
+                "value": "mx3d.32x320"
+              },
+              {
+                "displayname": "mx3d.48x480",
+                "value": "mx3d.48x480"
+              },
+              {
+                "displayname": "mx3d.64x640",
+                "value": "mx3d.64x640"
+              },
+              {
+                "displayname": "mx3d.96x960",
+                "value": "mx3d.96x960"
+              },
+              { "displayname": "mx2.16x128.2000gb (Not available in Sao Paulo (br-sao), Montreal (ca-mon), Madrid (eu-es), Osaka (jp-osa))",
+                "value": "mx2.16x128.2000gb"
+              },
+              {
+                "displayname": "ox2.128x1024 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
+                "value": "ox2.128x1024"
+              },
+              {
+                "displayname": "ox2.16x128 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
+                "value": "ox2.16x128"
+              },
+              {
+                "displayname": "ox2.32x256 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
+                "value": "ox2.32x256"
+              },
+              {
+                "displayname": "ox2.64x512 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
+                "value": "ox2.64x512"
+              },
+              {
+                "displayname": "ox2.8x64 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
+                "value": "ox2.8x64"
+              },
+              {
+                "displayname": "ox2.96x768 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
+                "value": "ox2.96x768"
+              }
+            ]
+            },
+            {
+              "key": "default_worker_pool_workers_per_zone",
+              "required": true
+            },
+            {
+              "key": "default_worker_pool_operating_system",
+              "required": true,
+              "options": [
+                {
+                  "displayname": "RHEL 9",
+                  "value": "RHEL_9_64"
+                },
+                {
+                  "displayname": "Red Hat CoreOS",
+                  "value": "RHCOS"
+                },
+                {
+                  "displayname": "RHEL 8",
+                  "value": "REDHAT_8_64"
+                }
+              ]
+            },
+            {
+              "key": "additional_worker_pools"
+            },
+            {
+              "key": "ibmcloud_api_key"
+            },
+            {
+              "key": "region",
+              "required": true
+            },
+            {
+              "key": "ocp_version",
+              "required": true
+            },
+            {
+              "key": "cluster_name"
+            },
+            {
+              "key": "address_prefix"
+            },
+            {
+              "key": "ocp_entitlement"
+            },
+            {
+              "key": "zone"
+            },
+            {
+              "key": "access_tags"
+            },
+            {
+              "key": "manage_all_addons"
+            },
+            {
+              "key": "addons",
+              "required": true
+            }
+
+
+          ]
         }
+
       ]
     }
   ]

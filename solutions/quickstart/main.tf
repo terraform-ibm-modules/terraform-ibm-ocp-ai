@@ -13,10 +13,10 @@ locals {
 ########################################################################################################################
 # VPC + Subnet + Public Gateway
 ########################################################################################################################
-locals{
-    subnet = {
+locals {
+  subnet = {
     name           = "${local.prefix}subnet"
-    cidr           = "10.10.10.0/24"
+    cidr           = var.address_prefix
     public_gateway = true
     acl_name       = "${local.prefix}acl"
   }
@@ -31,17 +31,17 @@ locals{
     zone-2 = var.zone == 2 ? true : false
     zone-3 = var.zone == 3 ? true : false
   }
-  network-acl = {
-    name = "${local.prefix}acl"
-    add_ibm_cloud_internal_rules = false
-    add_vpc_connectivity_rules   = false
-    prepend_ibm_rules            = false
-    rules = [ {
-        name        = "${local.prefix}inbound"
-        action      = "allow"
-        source      = "0.0.0.0/0"
-        destination = "0.0.0.0/0"
-        direction   = "inbound"
+  network_acl = {
+    name                         = "${local.prefix}acl"
+    add_ibm_cloud_internal_rules = true
+    add_vpc_connectivity_rules   = true
+    prepend_ibm_rules            = true
+    rules = [{
+      name        = "${local.prefix}inbound"
+      action      = "allow"
+      source      = "0.0.0.0/0"
+      destination = "0.0.0.0/0"
+      direction   = "inbound"
       },
       {
         name        = "${local.prefix}outbound"
@@ -61,46 +61,45 @@ module "vpc" {
   name                = "vpc"
   prefix              = var.prefix
   subnets             = local.subnets
-  network_acls        = [local.network-acl]
+  network_acls        = [local.network_acl]
   use_public_gateways = local.gateways
 
-  
+
 }
-locals{
-  worker_pools = concat( [
+locals {
+  worker_pools = concat([
 
     {
-      subnet_prefix     = "zone-${var.zone}"
-      pool_name         = "default" # ibm_container_vpc_cluster automatically names default pool "default" (See https://github.com/IBM-Cloud/terraform-provider-ibm/issues/2849)
-      machine_type      = var.default_worker_pool_machine_type
-      operating_system  = var.default_worker_pool_operating_system
-      workers_per_zone  = var.default_worker_pool_workers_per_zone
+      subnet_prefix    = "zone-${var.zone}"
+      pool_name        = "default" # ibm_container_vpc_cluster automatically names default pool "default" (See https://github.com/IBM-Cloud/terraform-provider-ibm/issues/2849)
+      machine_type     = var.default_worker_pool_machine_type
+      operating_system = var.default_worker_pool_operating_system
+      workers_per_zone = var.default_worker_pool_workers_per_zone
     }
-  ],
-  [ for pool in var.additional_worker_pools :{
-      subnet_prefix     = "zone-${var.zone}"
-      pool_name         = pool.pool_name
-      machine_type      = pool.machine_type
-      operating_system  = pool.operating_system
-      workers_per_zone  = pool.workers_per_zone
-      secondary_storage = pool.secondary_storage
-    }
+    ],
+    [for pool in var.additional_worker_pools : {
+      subnet_prefix    = "zone-${var.zone}"
+      pool_name        = pool.pool_name
+      machine_type     = pool.machine_type
+      operating_system = pool.operating_system
+      workers_per_zone = pool.workers_per_zone
+      }
   ])
 
 }
 module "ocp_base" {
-  source                                = "terraform-ibm-modules/base-ocp-vpc/ibm"
-  cluster_name                          = var.cluster_name
-  resource_group_id                     = module.resource_group.resource_group_id
-  region                                = var.region
-  ocp_version                           = var.ocp_version
-  ocp_entitlement                       = var.ocp_entitlement
-  vpc_id                                = module.vpc.vpc_id
-  vpc_subnets                           = module.vpc.subnet_detail_map
-  worker_pools                          = local.worker_pools
-  disable_outbound_traffic_protection   = true 
-  access_tags                           = var.access_tags
-  addons                                = var.addons
-  manage_all_addons                     = false
+  source                              = "terraform-ibm-modules/base-ocp-vpc/ibm"
+  version                             = "3.49.0"
+  cluster_name                        = local.cluster_name
+  resource_group_id                   = module.resource_group.resource_group_id
+  region                              = var.region
+  ocp_version                         = var.ocp_version
+  ocp_entitlement                     = var.ocp_entitlement
+  vpc_id                              = module.vpc.vpc_id
+  vpc_subnets                         = module.vpc.subnet_detail_map
+  worker_pools                        = local.worker_pools
+  disable_outbound_traffic_protection = true
+  access_tags                         = var.access_tags
+  addons                              = var.addons
+  manage_all_addons                   = var.manage_all_addons
 }
-

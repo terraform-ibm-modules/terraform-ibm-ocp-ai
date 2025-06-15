@@ -17,6 +17,7 @@ variable "prefix" {
   type        = string
   description = "The prefix to be added to all resources created by this solution. To skip using a prefix, set this value to null or an empty string. The prefix must begin with a lowercase letter and may contain only lowercase letters, digits, and hyphens '-'. It should not exceed 16 characters, must not end with a hyphen('-'), and can not contain consecutive hyphens ('--'). Example: `prod-0205-ocpqs`."
   nullable    = true
+  default     = "qs-da"
   validation {
     condition = (var.prefix == null || var.prefix == "" ? true :
       alltrue([
@@ -34,21 +35,22 @@ variable "prefix" {
 variable "region" {
   type        = string
   description = "Region to provision all resources created by this example"
-  default     = "us-south"
+  default     = "au-syd"
 }
 variable "ocp_version" {
   type        = string
   description = "The version of the OpenShift cluster."
   default     = "4.17"
 }
-variable "cluster_name"{
-    type        = string
-    description = "Name of new IBM Cloud OpenShift Cluster"
+variable "cluster_name" {
+  type        = string
+  description = "Name of new IBM Cloud OpenShift Cluster"
+  default     = "ocp-ai"
 }
 variable "address_prefix" {
   description = "The IP range that will be defined for the VPC for a certain location. Use only with manual address prefixes."
   type        = string
-  default     = "10.10.10.0/24"
+  default     = "10.245.0.0/24"
 }
 
 variable "ocp_entitlement" {
@@ -106,7 +108,7 @@ variable "default_worker_pool_operating_system" {
     error_message = "Invalid operating system. Allowed values are: 'REDHAT_8_64', 'RHCOS', 'RHEL_9_64'."
   }
 }
-variable "access_tags"{
+variable "access_tags" {
   type        = list(string)
   description = "A list of access tags to apply to the resources created by the module."
   default     = []
@@ -117,14 +119,6 @@ variable "manage_all_addons" {
   nullable    = false # null values are set to default value
   description = "Instructs Terraform to manage all cluster addons, even if addons were installed outside of the module. If set to 'true' this module destroys any addons that were installed by other sources."
 }
-# variable "default_worker_pool_subnet_prefix"{
-#     type  = string
-#     default = "default"
-# }
-# variable "default_worker_pool_name"{
-#     type  = string
-#     default = "default"
-# }
 variable "addons" {
   type = object({
     openshift-ai = optional(object({
@@ -136,7 +130,7 @@ variable "addons" {
   nullable    = false
   default = {
     openshift-ai = {
-      version         = "416"
+      version = "416"
     }
   }
 }
@@ -161,11 +155,10 @@ variable "additional_worker_pools" {
   description = "List of additional worker pools configured exclusively for the GPU machine type to support AI workload requirements within the cluster. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/blob/main/solutions/fully-configurable/DA_docs.md#options-with-worker-pools)"
   default = [
     {
-      pool_name         = "gpu"
-      machine_type      = "gx3.16x80.l4"
-      workers_per_zone  = 2
-      secondary_storage = "300gb.5iops-tier"
-      operating_system  = "RHCOS"
+      pool_name        = "gpu-2"
+      machine_type     = "gx3.16x80.l4"
+      workers_per_zone = 2
+      operating_system = "RHCOS"
     },
   ]
 
@@ -188,11 +181,11 @@ variable "additional_worker_pools" {
     error_message = "To install Red Hat OpenShift AI, all worker nodes in additional pools must have at least 32 GB RAM."
   }
 
-  # Ensure atleast one GPU is present
-#   validation {
-#     condition     = contains(local.gpu_prefix, split(".", var.default_worker_pool_machine_type)[0]) || anytrue([for pool in var.additional_worker_pools : contains(local.gpu_prefix, split(".", pool.machine_type)[0])])
-#     error_message = "At least one worker pool (default or additional) must be GPU-enabled."
-#   }
+  #Ensure atleast one GPU is present
+  validation {
+    condition     = contains(local.gpu_prefix, split(".", var.default_worker_pool_machine_type)[0]) || anytrue([for pool in var.additional_worker_pools : contains(local.gpu_prefix, split(".", pool.machine_type)[0])])
+    error_message = "At least one worker pool (default or additional) must be GPU-enabled."
+  }
 
   # Operating System validation
   validation {
