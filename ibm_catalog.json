@@ -51,6 +51,7 @@
         {
           "label": "Fully configurable",
           "name": "fully-configurable",
+          "index": 1,
           "install_type": "fullstack",
           "working_directory": "solutions/fully-configurable",
           "iam_permissions": [
@@ -100,7 +101,7 @@
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager"
               ],
               "service_name": "secrets-manager",
-              "notes": "[Optional] Required if you wish to write the credentials to an existing IBM Cloud Secrets Manager instance. 'Manager' access required if new secrets group creation is needed."
+              "notes": "[Optional] Required if writing credentials to an existing IBM Cloud Secrets Manager instance. 'Manager' access is required if a new secrets group needs to be created."
             },
             {
               "role_crns": [
@@ -108,7 +109,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "sysdig-monitor",
-              "notes": "[Optional] Required if you are consuming Observability DA which sets up Cloud monitoring."
+              "notes": "[Optional] Required if consuming Observability DA, which sets up Cloud Monitoring."
             },
             {
               "role_crns": [
@@ -116,7 +117,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "logs",
-              "notes": "[Optional] Required if you are consuming Observability DA which sets up Cloud logs."
+              "notes": "[Optional] Required if consuming Observability DA which sets up Cloud logs."
             }
           ],
           "architecture": {
@@ -137,8 +138,7 @@
                   "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/main/reference-architecture/deployable-architecture-ocp-ai-cluster.svg",
                   "type": "image/svg+xml"
                 },
-                "description": "This architecture illustrates the deployment of a GPU-enabled Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on, showcasing the key and optional components and their interactions for AI workload support. The deployment leverages the Red Hat OpenShift Cluster Deployable Architecture, which is required to create and configure the cluster. In this cluster, the OpenShift AI add-on will be installed. A Virtual Private Cloud (VPC) Deployable Architecture can be enabled to deploy the OpenShift AI cluster in a secure and isolated network environment. Users have the flexibility to either create a new VPC or use an existing one for the cluster deployment.<br><br>Optional resources include:<br><br>- <b>Cloud Object Storage</b>: Allows OpenShift AI workloads to efficiently manage large datasets and store logs.<br>- <b>Observability resources</b>: Enable logging, monitoring, and activity tracker event routing to enhance visibility and operational insights.<br>- <b>Key Management Services (KMS)</b>: Configure key rings and keys for encryption. If KMS encryption is enabled, either <a href='https://cloud.ibm.com/docs/hs-crypto?topic=hs-crypto-get-started'>Hyper Protect Services</a> or <a href='https://cloud.ibm.com/docs/key-protect?topic=key-protect-getting-started-tutorial'>Key Protect</a> is used for encryption.<br>- <b>Secrets Manager (SM)</b>: Stores and manages service credentials securely."
-              }
+                "description": "This architecture illustrates the deployment of a GPU-enabled Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on, showcasing the key and optional components and their interactions for AI workload support. The deployment leverages the Red Hat OpenShift Cluster Deployable Architecture, which is required to create and configure the cluster. Once the cluster is provisioned, the OpenShift AI add-on will be installed. The add-on deploys the OpenShift AI operator, which is managed by IBM. A Virtual Private Cloud (VPC) Deployable Architecture can be enabled to deploy the OpenShift AI cluster in a secure and isolated network environment. Users have the flexibility to either create a new VPC or use an existing one for the cluster deployment.<br><br><b>Optional resources include:</b><br><ul><li><b>Cloud Object Storage</b>: Manage large datasets and store logs.</li><li><b>Observability resources</b>: Logging, monitoring, and event tracking.</li><li><b>Key Management Services (KMS)</b>: Configure encryption using either <a href='https://cloud.ibm.com/docs/hs-crypto?topic=hs-crypto-get-started'>Hyper Protect Services</a> or <a href='https://cloud.ibm.com/docs/key-protect?topic=key-protect-getting-started-tutorial'>Key Protect</a>.</li><li><b>Secrets Manager (SM)</b>: Securely store and manage service credentials.</li></ul>" }
             ]
           },
           "configuration": [
@@ -362,7 +362,13 @@
               ]
             },
             {
-              "key": "additional_worker_pools"
+              "key": "additional_worker_pools",
+              "type": "array",
+              "custom_config": {
+                  "type": "textarea",
+                  "grouping": "deployment",
+                  "original_grouping": "deployment"
+                }
             }
           ],
           "dependencies": [
