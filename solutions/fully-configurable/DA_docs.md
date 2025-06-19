@@ -65,7 +65,7 @@ This variable defines the worker node pools for the Red Hat OpenShift cluster, w
   },
   {
     pool_name                         = "balanced-pool"
-    machine_type                      = "bx2.32x128"
+    machine_type                      = "bx2.8x32"
     workers_per_zone                  = 2
     operating_system                  = "RHCOS"
   }
@@ -74,8 +74,8 @@ This variable defines the worker node pools for the Red Hat OpenShift cluster, w
 ### Validation Rules
 
 - The operating system must be one of: REDHAT_8_64, RHCOS, or RHEL_9_64.
-- Each worker node in additional_worker_pools must have at least 8 CPU cores.
-- Each worker node in additional_worker_pools must have at least 32 GB of RAM.
+- Each worker node in worker pools must have at least 8 CPU cores.
+- Each worker node in worker pools must have at least 32 GB of RAM.
 - At least one worker pool must be GPU-enabled.
 - 
 ---

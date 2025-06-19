@@ -32,6 +32,13 @@ variable "existing_resource_group_name" {
 }
 
 # tflint-ignore: all
+variable "ocp_version" {
+  type        = string
+  description = "Version of the OCP cluster to provision."
+  default     = "4.17"
+}
+
+# tflint-ignore: all
 variable "default_worker_pool_machine_type" {
   type        = string
   description = "Specifies the machine type for the default worker pool. This determines the CPU, memory, and disk resources available to each worker node. For OpenShift AI installation, machines should have atleast 8 vcpu, 32GB RAM and GPU. Refer [IBM Cloud documentation for available machine types](https://cloud.ibm.com/docs/openshift?topic=openshift-vpc-flavors)"
@@ -72,6 +79,10 @@ variable "default_worker_pool_operating_system" {
     condition     = contains(["REDHAT_8_64", "RHCOS", "RHEL_9_64"], var.default_worker_pool_operating_system)
     error_message = "Invalid operating system. Allowed values are: 'REDHAT_8_64', 'RHCOS', 'RHEL_9_64'."
   }
+  validation {
+    condition     = tonumber(var.ocp_version) < 4.18 || var.default_worker_pool_operating_system == "RHCOS"
+    error_message = "Invalid operating system. For OpenShift version 4.18 or higher, the default worker pool operating system must be 'RHCOS'."
+  }
 }
 
 # tflint-ignore: all
@@ -98,7 +109,7 @@ variable "additional_worker_pools" {
     {
       pool_name         = "gpu"
       machine_type      = "gx3.16x80.l4"
-      workers_per_zone  = 1
+      workers_per_zone  = 2
       secondary_storage = "300gb.5iops-tier"
       operating_system  = "RHCOS"
     },
