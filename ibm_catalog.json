@@ -96,21 +96,25 @@
               ]
             },
             {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager"
+              ],
               "service_name": "secrets-manager",
-              "roles": [
-                  {
-                    "role_crn": "crn:v1:bluemix:public:iam::::role:Operator",
-                    "notes": "Operator role used for monitoring"
-                  },
-                  {
-                    "role_crn": "crn:v1:bluemix:public:iam::::serviceRole:Writer",
-                    "notes": "Writer role for resource creation"
-                  },
-                  {
-                    "role_crn": "crn:v1:bluemix:public:iam::::serviceRole:Manager",
-                    "notes": "Manager role has full access"
-                  }
-                ]
+              "notes": "[Optional] Required if writing credentials to an existing IBM Cloud Secrets Manager instance. 'Manager' access is required if a new secrets group needs to be created."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Writer"
+              ],
+              "service_name": "secrets-manager",
+              "notes": "[Optional] Required if writing credentials to an existing IBM Cloud Secrets Manager instance. 'Manager' access is required if a new secrets group needs to be created."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Operator"
+              ],
+              "service_name": "secrets-manager",
+              "notes": "[Optional] Required if writing credentials to an existing IBM Cloud Secrets Manager instance. 'Manager' access is required if a new secrets group needs to be created."
             },
             {
               "role_crns": [
