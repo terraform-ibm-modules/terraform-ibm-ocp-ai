@@ -109,7 +109,7 @@ variable "additional_worker_pools" {
     {
       pool_name         = "gpu"
       machine_type      = "gx3.16x80.l4"
-      workers_per_zone  = 2
+      workers_per_zone  = 1
       secondary_storage = "300gb.5iops-tier"
       operating_system  = "RHCOS"
     },

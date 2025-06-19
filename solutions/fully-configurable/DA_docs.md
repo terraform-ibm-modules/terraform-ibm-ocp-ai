@@ -77,5 +77,6 @@ This variable defines the worker node pools for the Red Hat OpenShift cluster, w
 - Each worker node in worker pools must have at least 8 CPU cores.
 - Each worker node in worker pools must have at least 32 GB of RAM.
 - At least one worker pool must be GPU-enabled.
-- 
+- The machine type provided must be valid.(eg :"bx2.8x32")
+- For OpenShift version 4.18 or higher, the default worker pool operating system must be RHCOS.
 ---
