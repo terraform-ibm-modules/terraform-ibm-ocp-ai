@@ -71,5 +71,11 @@ This variable defines the worker node pools for the Red Hat OpenShift cluster, w
   }
 ]
 ```
+### Validation Rules
 
+- The operating system must be one of: REDHAT_8_64, RHCOS, or RHEL_9_64.
+- Each worker node in additional_worker_pools must have at least 8 CPU cores.
+- Each worker node in additional_worker_pools must have at least 32 GB of RAM.
+- At least one worker pool must be GPU-enabled.
+- 
 ---
