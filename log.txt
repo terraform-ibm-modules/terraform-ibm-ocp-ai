@@ -1,0 +1,724 @@
+cd tests && go test -run '' -count=1 -v -timeout 600m
+=== RUN   TestRunFullyConfigurable
+=== PAUSE TestRunFullyConfigurable
+=== RUN   TestRunUpgradeExample
+=== PAUSE TestRunUpgradeExample
+=== CONT  TestRunFullyConfigurable
+=== CONT  TestRunUpgradeExample
+2025/06/19 18:25:31 Region au-syd VPC count: 6
+2025/06/19 18:25:31 --- new best region is au-syd
+2025/06/19 18:25:32 Region au-syd VPC count: 6
+2025/06/19 18:25:32 --- new best region is au-syd
+2025/06/19 18:25:34 Region ca-tor VPC count: 7
+2025/06/19 18:25:35 Region ca-tor VPC count: 7
+2025/06/19 18:25:37 Region br-sao VPC count: 7
+2025/06/19 18:25:37 Region br-sao VPC count: 7
+2025/06/19 18:25:39 Region eu-de VPC count: 5
+2025/06/19 18:25:39 --- new best region is eu-de
+2025/06/19 18:25:40 Region eu-de VPC count: 5
+2025/06/19 18:25:40 --- new best region is eu-de
+2025/06/19 18:25:42 Region eu-es VPC count: 5
+2025/06/19 18:25:42 Region eu-es VPC count: 5
+2025/06/19 18:25:44 Region eu-gb VPC count: 5
+2025/06/19 18:25:44 Region eu-gb VPC count: 5
+2025/06/19 18:25:46 Region us-east VPC count: 13
+2025/06/19 18:25:46 Region us-east VPC count: 13
+2025/06/19 18:25:50 Region us-south VPC count: 27
+2025/06/19 18:25:50 Region us-south VPC count: 27
+2025/06/19 18:25:52 Region jp-osa VPC count: 5
+2025/06/19 18:25:53 Region jp-osa VPC count: 5
+2025/06/19 18:25:55 Region jp-tok VPC count: 4
+2025/06/19 18:25:55 --- new best region is jp-tok
+2025/06/19 18:25:55 Best region was found!: jp-tok
+TestRunUpgradeExample 2025-06-19T18:25:55+05:30 tests.go:341: PR Branch: 13647_issue
+2025/06/19 18:25:55 Region jp-tok VPC count: 4
+2025/06/19 18:25:55 --- new best region is jp-tok
+2025/06/19 18:25:55 Best region was found!: jp-tok
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 tests.go:75: TEMP CREATED:  /var/folders/vh/syq93zks0k38v_dhpnypz4hm0000gn/T/terraform-ocp-ai-g2rgk41552032249
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 tests.go:582: START: Init / Apply / Consistency Check
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 tests.go:661: START: Init / Apply
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 retry.go:91: terraform [init -upgrade=true]
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: Running command terraform with args [init -upgrade=true]
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: [0m[1mInitializing the backend...[0m
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: [0m[1mInitializing provider plugins...[0m
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: 
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: [0m[32m
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: You may now begin working with Terraform. Try running "terraform plan" to see
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: any changes that are required for your infrastructure. All Terraform commands
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: should now work.
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: 
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: If you ever set or change modules or backend configuration for Terraform,
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: rerun this command to reinitialize your working directory. If you forget, other
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: commands will detect it and remind you to do so if necessary.[0m
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 retry.go:91: terraform [apply -input=false -auto-approve -var prefix=ocp-ai-g2rgk4 -var existing_resource_group_name=geretain-test-resources -lock=false]
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: Running command terraform with args [apply -input=false -auto-approve -var prefix=ocp-ai-g2rgk4 -var existing_resource_group_name=geretain-test-resources -lock=false]
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: 
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: [0m[1m[32mNo changes.[0m[1m Your infrastructure matches the configuration.[0m
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: 
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: [0mTerraform has compared your real infrastructure against your configuration
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: and found no differences, so no changes are needed.
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: [0m[1m[32m
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 logger.go:67: [0m
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 tests.go:664: FINISHED: Init / Apply
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 retry.go:91: terraform [output -no-color -json]
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 tests.go:618: START: Init / Plan / Show w/Struct
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 retry.go:91: terraform [init -upgrade=true]
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 retry.go:91: terraform [plan -input=false -lock=false -var prefix=ocp-ai-g2rgk4 -var existing_resource_group_name=geretain-test-resources -lock=false -out=/var/folders/vh/syq93zks0k38v_dhpnypz4hm0000gn/T/terraform-ocp-ai-g2rgk41552032249/solutions/fully-configurable/terratest-plan-file-247981748]
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 retry.go:91: terraform [show -no-color -json /var/folders/vh/syq93zks0k38v_dhpnypz4hm0000gn/T/terraform-ocp-ai-g2rgk41552032249/solutions/fully-configurable/terratest-plan-file-247981748]
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 tests.go:636: FINISHED: Init / Plan / Show w/Struct
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 tests.go:599: FINISHED: Init / Apply / Consistency Check
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 retry.go:91: terraform [output -no-color -json]
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 tests.go:196: START: Destroy
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 retry.go:91: terraform [destroy -auto-approve -input=false -var prefix=ocp-ai-g2rgk4 -var existing_resource_group_name=geretain-test-resources -lock=false]
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 command.go:121: Running command terraform with args [destroy -auto-approve -input=false -var prefix=ocp-ai-g2rgk4 -var existing_resource_group_name=geretain-test-resources -lock=false]
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 command.go:206: 
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 command.go:206: [0m[1m[32mNo changes.[0m[1m No objects need to be destroyed.[0m
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 command.go:206: 
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 command.go:206: [0mEither you have not created any objects yet or the existing objects were
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 command.go:206: already deleted outside of Terraform.
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 command.go:206: [0m[1m[32m
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 command.go:206: Destroy complete! Resources: 0 destroyed.
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 command.go:206: [0m
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 tests.go:261: 
+[0m[1m[32mNo changes.[0m[1m No objects need to be destroyed.[0m
+
+[0mEither you have not created any objects yet or the existing objects were
+already deleted outside of Terraform.
+[0m[1m[32m
+Destroy complete! Resources: 0 destroyed.
+[0m
+TestRunFullyConfigurable 2025-06-19T18:25:55+05:30 tests.go:266: END: Destroy
+--- PASS: TestRunFullyConfigurable (32.36s)
+TestRunUpgradeExample 2025-06-19T18:25:55+05:30 tests.go:349: Base Repo: https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai.git
+TestRunUpgradeExample 2025-06-19T18:25:55+05:30 tests.go:350: Base Branch: main
+TestRunUpgradeExample 2025-06-19T18:25:55+05:30 git.go:409: Remote name: upstream-zhug4e
+TestRunUpgradeExample 2025-06-19T18:25:56+05:30 git.go:424: Fetch output:
+ []
+Commit Messages (main): 
+commit 23421131d9e183c48d264df24705207aaf4ecdca
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu Jun 19 18:24:20 2025 +0530
+
+    Resolve precommit errors
+
+commit e352743f84845b341a9143f7e74dc67f1b703c8f
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu Jun 19 14:57:25 2025 +0530
+
+    Updated Permission
+
+commit 44efbf05c577a6cc78f4f663f0a315a24bf81852
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu Jun 19 12:33:46 2025 +0530
+
+    Updated description
+
+commit a4fa596ba706a7845fc7c695c698847e8ace49a2
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu Jun 19 12:20:32 2025 +0530
+
+    Updated permission
+
+commit 8cffe88e3f50eff16f550ed0866ee959ce191f96
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu Jun 19 12:11:09 2025 +0530
+
+    Addressed the Review comments
+
+commit aa0e73401b74e857710f2726cd13fba4b788dcc1
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu Jun 19 10:38:00 2025 +0530
+
+    Removed the icon
+
+commit 4d000850737d67ded16829c35f656834acfb611b
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu Jun 19 10:33:32 2025 +0530
+
+    Updated Da_docs
+
+commit 2a77514d9d884b8e38cecc0fe43d2b9821129279
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu Jun 19 10:27:30 2025 +0530
+
+    Addressed Review comments
+
+commit 77dd9b6b22d6bfe032d7dbb31065ff1763789ee4
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu Jun 19 09:09:33 2025 +0530
+
+    Addressed Review comments
+
+commit e9e72bef4f75250dae9a9a255dd913dd5a3e71d4
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu Jun 19 08:31:05 2025 +0530
+
+    Added permission changes
+
+commit 0d17e7782c6aa0b0731416ef584cc711b3ed0943
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu Jun 19 08:10:06 2025 +0530
+
+    Update catalog
+
+commit dd66da6f42782ae18d19212e8866b502183ef9a2
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu Jun 19 08:08:34 2025 +0530
+
+    Testing
+
+commit 9994f961ae9d381f37bb4463ddd617b59769c8d6
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu Jun 19 08:07:20 2025 +0530
+
+    Testing
+
+commit 27e2117971bd325fe788b63242e4d6a46600cdf4
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Wed Jun 18 09:44:05 2025 +0530
+
+    Resolved Comments
+
+commit 77dc90524609cc38d9c797d410e7ca8db03c415f
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Wed Jun 11 16:33:25 2025 +0530
+
+    Updated description
+
+commit c5773333e17880d1cae384fe5ff47e38da1e099a
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Wed Jun 11 16:08:14 2025 +0530
+
+    Updated Diagram
+
+commit 913638efcd9d4bd564b6cb3cbbc14909cb984c6b
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Wed Jun 11 15:46:58 2025 +0530
+
+    Resolved Comments
+
+commit 7d0b5f31bb233e29c514e9cc869185f32449933f
+Merge: 1de746a f332281
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Wed Jun 11 12:21:34 2025 +0530
+
+    Resolved conflicts
+
+commit 1de746ab72eb38be4f41113c614f4fcc30046eb9
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Tue Jun 10 12:35:36 2025 +0530
+
+    Updated diagram
+
+commit 24688fb457688bef595c6aaca10f525fb6045343
+Merge: 42cb9e4 f6696ad
+Author: Arya Girish K <aryagirish.kgit@gmail.com>
+Date:   Tue Jun 3 10:25:17 2025 +0530
+
+    Merge branch '13462_issue' into 13647_issue
+
+commit f6696ad79c5bddf861f91fcd01e9511e39d83ee2
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu May 29 19:46:54 2025 +0530
+
+    fix: Updated notes for cos permission
+
+commit be698693694b544ba01273ef265cb5940535497e
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu May 29 17:05:10 2025 +0530
+
+    fix: Resolved comments
+
+commit 3b714201caccf146326b2c8e7507c7ff34e4821b
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu May 29 10:30:43 2025 +0530
+
+    fix: Updated iam identity permission
+
+commit 42cb9e40aed417e8ade399aeb260788c894deb00
+Merge: c738e92 0c5c911
+Author: Arya Girish K <aryagirish.kgit@gmail.com>
+Date:   Tue May 27 16:35:12 2025 +0530
+
+    Merge branch '13462_issue' into 13647_issue
+
+commit 0c5c911c1dbeb8687949fe207a66308c2fbd5589
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Tue May 27 16:33:20 2025 +0530
+
+    fix: Updated variable.tf
+
+commit e99aaae6568fc3004ec0462e14a8749252791eb3
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Tue May 27 16:28:52 2025 +0530
+
+    Resolved conflicts
+
+commit 4b1e2e81549ed18d2318a82c330e980a13bee826
+Merge: a278ef3 2ce41fa
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Tue May 27 16:26:54 2025 +0530
+
+    Merge branch 'main' into 13462_issue
+
+commit c738e929c8a2009ba37b81a8340b9ed1c2c4f3db
+Merge: 5213051 a278ef3
+Author: Arya Girish K <aryagirish.kgit@gmail.com>
+Date:   Tue May 27 14:29:34 2025 +0530
+
+    Merge branch '13462_issue' into 13647_issue
+
+commit a278ef350785db357dbf59dd90e552674b63caad
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Tue May 27 14:26:19 2025 +0530
+
+    fix: Updated variable.tf
+
+commit 62634adba4cc81654b17e238c755c7144f010abd
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Tue May 27 14:21:06 2025 +0530
+
+    fix: Addressed review comments
+
+commit 5213051912b57511a1c8db64fdacaafc036ba269
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Mon May 26 18:15:31 2025 +0530
+
+    fix: Updated architecture description
+
+commit 6e537666c5789559b874d8ca3557c01a3197e482
+Merge: c96720a f9388c0
+Author: Arya Girish K <aryagirish.kgit@gmail.com>
+Date:   Mon May 26 17:54:00 2025 +0530
+
+    Merge branch '13462_issue' into 13647_issue
+
+commit f9388c0fb128971b7d4f1a59e448c59cb8a50c6c
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Mon May 26 17:44:48 2025 +0530
+
+    fix: Updated IAM Identity permission notes
+
+commit c96720a87a7254860c4ed3d8d8230487ffdf2d0a
+Merge: b01e097 4e1bc22
+Author: Arya Girish K <aryagirish.kgit@gmail.com>
+Date:   Mon May 26 17:27:56 2025 +0530
+
+    Merge branch '13462_issue' into 13647_issue
+
+commit 4e1bc22bdd4f80663244661c0cef4ef316f1a647
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Mon May 26 17:05:10 2025 +0530
+
+    fix: Updated prefix validation and Description
+
+commit b01e0971da8b478516a187f6e783e35385631d18
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Mon May 26 16:51:19 2025 +0530
+
+    fix: Updated Description and diagram
+
+commit a93fbe48c0f25da6989614050f66b93ff6f95821
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Mon May 26 15:56:23 2025 +0530
+
+    fix: Updated Diagram description
+
+commit 7c916060a9d9334e65e1d73ede13efa125979db9
+Merge: e9a5cdc f1725f8
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Mon May 26 15:26:39 2025 +0530
+
+    fix: Resolved the comments
+
+commit e9a5cdcec2b97a1dbd1ea2342ebdc2fab667a17a
+Merge: 41211e2 15b7ee7
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Mon May 26 15:09:08 2025 +0530
+
+    Merge branch 'main' into 13647_issue
+
+commit f1725f879644ae85271b686ab05e3943297bcb6a
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Mon May 26 14:56:53 2025 +0530
+
+    Resolved comments
+
+commit 82d0655c9fd094bb043e0dd86440ad772e1744ca
+Merge: 78ac3c1 15b7ee7
+Author: Arya Girish K <aryagirish.kgit@gmail.com>
+Date:   Mon May 26 10:18:57 2025 +0530
+
+    Merge branch 'main' into 13462_issue
+
+commit 41211e21de3562352dd2cbbcf261e44d286ae48f
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Fri May 23 18:38:36 2025 +0530
+
+    Resolved Conflicts
+
+commit 78ac3c1c63666a2ad9c4dd7374743cb94a224a11
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Fri May 23 17:03:34 2025 +0530
+
+    fix: Updated Description
+
+commit 866b4995f334b0b4abeb6474c42033a684ef0915
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Fri May 23 14:57:51 2025 +0530
+
+    fix common-dev-assets
+
+commit fcc463e89ec6465e6e299b6b38acf235af503d91
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Fri May 23 14:49:12 2025 +0530
+
+    fix common-dev-assets
+
+commit bde3819cf20d31a48718967827aab7de5534fa66
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Fri May 23 14:20:51 2025 +0530
+
+    updated cos link
+
+commit 90108df8b5b5cb8e6bd2a531e980c05bf8ce81a4
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Fri May 23 14:18:29 2025 +0530
+
+    Updated go modules
+
+commit 00e2ffd42681774fd1a318f357a31c4299b1a0d4
+Merge: 4d76d05 d672e1b
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Fri May 23 14:10:22 2025 +0530
+
+    Merge remote-tracking branch 'origin/13647_issue' into 13647_issue
+
+commit 4d76d0517d801b9645dcd764b90c63d1ccea9f89
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Fri May 23 14:09:41 2025 +0530
+
+    fix common-dev-assets
+
+commit d672e1baa8139fe1797d9ccc707f152ad57baa03
+Merge: 21b404b bdd38bd
+Author: Arya Girish K <aryagirish.kgit@gmail.com>
+Date:   Fri May 23 14:07:56 2025 +0530
+
+    Merge branch '13462_issue' into 13647_issue
+
+commit 21b404b66045f73cba3f2299640c77e5447f8c04
+Author: Prateek-Sharma13 <prateek.sharma13@ibm.com>
+Date:   Fri May 23 13:44:31 2025 +0530
+
+    fix: removed common-dev-assets
+
+commit 24586ef5af740668b00485a0be0bf5d924073ecf
+Author: Prateek-Sharma13 <prateek.sharma13@ibm.com>
+Date:   Fri May 23 13:42:45 2025 +0530
+
+    fix: reverted .gitmodules
+
+commit fd396621c4722a303dfe946aae0c2030b8b020c8
+Author: Prateek-Sharma13 <prateek.sharma13@ibm.com>
+Date:   Fri May 23 13:41:00 2025 +0530
+
+    fix: reverted .gitmodules
+
+commit 00b211a47846b5386cac1a3613c50cfe706683d6
+Author: Prateek-Sharma13 <prateek.sharma13@ibm.com>
+Date:   Fri May 23 13:39:15 2025 +0530
+
+    removed .gitmodules file
+
+commit 911dda828fa6ea064584c76cbbd1e5e49ead5579
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Fri May 23 12:54:15 2025 +0530
+
+    Resolved Comments
+
+commit 7ed1c83c5d414b695d0778aa00d0f0babde89ddc
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Fri May 23 11:44:37 2025 +0530
+
+    Reverted commit
+
+commit d7813d38b50700036def8831937b6fbecb466453
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Fri May 23 11:42:50 2025 +0530
+
+    Reverted commit
+
+commit bdd38bd21a03deb8bab57b2c137f6721be320fdc
+Author: Prateek-Sharma13 <prateek.sharma13@ibm.com>
+Date:   Fri May 23 11:11:04 2025 +0530
+
+    fix: formatted json
+
+commit bd9b29cb3247f05b10c4190455415635cdda2c2a
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Fri May 23 05:15:18 2025 +0530
+
+    Updated diagram and description
+
+commit d5054856892bbd5cecd1df54308267c6003f54a4
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Fri May 23 04:15:10 2025 +0530
+
+    Updated descriptions
+
+commit 6679fb1234f73d049ca517886a124aeabf6825cf
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu May 22 19:39:01 2025 +0530
+
+    update catalog
+
+commit cf5338207aeda9a65096be990a2709a44aa685ca
+Merge: c40e69f 8d5d5dd
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu May 22 19:07:18 2025 +0530
+
+    update catalog
+
+commit 8d5d5ddeefc873dc5c1e3531a0df8dfd36796d69
+Author: Prateek-Sharma13 <prateek.sharma13@ibm.com>
+Date:   Thu May 22 18:14:53 2025 +0530
+
+    fix: formatted json and updated text
+
+commit 7e3fe405ed6118d347a77372f28c6271e790e50e
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu May 22 16:58:35 2025 +0530
+
+    Resolved comments
+
+commit c40e69f4f64eed8dea61823e8365101c1d1588c7
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Tue May 20 13:43:34 2025 +0530
+
+    Updated diagram
+
+commit dcd27463745ff82f6d2d34084ad8a9de6c6ca540
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Tue May 20 13:36:50 2025 +0530
+
+    added diagram
+
+commit bcaab410a32226eac1664b6195ab36a34e93865c
+Merge: 529e43f 6013fa2
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Tue May 20 11:21:25 2025 +0530
+
+    update catalog
+
+commit 81482bebe0e575067387750aedac52fbb8ac8215
+Merge: 85e1a29 765d5b6
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Mon May 19 20:09:52 2025 +0530
+
+    Merge branch '13462_issue' of https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai into 13462_issue
+
+commit 85e1a29445acc13be3fdd0d2ebb045ce3ae5eed2
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Mon May 19 20:06:18 2025 +0530
+
+    update catalog
+
+commit 765d5b634cc093bf74921b458d8a0e91eca2985f
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Mon May 19 19:59:37 2025 +0530
+
+    update catalog
+
+commit 07c8da1b534ca17f6f73b86fee373079b53279ea
+Merge: 2bc74b7 6013fa2
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Mon May 19 19:49:08 2025 +0530
+
+    Merge branch 'main' into 13462_issue
+
+commit 2bc74b72d8f6706e0a8fb812fcf62b6fb32930b1
+Merge: 4705b25 6dbbd62
+Author: prateek <prateek.sharma13@ibm.com>
+Date:   Thu May 15 12:25:37 2025 +0530
+
+    Merge branch 'main' into 13462_issue
+
+commit 4705b25d7fadc47374c20f232755b13a8eeffd99
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Fri May 9 19:02:21 2025 +0530
+
+    Removed compliance tab
+
+commit 20fad84c1ef79e8e988547d359a36c897a2b2367
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu May 8 21:16:20 2025 +0530
+
+    Update json format
+
+commit 9ae43a9a4d146ca42b30bf97bfce8340d136d537
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu May 8 20:56:39 2025 +0530
+
+    updated json format
+
+commit 529e43f3f72b45284ad266ac040a0ca1808cb4f3
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu May 8 20:52:05 2025 +0530
+
+    updated json format
+
+commit 4c6c41ab2fae057faae562badf9c141bd57c800c
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Thu May 8 14:13:53 2025 +0530
+
+    Remove one machine type
+
+commit 596cb1a9acd8e1adc058ec610b01ca8b2a619489
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Wed May 7 11:15:57 2025 +0530
+
+    docs: Content and reference architecture Updates
+
+commit abf0a98d07f497e4ddb1d9d220b263f63d3f52cf
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Wed May 7 01:03:00 2025 +0530
+
+    Addressed Review Comments
+
+commit 55bffb216b17c6194ae7286b2f499a89a50c2de5
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Mon May 5 15:37:38 2025 +0530
+
+    Removed the line starts with this is an experiment in overview
+
+commit 4c93296df350d98fc4c0609becbbcb4a4bf91414
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Mon May 5 14:52:55 2025 +0530
+
+    Reverted some changes
+
+commit 79cd5b5d826e0185a5f2b44c01a469587387d30e
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Mon May 5 11:00:29 2025 +0530
+
+    Update: notes section in permission tab
+
+commit 15fea7c76a572746a28327c10fcbaa77e8eb320e
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Mon May 5 10:05:42 2025 +0530
+
+    Updated default and additional worker pool
+
+commit 08ddb625ba34b4b9bfcc7443813a544e2138942c
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Mon May 5 09:17:03 2025 +0530
+
+    updated catalog
+
+commit 432ccd0d2d72f2eada5bb05926c5469c13bef3f1
+Merge: 592899f 3c297f1
+Author: Arya Girish K <aryagirish.kgit@gmail.com>
+Date:   Mon May 5 06:18:41 2025 +0530
+
+    Merge branch 'main' into 13462_issue
+
+commit 592899ff4f4e5db9e0354bd559c1bbd1215abe80
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Fri May 2 16:52:40 2025 +0530
+
+    Updated catalog and variable.tf
+
+commit fdc4eb55bf981009904d9204398c54ff25a310a4
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Wed Apr 30 07:49:53 2025 +0530
+
+    Update ibm_catalog.json
+
+commit 954849ed8a183165ddcc3e7104376e25919bd3ad
+Merge: 8c7e692 da16a67
+Author: prateek <prateek.sharma13@ibm.com>
+Date:   Mon Apr 28 00:19:40 2025 +0530
+
+    Merge branch 'main' into 13462_issue
+
+commit 8c7e692913c1521e0845f4bea69ed6ed0375b21e
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Wed Apr 23 13:04:40 2025 +0530
+
+    fix: updated default value for default_worker_pool_operating_system
+
+commit 2d01cb389e1161c4bc924366e1c0e2c95d4aa618
+Author: Arya Girish K <arya.girish.k@ibm.com>
+Date:   Wed Apr 23 12:46:08 2025 +0530
+
+    feat: OCP AI DA Improvements
+TestRunUpgradeExample 2025-06-19T18:25:56+05:30 tests.go:382: Temporarily disabling UseTerraformWorkspace in Upgrade Test as temporary directories are used instead of workspaces
+TestRunUpgradeExample 2025-06-19T18:25:56+05:30 tests.go:403: TEMP PR DIR CREATED:  /var/folders/vh/syq93zks0k38v_dhpnypz4hm0000gn/T/terraform-pr-ai-upg-g2rgk42114363215
+TestRunUpgradeExample 2025-06-19T18:25:56+05:30 tests.go:415: TEMP UPGRADE BASE DIR CREATED:  /var/folders/vh/syq93zks0k38v_dhpnypz4hm0000gn/T/terraform-base-ai-upg-g2rgk43405175031
+TestRunUpgradeExample 2025-06-19T18:25:56+05:30 tests.go:438: Copied current code to PR branch dir: /var/folders/vh/syq93zks0k38v_dhpnypz4hm0000gn/T/terraform-pr-ai-upg-g2rgk42114363215
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 git.go:500: Cloned base repo and branch with authentication
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 tests.go:473: Init / Apply on Base repo: https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai.git
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 tests.go:474: Init / Apply on Base branch: main
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 tests.go:475: Init / Apply on Base branch dir: /var/folders/vh/syq93zks0k38v_dhpnypz4hm0000gn/T/terraform-base-ai-upg-g2rgk43405175031/solutions/fully-configurable
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 retry.go:91: terraform [init -upgrade=true]
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: Running command terraform with args [init -upgrade=true]
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: [0m[1mInitializing the backend...[0m
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: [0m[1mInitializing provider plugins...[0m
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: 
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: [0m[32m
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: You may now begin working with Terraform. Try running "terraform plan" to see
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: any changes that are required for your infrastructure. All Terraform commands
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: should now work.
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: 
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: If you ever set or change modules or backend configuration for Terraform,
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: rerun this command to reinitialize your working directory. If you forget, other
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: commands will detect it and remind you to do so if necessary.[0m
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 retry.go:91: terraform [apply -input=false -auto-approve -var existing_resource_group_name=geretain-test-resources -var prefix=ai-upg-g2rgk4 -lock=false]
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: Running command terraform with args [apply -input=false -auto-approve -var existing_resource_group_name=geretain-test-resources -var prefix=ai-upg-g2rgk4 -lock=false]
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: 
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: [0m[1m[32mNo changes.[0m[1m Your infrastructure matches the configuration.[0m
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: 
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: [0mTerraform has compared your real infrastructure against your configuration
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: and found no differences, so no changes are needed.
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: [0m[1m[32m
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 logger.go:67: [0m
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 retry.go:91: terraform [output -no-color -json]
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 tests.go:521: State file copied to PR branch dir: /var/folders/vh/syq93zks0k38v_dhpnypz4hm0000gn/T/terraform-pr-ai-upg-g2rgk42114363215/solutions/fully-configurable/terraform.tfstate
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 tests.go:524: Init / Plan on PR Branch: 13647_issue
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 tests.go:525: Init / Plan on PR Branch dir: /var/folders/vh/syq93zks0k38v_dhpnypz4hm0000gn/T/terraform-pr-ai-upg-g2rgk42114363215/solutions/fully-configurable
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 tests.go:618: START: Init / Plan / Show w/Struct
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 retry.go:91: terraform [init -upgrade=true]
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 retry.go:91: terraform [plan -input=false -lock=false -var existing_resource_group_name=geretain-test-resources -var prefix=ai-upg-g2rgk4 -lock=false -out=/var/folders/vh/syq93zks0k38v_dhpnypz4hm0000gn/T/terraform-pr-ai-upg-g2rgk42114363215/solutions/fully-configurable/terratest-plan-file-1003592367]
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 retry.go:91: terraform [show -no-color -json /var/folders/vh/syq93zks0k38v_dhpnypz4hm0000gn/T/terraform-pr-ai-upg-g2rgk42114363215/solutions/fully-configurable/terratest-plan-file-1003592367]
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 tests.go:636: FINISHED: Init / Plan / Show w/Struct
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 tests.go:540: Parsing plan output to determine if any resources identified for destroy (PR branch)...
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 retry.go:91: terraform [output -no-color -json]
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 tests.go:196: START: Destroy
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 retry.go:91: terraform [destroy -auto-approve -input=false -var existing_resource_group_name=geretain-test-resources -var prefix=ai-upg-g2rgk4 -lock=false]
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 command.go:121: Running command terraform with args [destroy -auto-approve -input=false -var existing_resource_group_name=geretain-test-resources -var prefix=ai-upg-g2rgk4 -lock=false]
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 command.go:206: 
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 command.go:206: [0m[1m[32mNo changes.[0m[1m No objects need to be destroyed.[0m
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 command.go:206: 
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 command.go:206: [0mEither you have not created any objects yet or the existing objects were
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 command.go:206: already deleted outside of Terraform.
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 command.go:206: [0m[1m[32m
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 command.go:206: Destroy complete! Resources: 0 destroyed.
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 command.go:206: [0m
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 tests.go:261: 
+[0m[1m[32mNo changes.[0m[1m No objects need to be destroyed.[0m
+
+[0mEither you have not created any objects yet or the existing objects were
+already deleted outside of Terraform.
+[0m[1m[32m
+Destroy complete! Resources: 0 destroyed.
+[0m
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 tests.go:266: END: Destroy
+TestRunUpgradeExample 2025-06-19T18:25:57+05:30 tests.go:384: Restoring UseTerraformWorkspace and WorkspacePath to original values: false 
+--- PASS: TestRunUpgradeExample (34.38s)
+PASS
+ok  	github.com/terraform-ibm-modules/terraform-ibm-ocp-ai	35.615s
