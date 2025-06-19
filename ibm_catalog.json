@@ -96,11 +96,6 @@
               ]
             },
             {
-              "role_crns": [
-                "crn:v1:bluemix:public:iam::::role:Operator",
-                "crn:v1:bluemix:public:iam::::serviceRole:Writer",
-                "crn:v1:bluemix:public:iam::::serviceRole:Manager"
-              ],
               "service_name": "secrets-manager",
               "roles": [
                   {
