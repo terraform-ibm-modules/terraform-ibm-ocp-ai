@@ -97,12 +97,10 @@
             },
             {
               "role_crns": [
-                "crn:v1:bluemix:public:iam::::role:Operator",
-                "crn:v1:bluemix:public:iam::::serviceRole:Writer",
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager"
               ],
               "service_name": "secrets-manager",
-              "notes": "[Optional] Required if writing the Event notification service credentials to an existing IBM Cloud Secrets Manager instance. 'Manager' access required if new secrets group creation is needed."
+              "notes": "[Optional] Required if writing the service credentials to an existing IBM Cloud Secrets Manager instance. 'Manager' access required if new secrets group creation is needed."
             },
             {
               "role_crns": [
