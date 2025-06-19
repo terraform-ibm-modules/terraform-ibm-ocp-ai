@@ -430,7 +430,7 @@
                   "reference_version": true
                 }
               ],
-              "version": "^v3.49.2"
+              "version": "v3.50.0"
             }
           ],
           "dependency_version_2": true,
