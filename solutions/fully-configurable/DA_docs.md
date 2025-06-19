@@ -1,6 +1,6 @@
-# Configuring complex inputs for Red Hat OpenShift cluster
+# Configuring complex inputs for Red Hat OpenShift Container Platform on VPC
 
-Several optional input variables in the Red Hat OpenShift cluster [Deployable Architecture](https://cloud.ibm.com/catalog#deployable_architecture) use complex object types. You can specify these inputs when you configure your deployable architecture.
+Several optional input variables in the RRed Hat OpenShift Container Platform on VPC [Deployable Architecture](https://cloud.ibm.com/catalog#deployable_architecture) use complex object types. You can specify these inputs when you configure your deployable architecture.
 
 - [Additional Worker Pools](#options-with-additional-worker-pools) (`additional_worker_pools`)
 
@@ -73,10 +73,9 @@ This variable defines the worker node pools for the Red Hat OpenShift cluster, w
 ```
 ### Validation Rules
 
-- The operating system must be one of: REDHAT_8_64, RHCOS, or RHEL_9_64.
 - Each worker node in worker pools must have at least 8 CPU cores.
 - Each worker node in worker pools must have at least 32 GB of RAM.
 - At least one worker pool must be GPU-enabled.
-- The machine type provided must be valid.(eg :"bx2.8x32")
-- For OpenShift version 4.18 or higher, the default worker pool operating system must be RHCOS.
+- For OpenShift version 4.18 or higher, each worker pool operating system must be RHCOS.
+For further reference, please check [here](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui).
 ---

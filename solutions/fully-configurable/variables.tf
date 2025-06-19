@@ -147,4 +147,11 @@ variable "additional_worker_pools" {
     ])
     error_message = "Additional worker pool must specify a valid operating system. Allowed values are :  'REDHAT_8_64', 'RHCOS', or 'RHEL_9_64'."
   }
+
+  validation {
+    condition = alltrue([
+      for pool in var.additional_worker_pools : tonumber(var.ocp_version) < 4.18 || pool.operating_system == "RHCOS"
+    ])
+    error_message = "Invalid operating system. For OpenShift version 4.18 or higher, each additional worker pool operating system must be 'RHCOS'."
+  }
 }
