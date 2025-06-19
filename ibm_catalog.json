@@ -11,7 +11,8 @@
         "terraform",
         "solution",
         "ibm_created",
-        "ibm_beta"
+        "ibm_beta",
+        "clusters"
       ],
       "keywords": [
         "openshift",
