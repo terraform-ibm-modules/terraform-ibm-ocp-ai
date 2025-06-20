@@ -1,6 +1,6 @@
-# Configuring complex inputs for OCP in IBM Cloud projects
+# Configuring complex inputs for Red Hat OpenShift Container Platform on VPC
 
-Several optional input variables in the Red Hat OpenShift cluster [Deployable Architecture](https://cloud.ibm.com/catalog#deployable_architecture) use complex object types. You can specify these inputs when you configure your deployable architecture.
+Several optional input variables in the Red Hat OpenShift Container Platform on VPC [Deployable Architecture](https://cloud.ibm.com/catalog#deployable_architecture) use complex object types. You can specify these inputs when you configure your deployable architecture.
 
 - [Additional Worker Pools](#options-with-additional-worker-pools) (`additional_worker_pools`)
 
@@ -33,6 +33,27 @@ This variable defines the worker node pools for the Red Hat OpenShift cluster, w
 
 ### Example for additional_worker_pools configuration
 
+#### Example 1: Configuration with 2 GPU Nodes
+```hcl
+[
+  {
+    pool_name                         = "ai-workload"
+    machine_type                      = "gx3.16x80.l4"
+    workers_per_zone                  = 2
+    secondary_storage                 = "300gb.5iops-tier"
+    operating_system                  = "RHCOS"
+  },
+  {
+    pool_name                         = "balanced-pool"
+    machine_type                      = "gx3.24x120.l40s"
+    workers_per_zone                  = 2
+    secondary_storage                 = "300gb.5iops-tier"
+    operating_system                  = "RHCOS"
+  }
+]
+```
+#### Example 2: Configuration with 1 GPU Node and 1 Non-GPU Node
+
 ```hcl
 [
   {
@@ -50,5 +71,11 @@ This variable defines the worker node pools for the Red Hat OpenShift cluster, w
   }
 ]
 ```
+### Validation Rules
 
+- Each worker node in worker pools must have at least 8 CPU cores.
+- Each worker node in worker pools must have at least 32 GB of RAM.
+- At least one worker pool must be GPU-enabled.
+- For OpenShift version 4.18 or higher, each worker pool operating system must be RHCOS.
+For further reference, please check [here](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui).
 ---

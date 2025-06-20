@@ -7,7 +7,7 @@ locals {
 # tflint-ignore: all
 variable "prefix" {
   type        = string
-  description = "The prefix to be added to all resources created by this solution. To skip using a prefix, set this value to null or an empty string. The prefix must begin with a lowercase letter and may contain only lowercase letters, digits, and hyphens '-'. It should not exceed 16 characters, must not end with a hyphen('-'), and can not contain consecutive hyphens ('--'). Example: `prod-0205-ocpfc`. [Learn more](https://terraform-ibm-modules.github.io/documentation/#/prefix.md)"
+  description = "The prefix to be added to all resources created by this solution. To skip using a prefix, set this value to null or an empty string. The prefix must begin with a lowercase letter and may contain only lowercase letters, digits, and hyphens '-'. It should not exceed 16 characters, must not end with a hyphen('-'), and can not contain consecutive hyphens ('--'). Example: `prod-0205-ocpai`. [Learn more](https://terraform-ibm-modules.github.io/documentation/#/prefix.md)"
   nullable    = true
   validation {
     condition = (var.prefix == null || var.prefix == "" ? true :
@@ -29,6 +29,13 @@ variable "existing_resource_group_name" {
   type        = string
   description = "The name of an existing resource group to provision the cluster."
   default     = "Default"
+}
+
+# tflint-ignore: all
+variable "ocp_version" {
+  type        = string
+  description = "Version of the OCP cluster to provision."
+  default     = "4.17"
 }
 
 # tflint-ignore: all
@@ -71,6 +78,10 @@ variable "default_worker_pool_operating_system" {
   validation {
     condition     = contains(["REDHAT_8_64", "RHCOS", "RHEL_9_64"], var.default_worker_pool_operating_system)
     error_message = "Invalid operating system. Allowed values are: 'REDHAT_8_64', 'RHCOS', 'RHEL_9_64'."
+  }
+  validation {
+    condition     = tonumber(var.ocp_version) < 4.18 || var.default_worker_pool_operating_system == "RHCOS"
+    error_message = "Invalid operating system. For OpenShift version 4.18 or higher, the default worker pool operating system must be 'RHCOS'."
   }
 }
 
@@ -135,5 +146,12 @@ variable "additional_worker_pools" {
       for pool in var.additional_worker_pools : contains(["REDHAT_8_64", "RHCOS", "RHEL_9_64"], pool.operating_system)
     ])
     error_message = "Additional worker pool must specify a valid operating system. Allowed values are :  'REDHAT_8_64', 'RHCOS', or 'RHEL_9_64'."
+  }
+
+  validation {
+    condition = alltrue([
+      for pool in var.additional_worker_pools : tonumber(var.ocp_version) < 4.18 || pool.operating_system == "RHCOS"
+    ])
+    error_message = "Invalid operating system. For OpenShift version 4.18 or higher, each additional worker pool operating system must be 'RHCOS'."
   }
 }
