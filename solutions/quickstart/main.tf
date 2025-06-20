@@ -21,15 +21,13 @@ locals {
     acl_name       = "${local.prefix}acl"
   }
   subnets = {
-    zone-1 = var.zone == 1 ? [local.subnet] : []
-    zone-2 = var.zone == 2 ? [local.subnet] : []
-    zone-3 = var.zone == 3 ? [local.subnet] : []
+    "zone-1" = [local.subnet]
   }
 
   gateways = {
-    zone-1 = var.zone == 1 ? true : false
-    zone-2 = var.zone == 2 ? true : false
-    zone-3 = var.zone == 3 ? true : false
+    "zone-1" = true
+    "zone-2" = false
+    "zone-3" = false
   }
   network_acl = {
     name                         = "${local.prefix}acl"
@@ -70,7 +68,7 @@ locals {
   worker_pools = concat([
 
     {
-      subnet_prefix    = "zone-${var.zone}"
+      subnet_prefix    = "zone-1"
       pool_name        = "default" # ibm_container_vpc_cluster automatically names default pool "default" (See https://github.com/IBM-Cloud/terraform-provider-ibm/issues/2849)
       machine_type     = var.default_worker_pool_machine_type
       operating_system = var.default_worker_pool_operating_system
@@ -78,7 +76,7 @@ locals {
     }
     ],
     [for pool in var.additional_worker_pools : {
-      subnet_prefix    = "zone-${var.zone}"
+      subnet_prefix    = "zone-1"
       pool_name        = pool.pool_name
       machine_type     = pool.machine_type
       operating_system = pool.operating_system
