@@ -1,6 +1,6 @@
 # Configuring complex inputs for Red Hat OpenShift Container Platform on VPC
 
-Several optional input variables in the RRed Hat OpenShift Container Platform on VPC [Deployable Architecture](https://cloud.ibm.com/catalog#deployable_architecture) use complex object types. You can specify these inputs when you configure your deployable architecture.
+Several optional input variables in the Red Hat OpenShift Container Platform on VPC [Deployable Architecture](https://cloud.ibm.com/catalog#deployable_architecture) use complex object types. You can specify these inputs when you configure your deployable architecture.
 
 - [Additional Worker Pools](#options-with-additional-worker-pools) (`additional_worker_pools`)
 
