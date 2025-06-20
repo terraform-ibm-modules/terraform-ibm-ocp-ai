@@ -132,14 +132,10 @@
           ],
           "architecture": {
             "features": [
-              {
-                "title": "Red Hat OpenShift Cluster",
-                "description": "Creates and configures GPU enabled Red Hat OpenShift Cluster."
-              },
-              {
-                "title": "OpenShift AI Add-on",
-                "description": "Installs the Red Hat OpenShift AI add-on."
-              }
+                  {
+                    "title": " ",
+                    "description": "Configured to use IBM secure by default standards, but can be edited to fit your use case."
+                  }
             ],
             "diagrams": [
               {
@@ -390,7 +386,7 @@
           "dependencies": [
             {
               "name": "add-ons-beta-deploy-arch-ibm-base-ocp-vpc",
-              "description": "Configure the Red Hat OpenShift cluster on IBM Cloud required to install the OpenShift AI add-on.",
+              "description": "Configure the Red Hat OpenShift cluster on IBM Cloud required to install the OpenShift AI add-on. ",
               "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
               "flavors": [
                 "fully-configurable"
