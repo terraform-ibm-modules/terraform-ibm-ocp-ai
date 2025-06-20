@@ -2,7 +2,7 @@
   "products": [
     {
       "name": "deploy-arch-ibm-ocp-ai",
-      "label": "[Add-ons Beta] Cloud automation for Red Hat OpenShift AI",
+      "label": "Cloud automation for Red Hat OpenShift AI",
       "product_kind": "solution",
       "tags": [
         "containers",
@@ -11,7 +11,6 @@
         "terraform",
         "solution",
         "ibm_created",
-        "ibm_beta",
         "clusters"
       ],
       "keywords": [
@@ -391,8 +390,8 @@
                 {
                   "dependency_input": "addons",
                   "value": {
-                    "openshift-ai": "416"
-                  }
+                    "openshift-ai" : "416"
+                    }
                 },
                 {
                   "dependency_input": "prefix",
