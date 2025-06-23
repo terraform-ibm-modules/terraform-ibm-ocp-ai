@@ -398,8 +398,10 @@
                 {
                   "dependency_input": "addons",
                   "value": {
-                    "openshift-ai": "416"
+                    "openshift-ai":{
+                      "version" : "416"
                   }
+                }
                 },
                 {
                   "dependency_input": "prefix",
