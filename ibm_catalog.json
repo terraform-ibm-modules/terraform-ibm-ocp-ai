@@ -2,7 +2,7 @@
   "products": [
     {
       "name": "deploy-arch-ibm-ocp-ai",
-      "label": "[Add-ons Beta] Cloud automation for Red Hat OpenShift AI",
+      "label": "Cloud automation for Red Hat OpenShift AI",
       "product_kind": "solution",
       "tags": [
         "containers",
@@ -11,7 +11,7 @@
         "terraform",
         "solution",
         "ibm_created",
-        "ibm_beta"
+        "clusters"
       ],
       "keywords": [
         "openshift",
@@ -30,8 +30,32 @@
       "provider_name": "IBM",
       "features": [
         {
-          "title": "Integrating Red Hat OpenShift AI Add-on",
-          "description": "Automates the provisioning of a fully configured Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on. This includes optimized configurations for machine learning frameworks and simplified deployment of AI-driven applications. Refer [here](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui) to learn the service and its capabilities."
+          "title": "Red Hat OpenShift Cluster",
+          "description": "Creates and configures a GPU-enabled Red Hat OpenShift cluster on a Virtual Private Cloud (VPC) to enable the installation of the OpenShift AI Add-on for integrating advanced artificial intelligence capabilities. [Learn more.](https://cloud.ibm.com/docs/openshift?topic=openshift-cluster-create-vpc-gen2&interface=ui)"
+        },
+        {
+          "title": "OpenShift AI Add-on",
+          "description": "Automates the provisioning of an OpenShift AI add-on on the Red Hat OpenShift cluster on IBM Cloud. This includes optimized configurations for machine learning frameworks and simplified deployment of AI-driven applications. [Learn more.](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui)."
+        },
+        {
+          "title": "Virtual Private Cloud",
+          "description": "Creates and configures a Virtual Private Cloud (VPC) network on IBM Cloud for deploying the OpenShift AI cluster in a secure and isolated network environment. [Learn more.](https://cloud.ibm.com/docs/vpc?topic=vpc-getting-started&interface=cli#create-and-configure-vpc)"
+        },
+        {
+          "title": "Object Storage",
+          "description": "Creates and configures an [Object Storage bucket](https://cloud.ibm.com/docs/openshift?topic=openshift-storage-cos-understand) which acts as OpenShift internal registry storage. You can provide an existing COS Instance or use the [Cloud automation for Object Storage](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/deploy-arch-ibm-cos-68921490-2778-4930-ac6d-bae7be6cd958-global) for creating a new instance."
+        },
+        {
+          "title": "KMS Encryption",
+          "description": "Optionally you can enable key management services(KMS) [encryption](https://cloud.ibm.com/docs/openshift?topic=openshift-encryption-secrets) of the Kubernetes Secrets and Object Storage bucket using either a newly created key or an existing one."
+        },
+        {
+          "title": "Secrets Manager",
+          "description": "Optional integration with [Cloud automation for Secrets Manager](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/deploy-arch-ibm-secrets-manager-6d6ebc76-7bbd-42f5-8bc7-78f4fabd5944-global) for centrally managing Ingress subdomain certificates."
+        },
+        {
+          "title": "Observability",
+          "description": "This solution can leverage [Cloud automation for Observability](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/deploy-arch-ibm-observability-a3137d28-79e0-479d-8a24-758ebd5a0eab-global) that supports configuring resources for logging, monitoring and activity tracker event routing (optional)."
         }
       ],
       "support_details": "This product is in the community registry, as such support is handled through the originated repo. If you experience issues kindly open an issue [here](https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/issues). Please note that this product is not currently supported through the IBM Cloud Support Center.",
@@ -39,6 +63,7 @@
         {
           "label": "Fully configurable",
           "name": "fully-configurable",
+          "index": 1,
           "install_type": "fullstack",
           "working_directory": "solutions/fully-configurable",
           "iam_permissions": [
@@ -80,18 +105,37 @@
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager",
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ]
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager"
+              ],
+              "service_name": "secrets-manager",
+              "notes": "[Optional] Required for creating an Secrets Manager instance. 'Manager' access required to create new secret groups."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "sysdig-monitor",
+              "notes": "[Optional] Required if consuming Observability deployable architecture, which sets up Cloud Monitoring."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "logs",
+              "notes": "[Optional] Required if consuming Observability DA which sets up Cloud logs."
             }
           ],
           "architecture": {
             "features": [
-              {
-                "title": "Red Hat OpenShift Cluster",
-                "description": "Creates and configures GPU enabled Red Hat OpenShift Cluster."
-              },
-              {
-                "title": "OpenShift AI Add-on",
-                "description": "Installs the Red Hat OpenShift AI add-on."
-              }
+                  {
+                    "title": " ",
+                    "description": "Configured to use IBM secure by default standards, but can be edited to fit your use case."
+                  }
             ],
             "diagrams": [
               {
@@ -100,7 +144,7 @@
                   "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/main/reference-architecture/deployable-architecture-ocp-ai-cluster.svg",
                   "type": "image/svg+xml"
                 },
-                "description": "This architecture illustrates the deployment of Red Hat OpenShift cluster integrated with an AI, showcasing the key components and their interactions for AI workload support."
+                "description": "This deployable architecture illustrates the deployment of a GPU-enabled Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on, showcasing the key components and their interactions for AI workloads support.<br><br>You can create a fully-configured <b>VPC</b> by selecting the [Cloud automation for VPC](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/deploy-arch-ibm-vpc-2af61763-f8ef-4527-a815-b92166f29bc8-global) dependency or you can use an existing VPC if any. The VPC can be provisioned either in a single-zone or multi-zone configuration, depending on your availability requirements. By default, the VPC addon provisions a three-zone VPC, forming the foundation for your OpenShift cluster. <br><br>To utilize the capabilities of <b>OpenShift AI</b>, you must configure <b>at least one GPU-enabled node</b> within your cluster. The architecture supports a flexible compute environment, allowing you to deploy a mix of </b>GPU </b>and </b>non-GPU</b> nodes across different worker pools. This solution offers two worker pools spread across all three zones, with the OpenShift AI add-on set as the default configuration. Each worker pool has a minimum of two worker nodes for each machine type.<br><br>A <b>Cloud Object Storage (COS)</b> instance is required for the OpenShift cluster. Within this instance, an Object Storage bucket will be created, which serves as the internal registry storage for the OpenShift cluster. The [Cloud automation for Object Storage](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/deploy-arch-ibm-cos-68921490-2778-4930-ac6d-bae7be6cd958-global) deployable architecture can be used to create a COS instance. Additionally, the storage bucket can be encrypted using <b>Key Management Services(KMS)</b> to enhance security.<br><br>For logging and monitoring needs, you can enable <b>Observability</b> for your cluster. [Cloud automation for Observability](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/deploy-arch-ibm-observability-a3137d28-79e0-479d-8a24-758ebd5a0eab-global) provides advanced monitoring, logging, and operational insights into the performance and health of your deployment.<br><br><b>Secrets Manager</b> Integration can also be enabled using [Cloud automation for Secrets Manager](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/dep[…]bm-secrets-manager-6d6ebc76-7bbd-42f5-8bc7-78f4fabd5944-global) for centrally managing Ingress subdomain certificates, ensuring secure management of sensitive credentials.<br><br>This architecture provides a robust and secure foundation for deploying and managing your AI workloads on Red Hat OpenShift cluster, enabling seamless integration, enhanced security, and comprehensive monitoring for your applications."
               }
             ]
           },
@@ -113,6 +157,7 @@
             {
               "key": "existing_resource_group_name",
               "required": true,
+              "display_name": "resource_group",
               "custom_config": {
                 "type": "resource_group",
                 "grouping": "deployment",
@@ -121,6 +166,10 @@
                   "identifier": "rg_name"
                 }
               }
+            },
+            {
+              "key": "ocp_version",
+              "required": true
             },
             {
               "key": "default_worker_pool_machine_type",
@@ -141,10 +190,6 @@
               {
                 "displayname": "bx2.8x32",
                 "value": "bx2.8x32"
-              },
-              {
-                "displayname": "bx2d.metal.96x384 (only Toronto (ca-tor))",
-                "value": "bx2d.metal.96x384"
               },
               {
                 "displayname": "bx3d.128x640",
@@ -188,10 +233,6 @@
               {
                 "displayname": "cx2.48x96",
                 "value": "cx2.48x96"
-              },
-              {
-                "displayname": "cx2d.metal.96x192 (only Toronto (ca-tor)) ",
-                "value": "cx2d.metal.96x192"
               },
               {
                 "displayname": "cx3d.128x320",
@@ -246,10 +287,6 @@
                 "value": "mx2.8x64"
               },
               {
-                "displayname": "mx2d.metal.96x768 (only Toronto (ca-tor))) ",
-                "value": "mx2d.metal.96x768"
-              },
-              {
                 "displayname": "mx3d.128x1280",
                 "value": "mx3d.128x1280"
               },
@@ -272,6 +309,18 @@
               {
                 "displayname": "mx3d.96x960",
                 "value": "mx3d.96x960"
+              },
+              {
+                "displayname": "bx2d.metal.96x384 (Available in Toronto (ca-tor))",
+                "value": "bx2d.metal.96x384"
+              },
+              {
+                "displayname": "mx2d.metal.96x768 (Available in Toronto (ca-tor))) ",
+                "value": "mx2d.metal.96x768"
+              },
+              {
+                "displayname": "cx2d.metal.96x192 (Available in Toronto (ca-tor)) ",
+                "value": "cx2d.metal.96x192"
               },
               { "displayname": "mx2.16x128.2000gb (Not available in Sao Paulo (br-sao), Montreal (ca-mon), Madrid (eu-es), Osaka (jp-osa))",
                 "value": "mx2.16x128.2000gb"
@@ -325,12 +374,19 @@
               ]
             },
             {
-              "key": "additional_worker_pools"
+              "key": "additional_worker_pools",
+              "type": "array",
+              "custom_config": {
+                  "type": "textarea",
+                  "grouping": "deployment",
+                  "original_grouping": "deployment"
+                }
             }
           ],
           "dependencies": [
             {
               "name": "add-ons-beta-deploy-arch-ibm-base-ocp-vpc",
+              "description": "Configure the Red Hat OpenShift cluster on IBM Cloud required to install the OpenShift AI add-on. ",
               "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
               "flavors": [
                 "fully-configurable"
@@ -342,8 +398,10 @@
                 {
                   "dependency_input": "addons",
                   "value": {
-                    "openshift-ai": "416"
+                    "openshift-ai":{
+                      "version" : "416"
                   }
+                }
                 },
                 {
                   "dependency_input": "prefix",
@@ -374,12 +432,18 @@
                   "dependency_input": "additional_worker_pools",
                   "version_input": "additional_worker_pools",
                   "reference_version": true
+                },
+                {
+                  "dependency_input": "ocp_version",
+                  "version_input": "ocp_version",
+                  "reference_version": true
                 }
               ],
-              "version": "^v3.43.1"
+              "version": "v3.50.0"
             }
           ],
-          "dependency_version_2": true
+          "dependency_version_2": true,
+          "terraform_version": "1.10.5"
         },
         {
           "label": "QuickStart",
