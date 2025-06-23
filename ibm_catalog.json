@@ -192,10 +192,6 @@
                 "value": "bx2.8x32"
               },
               {
-                "displayname": "bx2d.metal.96x384 (only Toronto (ca-tor))",
-                "value": "bx2d.metal.96x384"
-              },
-              {
                 "displayname": "bx3d.128x640",
                 "value": "bx3d.128x640"
               },
@@ -237,10 +233,6 @@
               {
                 "displayname": "cx2.48x96",
                 "value": "cx2.48x96"
-              },
-              {
-                "displayname": "cx2d.metal.96x192 (only Toronto (ca-tor)) ",
-                "value": "cx2d.metal.96x192"
               },
               {
                 "displayname": "cx3d.128x320",
@@ -295,10 +287,6 @@
                 "value": "mx2.8x64"
               },
               {
-                "displayname": "mx2d.metal.96x768 (only Toronto (ca-tor))) ",
-                "value": "mx2d.metal.96x768"
-              },
-              {
                 "displayname": "mx3d.128x1280",
                 "value": "mx3d.128x1280"
               },
@@ -321,6 +309,18 @@
               {
                 "displayname": "mx3d.96x960",
                 "value": "mx3d.96x960"
+              },
+              {
+                "displayname": "bx2d.metal.96x384 (Available in Toronto (ca-tor))",
+                "value": "bx2d.metal.96x384"
+              },
+              {
+                "displayname": "mx2d.metal.96x768 (Available in Toronto (ca-tor))) ",
+                "value": "mx2d.metal.96x768"
+              },
+              {
+                "displayname": "cx2d.metal.96x192 (Available in Toronto (ca-tor)) ",
+                "value": "cx2d.metal.96x192"
               },
               { "displayname": "mx2.16x128.2000gb (Not available in Sao Paulo (br-sao), Montreal (ca-mon), Madrid (eu-es), Osaka (jp-osa))",
                 "value": "mx2.16x128.2000gb"
