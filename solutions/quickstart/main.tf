@@ -15,13 +15,14 @@ locals {
 ########################################################################################################################
 locals {
   subnet = {
-    name           = "${local.prefix}subnet"
-    cidr           = var.address_prefix
-    public_gateway = true
-    acl_name       = "${local.prefix}acl"
-  }
-  subnets = {
-    "zone-1" = [local.subnet]
+    "zone-1" = [
+      {
+        name           = "${local.prefix}subnet"
+        cidr           = var.address_prefix
+        public_gateway = true
+        acl_name       = "${local.prefix}acl"
+      }
+    ]
   }
 
   gateways = {
@@ -58,7 +59,7 @@ module "vpc" {
   region              = var.region
   name                = "vpc"
   prefix              = var.prefix
-  subnets             = local.subnets
+  subnets             = local.subnet
   network_acls        = [local.network_acl]
   use_public_gateways = local.gateways
 
@@ -76,11 +77,12 @@ locals {
     }
     ],
     [for pool in var.additional_worker_pools : {
-      subnet_prefix    = "zone-1"
-      pool_name        = pool.pool_name
-      machine_type     = pool.machine_type
-      operating_system = pool.operating_system
-      workers_per_zone = pool.workers_per_zone
+      subnet_prefix     = "zone-1"
+      pool_name         = pool.pool_name
+      machine_type      = pool.machine_type
+      operating_system  = pool.operating_system
+      workers_per_zone  = pool.workers_per_zone
+      secondary_storage = pool.secondary_storage
       }
   ])
 

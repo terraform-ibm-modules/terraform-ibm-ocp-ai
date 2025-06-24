@@ -33,7 +33,7 @@ variable "prefix" {
 }
 variable "region" {
   type        = string
-  description = "Region to provision all resources created by this example"
+  description = "Region to provision all resources created by this solution"
   default     = "au-syd"
 }
 variable "ocp_version" {
@@ -57,15 +57,7 @@ variable "ocp_entitlement" {
   description = "Value that is applied to the entitlements for OCP cluster provisioning"
   default     = null
 }
-variable "zone" {
-  type        = number
-  description = "Specify the zone to which the cluster will be deployed."
-  default     = 1
-  validation {
-    condition     = contains([1, 2, 3], var.zone)
-    error_message = "Each region has only 3 zones."
-  }
-}
+
 variable "default_worker_pool_machine_type" {
   type        = string
   description = "Specifies the machine type for the default worker pool. This determines the CPU, memory, and disk resources available to each worker node. For OpenShift AI installation, machines should have atleast 8 vcpu, 32GB RAM and GPU. Refer [IBM Cloud documentation for available machine types](https://cloud.ibm.com/docs/openshift?topic=openshift-vpc-flavors)"
@@ -125,7 +117,7 @@ variable "addons" {
       parameters_json = optional(string)
     }))
   })
-  description = "Map of OCP cluster add-on versions to install (NOTE: The 'vpc-block-csi-driver' add-on is installed by default for VPC clusters and 'ibm-storage-operator' is installed by default in OCP 4.15 and later, however you can explicitly specify it here if you wish to choose a later version than the default one). For full list of all supported add-ons and versions, see https://cloud.ibm.com/docs/containers?topic=containers-supported-cluster-addon-versions. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-ocp-virtualization/blob/main/solutions/quickstart/DA_docs.md#options-with-addons)"
+  description = "Map of OCP cluster add-on versions to install for Openshift AI. For full list of all supported versions for Openshift AI, see https://cloud.ibm.com/docs/containers?topic=containers-supported-cluster-addon-versions. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/blob/main/solutions/quickstart/DA_docs.md)"
   nullable    = false
   default = {
     openshift-ai = {
@@ -154,7 +146,7 @@ variable "additional_worker_pools" {
   description = "List of additional worker pools configured exclusively for the GPU machine type to support AI workload requirements within the cluster. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/blob/main/solutions/fully-configurable/DA_docs.md#options-with-worker-pools)"
   default = [
     {
-      pool_name        = "gpu-2"
+      pool_name        = "gpu"
       machine_type     = "gx3.16x80.l4"
       workers_per_zone = 2
       operating_system = "RHCOS"
