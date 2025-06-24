@@ -81,7 +81,7 @@ variable "default_worker_pool_operating_system" {
   }
   validation {
     condition     = tonumber(var.ocp_version) < 4.18 || var.default_worker_pool_operating_system == "RHCOS"
-    error_message = "Invalid operating system. For OpenShift version 4.18 or higher, the default worker pool operating system must be 'RHCOS'."
+    error_message = "Invalid operating system. For OpenShift version 4.18 or higher, the worker node operating system must be 'RHCOS'. [Learn more](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui#ai-min)"
   }
 }
 
@@ -152,6 +152,6 @@ variable "additional_worker_pools" {
     condition = alltrue([
       for pool in var.additional_worker_pools : tonumber(var.ocp_version) < 4.18 || pool.operating_system == "RHCOS"
     ])
-    error_message = "Invalid operating system. For OpenShift version 4.18 or higher, each additional worker pool operating system must be 'RHCOS'."
+    error_message = "Invalid operating system. For OpenShift version 4.18 or higher, the worker node operating system must be 'RHCOS'. [Learn more](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui#ai-min)"
   }
 }
