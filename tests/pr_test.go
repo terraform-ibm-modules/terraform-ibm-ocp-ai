@@ -66,3 +66,18 @@ func TestRunQuickstartDA(t *testing.T) {
 	assert.Nil(t, err, "This should not have errored")
 	assert.NotNil(t, output, "Expected some output")
 }
+
+func TestRunUpgradeQuickstartDA(t *testing.T) {
+	t.Parallel()
+
+	options := setupOptions(t, "qs-upg", quickStartTerraformDir)
+	options.TerraformVars = map[string]interface{}{
+		"prefix":                       options.Prefix,
+		"existing_resource_group_name": resourceGroup,
+	}
+	output, err := options.RunTestUpgrade()
+	if !options.UpgradeTestSkipped {
+		assert.Nil(t, err, "This should not have errored")
+		assert.NotNil(t, output, "Expected some output")
+	}
+}
