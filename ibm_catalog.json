@@ -68,12 +68,12 @@
           "working_directory": "solutions/fully-configurable",
           "iam_permissions": [
             {
+              "service_name": "iam-identity",
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::role:Administrator",
                 "crn:v1:bluemix:public:iam-identity::::serviceRole:UserApiKeyCreator"
               ],
-              "service_name": "iam-identity",
-              "notes": "Required for IBM Cloud OpenShift to create the containers-kubernetes-key required by the service."
+              "notes": "Required to create the containers-kubernetes-key needed by the OpenShift cluster on IBM Cloud."
             },
             {
               "role_crns": [
@@ -203,10 +203,6 @@
                 {
                   "displayname": "4.15",
                   "value": "4.15"
-                },
-                {
-                  "displayname": "4.14",
-                  "value": "4.14"
                 }
               ]
             },
