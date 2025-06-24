@@ -110,7 +110,7 @@
             {
               "service_name": "is.vpc",
               "role_crns": ["crn:v1:bluemix:public:iam::::role:Administrator"],
-               "notes": "Required for creating Virtual Private Cloud(VPC)."
+               "notes": "[Optional] Required for creating Virtual Private Cloud(VPC)."
             },
             {
               "role_crns": [
@@ -140,7 +140,7 @@
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager"
               ],
-               "notes": "[Optional] Required if you are consuming Observability deployable architecture which sets up Logs Routing."
+               "notes": "[Optional] Required if consuming Observability deployable architecture which sets up Logs Routing."
             },
             {
               "service_name": "atracker",
@@ -148,7 +148,7 @@
                 "crn:v1:bluemix:public:iam::::serviceRole:Writer",
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
-              "notes": "[Optional] Required if you are consuming Observability deployable architecture which sets up Activity Tracker Event Routing."
+              "notes": "[Optional] Required if consuming Observability deployable architecture which sets up Activity Tracker Event Routing."
             }
           ],
           "architecture": {
@@ -192,6 +192,10 @@
               "key": "ocp_version",
               "required": true,
               "options": [
+                {
+                  "displayname": "4.18",
+                  "value": "4.18"
+                },
                 {
                   "displayname": "4.17",
                   "value": "4.17"
