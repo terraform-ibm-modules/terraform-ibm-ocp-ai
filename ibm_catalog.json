@@ -58,7 +58,7 @@
           "description": "This solution can leverage [Cloud automation for Observability](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/deploy-arch-ibm-observability-a3137d28-79e0-479d-8a24-758ebd5a0eab-global) that supports configuring resources for logging, monitoring, and activity tracker event routing (optional)."
         }
       ],
-      "support_details": "This product is in the community registry, support is handled through the originated repo. If you experience issues kindly open an issue [here](https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/issues). Please note that this product is not currently supported through the IBM Cloud Support Center.",
+      "support_details": "This product is in the community registry, support is handled through the [original repo](https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai). If you experience issues kindly open an issue [here](https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/issues). Please note that this product is not currently supported through the IBM Cloud Support Center.",
       "flavors": [
         {
           "label": "Fully configurable",
