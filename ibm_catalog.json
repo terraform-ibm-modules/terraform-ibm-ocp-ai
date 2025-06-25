@@ -227,6 +227,9 @@
               ]
             },
             {
+              "key": "subnets"
+            },
+            {
               "key": "default_worker_pool_machine_type",
               "required": true,
               "options": [
@@ -835,6 +838,24 @@
                   "value": "4.14"
                 }
               ]
+            },
+            {
+              "key": "provider_visibility",
+              "options": [
+                {
+                  "displayname": "private",
+                  "value": "private"
+                },
+                {
+                  "displayname": "public",
+                  "value": "public"
+                },
+                {
+                  "displayname": "public-and-private",
+                  "value": "public-and-private"
+                }
+              ],
+              "hidden": true
             },
             {
               "key": "cluster_name"
