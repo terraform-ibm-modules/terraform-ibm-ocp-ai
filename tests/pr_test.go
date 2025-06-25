@@ -181,3 +181,55 @@ func TestRunQuickstartDASchematics(t *testing.T) {
 	err := options.RunSchematicTest()
 	assert.NoError(t, err, "Schematic Test had unexpected error")
 }
+
+func TestRunQuickstartDAUpgrade(t *testing.T) {
+	t.Parallel()
+
+	excludeDirs := []string{
+		".terraform",
+		".docs",
+		".github",
+		".git",
+		".idea",
+		"common-dev-assets",
+		"examples",
+		"tests",
+		"reference-architectures",
+	}
+	includeFiletypes := []string{
+		".tf",
+		".yaml",
+		".py",
+		".tpl",
+		".md",
+		".sh",
+	}
+
+	tarIncludePatterns, recurseErr := getTarIncludePatternsRecursively("..", excludeDirs, includeFiletypes)
+	// if error producing tar patterns (very unexpected) fail test immediately
+	require.NoError(t, recurseErr, "Schematic Test had unexpected error traversing directory tree")
+
+	// Set up a schematics test
+	options := testschematic.TestSchematicOptionsDefault(&testschematic.TestSchematicOptions{
+		Testing:            t,
+		TarIncludePatterns: tarIncludePatterns,
+		TemplateFolder:     quickStartTerraformDir,
+		// This is the resource group that the workspace will be created in
+		ResourceGroup:          resourceGroup,
+		Prefix:                 "qs-ai-upg",
+		Tags:                   []string{"test-schematic"},
+		DeleteWorkspaceOnFail:  false,
+		WaitJobCompleteMinutes: 180,
+	})
+
+	// Pass required variables
+	options.TerraformVars = []testschematic.TestSchematicTerraformVar{
+		{Name: "ibmcloud_api_key", Value: options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"], DataType: "string", Secure: true},
+		// use options.Prefix here to generate a unique prefix every time so resource group name is unique for every test
+		{Name: "prefix", Value: options.Prefix, DataType: "string"},
+		{Name: "existing_resource_group_name", Value: resourceGroup, DataType: "string"},
+	}
+
+	err := options.RunSchematicUpgradeTest()
+	assert.NoError(t, err, "Schematic Test had unexpected error")
+}
