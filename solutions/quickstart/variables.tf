@@ -50,6 +50,18 @@ variable "ocp_version" {
   type        = string
   description = "The version of the OpenShift cluster."
   default     = "4.17"
+
+  validation {
+    condition = anytrue([
+      var.ocp_version == null,
+      var.ocp_version == "default",
+      var.ocp_version == "4.18",
+      var.ocp_version == "4.15",
+      var.ocp_version == "4.16",
+      var.ocp_version == "4.17",
+    ])
+    error_message = "The specified ocp_version is not of the valid versions."
+  }
 }
 variable "cluster_name" {
   type        = string
