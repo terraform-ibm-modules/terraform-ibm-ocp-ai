@@ -15,7 +15,7 @@ This variable configuration allows you to specify which Red Hat OpenShift add-on
 ## Configuring Openshift-AI addon
 - `openshift-ai` (optional): (Object) The Red Hat OpenShift AI add-on enables quick deployment of Red Hat OpenShift AI on a Red Hat OpenShift Cluster in IBM Cloud.
   - `version` (optional): The add-on version. Omit the version that you want to use as the default version.This is required when you want to update the add-on to specified version.
-  - `parameters_json` (optional): Add-On parameters to pass in a JSON string format.
+  - `parameters_json` (optional): Add-On parameters to pass in a JSON string format. [Learn more](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui#custom-options).
 
 Please refer to [this](https://cloud.ibm.com/docs/containers?topic=containers-supported-cluster-addon-versions) page for information on supported versions.
 
@@ -61,39 +61,12 @@ This variable defines the worker node pools for the Red Hat OpenShift cluster, w
 #### Example 1: Configuration with 2 GPU Nodes
 ```hcl
 [
-  {
-    pool_name                         = "ai-workload"
-    machine_type                      = "gx3.16x80.l4"
-    workers_per_zone                  = 2
-    secondary_storage                 = "300gb.5iops-tier"
-    operating_system                  = "RHCOS"
-  },
-  {
-    pool_name                         = "balanced-pool"
-    machine_type                      = "gx3.24x120.l40s"
-    workers_per_zone                  = 2
-    secondary_storage                 = "300gb.5iops-tier"
-    operating_system                  = "RHCOS"
-  }
-]
-```
-#### Example 2: Configuration with 1 GPU Node and 1 Non-GPU Node
-
-```hcl
-[
-  {
-    pool_name                         = "ai-workload"
-    machine_type                      = "gx3.16x80.l4"
-    workers_per_zone                  = 2
-    secondary_storage                 = "300gb.5iops-tier"
-    operating_system                  = "RHCOS"
-  },
-  {
-    pool_name                         = "balanced-pool"
-    machine_type                      = "bx2.8x32"
-    workers_per_zone                  = 2
-    operating_system                  = "RHCOS"
-  }
+    {
+      pool_name        = "gpu"
+      machine_type     = "gx3.16x80.l4"
+      workers_per_zone = 2
+      operating_system = "RHCOS"
+    },
 ]
 ```
 ### Validation Rules
