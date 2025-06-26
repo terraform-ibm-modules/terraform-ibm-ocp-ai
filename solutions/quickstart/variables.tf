@@ -10,7 +10,7 @@ variable "ibmcloud_api_key" {
 }
 variable "existing_resource_group_name" {
   type        = string
-  description = "Name of the existing resource group.  Required if not creating new resource group"
+  description = "Name of the existing resource group. Required if not creating new resource group"
   default     = "Default"
 }
 variable "provider_visibility" {
@@ -92,14 +92,12 @@ variable "default_worker_pool_machine_type" {
   }
 }
 
-#tflint-ignore: all
 variable "default_worker_pool_workers_per_zone" {
   type        = number
   description = "Defines the number of worker nodes to provision in each zone for the default worker pool. Overall cluster must have at least 2 worker nodes, but individual worker pools may have fewer nodes per zone. [Learn More](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui#ai-min)"
   default     = 2
 }
 
-# tflint-ignore: all
 variable "default_worker_pool_operating_system" {
   type        = string
   description = "Provide the operating system for the worker nodes in the default worker pool. [Learn more](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui#ai-min)"
@@ -157,7 +155,7 @@ variable "additional_worker_pools" {
     enableAutoscaling             = optional(bool)
     additional_security_group_ids = optional(list(string))
   }))
-  description = "List of additional worker pools configured exclusively for the GPU machine type to support AI workload requirements within the cluster. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/blob/main/solutions/fully-configurable/DA_docs.md#options-with-worker-pools)"
+  description = "List of additional worker pools configured exclusively for the GPU machine type to support AI workload requirements within the cluster. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/blob/main/solutions/quickstart/DA_docs.md#options-with-worker-pools)"
   default = [
     {
       pool_name        = "gpu"

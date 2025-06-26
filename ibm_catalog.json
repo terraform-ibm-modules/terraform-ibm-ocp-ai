@@ -177,7 +177,6 @@
             },
             {
               "key": "existing_resource_group_name",
-              "required": true,
               "display_name": "resource_group",
               "custom_config": {
                 "type": "resource_group",
@@ -514,7 +513,7 @@
           "terraform_version": "1.10.5"
         },
         {
-          "label": "QuickStart",
+          "label": "Quickstart",
           "name": "quickstart",
           "index": 2,
           "install_type": "fullstack",
@@ -526,7 +525,7 @@
                     "crn:v1:bluemix:public:iam::::serviceRole:Manager",
                     "crn:v1:bluemix:public:iam::::role:Editor"
                 ],
-                "notes": "Required to create and edit OpenShift cluster and the related resources."
+                "notes": "Required to create and edit the OpenShift cluster and the related resources."
             },
             {
                 "service_name": "iam-identity",
@@ -579,7 +578,7 @@
             },
             {
               "key": "existing_resource_group_name",
-              "required": true,
+              "display_name": "resource_group",
               "custom_config": {
                 "type": "resource_group",
                 "grouping": "deployment",
@@ -822,6 +821,10 @@
               "required": true,
               "options": [
                 {
+                  "displayname": "4.18",
+                  "value": "4.18"
+                },
+                {
                   "displayname": "4.17",
                   "value": "4.17"
                 },
@@ -832,10 +835,6 @@
                 {
                   "displayname": "4.15",
                   "value": "4.15"
-                },
-                {
-                  "displayname": "4.14",
-                  "value": "4.14"
                 }
               ]
             },
