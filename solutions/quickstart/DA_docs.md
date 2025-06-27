@@ -52,7 +52,7 @@ This variable defines the worker node pools for the Red Hat OpenShift cluster, w
 - `labels` (optional): A set of key-value labels assigned to the worker pool for identification.
 - `minSize` (optional): The minimum number of worker nodes allowed in the pool.
 - `maxSize` (optional): The maximum number of worker nodes allowed in the pool.
-- `secondary_storage` (optional): The secondary storage attached to the worker nodes. Secondary storage is immutable and cannott be changed after provisioning.
+- `secondary_storage` (optional): The secondary storage attached to the worker nodes. Secondary storage is immutable and cannot be changed after provisioning.
 - `enableAutoscaling` (optional): Set to `true` to enable automatic scaling of worker based on workload demand.
 - `additional_security_group_ids` (optional): A list of security group IDs that are attached to the worker nodes for additional network security controls.
 
