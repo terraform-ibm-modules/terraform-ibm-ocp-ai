@@ -37,7 +37,7 @@ This variable defines the worker node pools for the Red Hat OpenShift cluster, w
 
 - Variable name: `additional_worker_pools`.
 - Type: A list of objects. Each object represents a `worker_pool` configuration.
-- Default value: An empty list (`[]`).
+- Default value: A list with one object defining a worker pool with specific machine type,workers and Operating system.
 
 ### Options for additional_worker_pools
 
@@ -58,7 +58,7 @@ This variable defines the worker node pools for the Red Hat OpenShift cluster, w
 
 ### Example for additional_worker_pools configuration
 
-#### Example 1: Configuration with 2 GPU Nodes
+#### Example 1: Configuration with GPU Node
 ```hcl
 [
     {

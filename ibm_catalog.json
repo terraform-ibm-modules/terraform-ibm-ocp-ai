@@ -548,7 +548,7 @@
                     "crn:v1:bluemix:public:iam::::serviceRole:Manager",
                     "crn:v1:bluemix:public:iam::::role:Editor"
                 ],
-                "notes": "Required to create Cloud Object Storage (COS) Instance."
+                "notes": "Required to create Cloud Object Storage (COS) instance."
             }
           ],
           "architecture": {
@@ -573,8 +573,7 @@
           "configuration": [
             {
               "key": "prefix",
-              "required": true,
-              "description": "The prefix to add to all resources that this solution creates. To not use any prefix value, you can enter the string `__NULL__`."
+              "required": true
             },
             {
               "key": "existing_resource_group_name",
@@ -590,7 +589,6 @@
             },
             {
               "key": "default_worker_pool_machine_type",
-              "required": true,
               "options": [
               {
                 "displayname": "bx2.16x64",
@@ -769,24 +767,15 @@
             ]
             },
             {
-              "key": "default_worker_pool_workers_per_zone",
-              "required": true
+              "key": "default_worker_pool_workers_per_zone"
             },
             {
               "key": "default_worker_pool_operating_system",
               "required": true,
               "options": [
                 {
-                  "displayname": "RHEL 9",
-                  "value": "RHEL_9_64"
-                },
-                {
                   "displayname": "Red Hat CoreOS",
                   "value": "RHCOS"
-                },
-                {
-                  "displayname": "RHEL 8",
-                  "value": "REDHAT_8_64"
                 }
               ]
             },
@@ -806,7 +795,6 @@
               "key": "region",
               "required": true,
               "type": "string",
-              "description": "Region in which all the resources will be deployed. [Learn More](https://terraform-ibm-modules.github.io/documentation/#/region).",
               "custom_config": {
                 "config_constraints": {
                   "generationType": "2"
@@ -866,14 +854,21 @@
               "key": "ocp_entitlement"
             },
             {
-              "key": "access_tags"
+              "key": "access_tags",
+              "custom_config": {
+                    "type": "array",
+                    "grouping": "deployment",
+                    "original_grouping": "deployment",
+                    "config_constraints": {
+                        "type": "string"
+                    }
+                                  }
             },
             {
               "key": "manage_all_addons"
             },
             {
-              "key": "addons",
-              "required": true
+              "key": "addons"
             }
 
 

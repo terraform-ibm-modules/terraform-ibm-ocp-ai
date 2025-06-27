@@ -9,3 +9,6 @@ offerings:
       - name: fully-configurable
         mark_ready: true
         install_type: fullstack
+      - name: quickstart
+        mark_ready: true
+        install_type: fullstack

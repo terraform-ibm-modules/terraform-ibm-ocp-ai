@@ -43,7 +43,7 @@ variable "prefix" {
 }
 variable "region" {
   type        = string
-  description = "Region to provision all resources created by this solution"
+  description = "Region in which all the resources will be deployed. [Learn More](https://terraform-ibm-modules.github.io/documentation/#/region)."
   default     = "au-syd"
 }
 variable "ocp_version" {
