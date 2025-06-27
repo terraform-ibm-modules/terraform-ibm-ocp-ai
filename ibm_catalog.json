@@ -153,10 +153,10 @@
           ],
           "architecture": {
             "features": [
-                  {
+              {
                     "title": " ",
                     "description": "Configured to use IBM secure by default standards, but can be edited to fit your use case."
-                  }
+              }
             ],
             "diagrams": [
               {
@@ -177,7 +177,6 @@
             },
             {
               "key": "existing_resource_group_name",
-              "required": true,
               "display_name": "resource_group",
               "custom_config": {
                 "type": "resource_group",
@@ -187,6 +186,22 @@
                   "identifier": "rg_name"
                 }
               }
+            },
+            {
+              "key": "region",
+              "required": true,
+              "type": "string",
+              "custom_config": {
+                "config_constraints": {
+                  "generationType": "2"
+                },
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "type": "vpc_region"
+              },
+              "description": "Region in which all the resources will be deployed. [Learn More](https://terraform-ibm-modules.github.io/documentation/#/region).",
+              "virtual": true,
+              "default_value": "us-south"
             },
             {
               "key": "ocp_version",
@@ -209,6 +224,9 @@
                   "value": "4.15"
                 }
               ]
+            },
+            {
+              "key": "subnets"
             },
             {
               "key": "default_worker_pool_machine_type",
@@ -476,6 +494,16 @@
                   "dependency_input": "ocp_version",
                   "version_input": "ocp_version",
                   "reference_version": true
+                },
+                {
+                  "dependency_input": "subnets",
+                  "version_input": "subnets",
+                  "reference_version": true
+                },
+                {
+                  "dependency_input":"region",
+                  "version_input":"region",
+                  "reference_version": true
                 }
               ],
               "version": "v3.50.0"
@@ -483,7 +511,200 @@
           ],
           "dependency_version_2": true,
           "terraform_version": "1.10.5"
+        },
+        {
+          "label": "Quickstart",
+          "name": "quickstart",
+          "index": 2,
+          "install_type": "fullstack",
+          "working_directory": "solutions/quickstart",
+          "iam_permissions": [
+            {
+                "service_name": "containers-kubernetes",
+                "role_crns": [
+                    "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                    "crn:v1:bluemix:public:iam::::role:Editor"
+                ],
+                "notes": "Required to create and edit the OpenShift cluster and the related resources."
+            },
+            {
+                "service_name": "iam-identity",
+                "role_crns": [
+                    "crn:v1:bluemix:public:iam::::role:Administrator",
+                    "crn:v1:bluemix:public:iam-identity::::serviceRole:UserApiKeyCreator"
+                ],
+                "notes": "Required to create the containers-kubernetes-key needed by the OpenShift cluster on IBM Cloud."
+            },
+            {
+                "service_name": "is.vpc",
+                "role_crns": [
+                    "crn:v1:bluemix:public:iam::::role:Administrator"
+                ],
+                "notes": "Required for creating Virtual Private Cloud(VPC)."
+            },
+            {
+                "service_name": "cloud-object-storage",
+                "role_crns": [
+                    "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                    "crn:v1:bluemix:public:iam::::role:Editor"
+                ],
+                "notes": "Required to create Cloud Object Storage (COS) instance."
+            }
+          ],
+          "architecture": {
+            "features": [
+              {
+                "title": " ",
+                "description": "Configured for getting started with OpenShift AI, offering limited customization options."
+              }
+            ],
+            "diagrams": [
+              {
+                "diagram": {
+                  "caption": "Red Hat OpenShift cluster with AI for IBM Cloud.",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/main/reference-architecture/deployable-architecture-ocp-ai-cluster-qs.svg",
+                  "type": "image/svg+xml"
+                },
+                "description": "This QuickStart Deployable Architecture enables <b>single-click deployment </b> of a GPU-enabled Red Hat OpenShift cluster with the OpenShift AI add-on on IBM Cloud. It streamlines the provisioning of all required components , allowing you to get started with AI workloads quickly and efficiently.The architecture includes a pre-configured <b>Virtual Private Cloud (VPC)</b> with a single-zone, single-subnet layout forming the foundation for your OpenShift cluster.<br><br>To utilize the capabilities of <b>OpenShift AI</b>, you must configure <b>at least one GPU-enabled node</b> within your cluster. The architecture supports a flexible compute environment, allowing you to deploy a mix of </b>GPU </b>and </b>non-GPU</b> nodes across different worker pools. This solution offers two worker pools spread across one zone, with the OpenShift AI add-on set as the default configuration. Each worker pool has a minimum of two worker nodes .<br><br>A <b>Cloud Object Storage (COS)</b> instance is required for the OpenShift cluster. Within this instance, an Object Storage bucket will be created, which serves as the internal registry storage for the OpenShift cluster."}
+
+            ]
+
+          },
+          "configuration": [
+            {
+              "key": "prefix",
+              "required": true
+            },
+            {
+              "key": "existing_resource_group_name",
+              "display_name": "resource_group",
+              "custom_config": {
+                "type": "resource_group",
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "identifier": "rg_name"
+                }
+              }
+            },
+            {
+              "key": "default_worker_pool_machine_type",
+              "options": [
+              {
+                "displayname": "bx2.8x32",
+                "value": "bx2.8x32"
+              }
+            ]
+            },
+            {
+              "key": "default_worker_pool_workers_per_zone"
+            },
+            {
+              "key": "default_worker_pool_operating_system",
+              "required": true,
+              "options": [
+                {
+                  "displayname": "Red Hat CoreOS",
+                  "value": "RHCOS"
+                }
+              ]
+            },
+            {
+              "key": "additional_worker_pools",
+              "type": "array",
+              "custom_config": {
+                  "type": "textarea",
+                  "grouping": "deployment",
+                  "original_grouping": "deployment"
+                }
+            },
+            {
+              "key": "ibmcloud_api_key"
+            },
+            {
+              "key": "region",
+              "required": true,
+              "type": "string",
+              "custom_config": {
+                "config_constraints": {
+                  "generationType": "2"
+                },
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "type": "vpc_region"
+              }
+            },
+            {
+              "key": "ocp_version",
+              "required": true,
+              "options": [
+                {
+                  "displayname": "4.18",
+                  "value": "4.18"
+                },
+                {
+                  "displayname": "4.17",
+                  "value": "4.17"
+                },
+                {
+                  "displayname": "4.16",
+                  "value": "4.16"
+                },
+                {
+                  "displayname": "4.15",
+                  "value": "4.15"
+                }
+              ]
+            },
+            {
+              "key": "provider_visibility",
+              "options": [
+                {
+                  "displayname": "private",
+                  "value": "private"
+                },
+                {
+                  "displayname": "public",
+                  "value": "public"
+                },
+                {
+                  "displayname": "public-and-private",
+                  "value": "public-and-private"
+                }
+              ],
+              "hidden": true
+            },
+            {
+              "key": "cluster_name"
+            },
+            {
+              "key": "address_prefix"
+            },
+            {
+              "key": "ocp_entitlement"
+            },
+            {
+              "key": "access_tags",
+              "custom_config": {
+                    "type": "array",
+                    "grouping": "deployment",
+                    "original_grouping": "deployment",
+                    "config_constraints": {
+                        "type": "string"
+                    }
+                                  }
+            },
+            {
+              "key": "manage_all_addons"
+            },
+            {
+              "key": "addons"
+            }
+
+
+          ]
         }
+
       ]
     }
   ]
