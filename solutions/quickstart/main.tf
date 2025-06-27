@@ -6,10 +6,12 @@ module "resource_group" {
   version                      = "1.2.0"
   existing_resource_group_name = var.existing_resource_group_name
 }
+
 locals {
   prefix       = var.prefix != null ? trimspace(var.prefix) != "" ? "${var.prefix}-" : "" : ""
   cluster_name = "${local.prefix}${var.cluster_name}"
 }
+
 ########################################################################################################################
 # VPC + Subnet + Public Gateway
 ########################################################################################################################
@@ -52,6 +54,7 @@ locals {
     ]
   }
 }
+
 module "vpc" {
   source              = "terraform-ibm-modules/landing-zone-vpc/ibm"
   version             = "7.25.3"
@@ -62,16 +65,15 @@ module "vpc" {
   subnets             = local.subnet
   network_acls        = [local.network_acl]
   use_public_gateways = local.gateways
-
-
 }
+
 locals {
   worker_pools = concat([
 
     {
       subnet_prefix    = "zone-1"
-      pool_name        = "default" # ibm_container_vpc_cluster automatically names default pool "default" (See https://github.com/IBM-Cloud/terraform-provider-ibm/issues/2849)
-      machine_type     = var.default_worker_pool_machine_type
+      pool_name        = "default"                            # ibm_container_vpc_cluster automatically names default pool "default" (See https://github.com/IBM-Cloud/terraform-provider-ibm/issues/2849)
+      machine_type     = var.default_worker_pool_machine_type ## minimum of 2 is allowed when using single zone
       operating_system = var.default_worker_pool_operating_system
       workers_per_zone = var.default_worker_pool_workers_per_zone
     }
@@ -85,8 +87,11 @@ locals {
       secondary_storage = pool.secondary_storage
       }
   ])
-
 }
+
+########################################################################################################################
+# OCP VPC cluster (single zone)
+########################################################################################################################
 module "ocp_base" {
   source                              = "terraform-ibm-modules/base-ocp-vpc/ibm"
   version                             = "3.50.2"
