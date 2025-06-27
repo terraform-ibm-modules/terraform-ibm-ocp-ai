@@ -1,6 +1,6 @@
 # Configuring complex inputs for Red Hat OpenShift Container Platform on VPC
 
-Several optional input variables in the Red Hat OpenShift Container Platform on VPC [Deployable Architecture](https://cloud.ibm.com/catalog#deployable_architecture) use complex object types. You can specify these inputs when you configure your deployable architecture.
+Several optional input variables in the Red Hat OpenShift Container Platform on VPC [Deployable Architecture](https://cloud.ibm.com/catalog#deployable_architecture) use complex object types. You can specify these variables when you configure your deployable architecture.
 
 - [Additional Worker Pools](#options-with-additional-worker-pools) (`additional_worker_pools`)
 
@@ -16,7 +16,7 @@ This variable defines the worker node pools for the Red Hat OpenShift cluster, w
 
 ### Options for additional_worker_pools
 
-- `vpc_subnets` (optional): (List) A list of object which specify which all subnets the worker pool should deploy its nodes.
+- `vpc_subnets` (optional): (List) A list of objects which specify which subnets the worker pool should deploy its nodes in.
   - `id` (required): A unique identifier for the VPC subnet.
   - `zone` (required): The zone where the subnet is located.
   - `cidr_block` (required): This defines the IP address range for the subnet in CIDR notation.
@@ -27,8 +27,8 @@ This variable defines the worker node pools for the Red Hat OpenShift cluster, w
 - `labels` (optional): A set of key-value labels assigned to the worker pool for identification.
 - `minSize` (optional): The minimum number of worker nodes allowed in the pool.
 - `maxSize` (optional): The maximum number of worker nodes allowed in the pool.
-- `secondary_storage` (optional): The secondary storage attached to the worker nodes. Secondary storage is immutable and can't be changed after provisioning.
-- `enableAutoscaling` (optional): Set `true` to enable automatic scaling of worker based on workload demand.
+- `secondary_storage` (optional): The secondary storage attached to the worker nodes. Secondary storage is immutable and cannot be changed after provisioning.
+- `enableAutoscaling` (optional): Set to `true` to enable automatic scaling of worker based on workload demand.
 - `additional_security_group_ids` (optional): A list of security group IDs that are attached to the worker nodes for additional network security controls.
 
 ### Example for additional_worker_pools configuration
