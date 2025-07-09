@@ -2,7 +2,10 @@
 package test
 
 import (
+	"crypto/rand"
+	"fmt"
 	"log"
+	"math/big"
 	"os"
 	"testing"
 
@@ -20,6 +23,12 @@ const quickStartTerraformDir = "solutions/quickstart"
 
 // Define a struct with fields that match the structure of the YAML data
 const yamlLocation = "../common-dev-assets/common-go-assets/common-permanent-resources.yaml"
+
+var validClusterRegions = []string{
+	"br-sao",
+	"eu-gb",
+	"jp-tok",
+}
 
 var permanentResources map[string]interface{}
 
@@ -44,6 +53,12 @@ func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptio
 }
 
 func setupQuickstartOptions(t *testing.T, prefix string) *testschematic.TestSchematicOptions {
+	rand, err := rand.Int(rand.Reader, big.NewInt(int64(len(validClusterRegions))))
+	if err != nil {
+		fmt.Println("Error generating random number:", err)
+		return nil
+	}
+	region := validClusterRegions[rand.Int64()]
 	options := testschematic.TestSchematicOptionsDefault(&testschematic.TestSchematicOptions{
 		Testing: t,
 		Prefix:  prefix,
@@ -51,15 +66,18 @@ func setupQuickstartOptions(t *testing.T, prefix string) *testschematic.TestSche
 			"*.tf",
 			quickStartTerraformDir + "/*.tf",
 		},
+
 		TemplateFolder:         quickStartTerraformDir,
 		Tags:                   []string{"test-schematic"},
 		DeleteWorkspaceOnFail:  false,
 		WaitJobCompleteMinutes: 360,
+		Region:                 region,
 	})
 	options.TerraformVars = []testschematic.TestSchematicTerraformVar{
 		{Name: "ibmcloud_api_key", Value: options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"], DataType: "string", Secure: true},
 		{Name: "prefix", Value: options.Prefix, DataType: "string"},
 		{Name: "existing_resource_group_name", Value: resourceGroup, DataType: "string"},
+		{Name: "region", Value: region, DataType: "string"},
 	}
 	return options
 }
