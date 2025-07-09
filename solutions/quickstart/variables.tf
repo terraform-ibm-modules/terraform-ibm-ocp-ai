@@ -16,7 +16,7 @@ variable "existing_resource_group_name" {
 variable "provider_visibility" {
   description = "Set the visibility value for the IBM terraform provider. Supported values are `public`, `private`, `public-and-private`. [Learn more](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/guides/custom-service-endpoints)."
   type        = string
-  default     = "private"
+  default     = "public"
 
   validation {
     condition     = contains(["public", "private", "public-and-private"], var.provider_visibility)
@@ -44,7 +44,7 @@ variable "prefix" {
 variable "region" {
   type        = string
   description = "Region in which all the resources will be deployed. [Learn More](https://terraform-ibm-modules.github.io/documentation/#/region)."
-  default     = "au-syd"
+  default     = "jp-tok"
 }
 variable "ocp_version" {
   type        = string
@@ -71,7 +71,7 @@ variable "cluster_name" {
 variable "address_prefix" {
   description = "The IP range that will be defined for the VPC for a certain location. Use only with manual address prefixes."
   type        = string
-  default     = "10.245.0.0/24"
+  default     = "10.40.20.0/24"
 }
 
 variable "ocp_entitlement" {
