@@ -523,7 +523,7 @@
                 "service_name": "containers-kubernetes",
                 "role_crns": [
                     "crn:v1:bluemix:public:iam::::serviceRole:Manager",
-                    "crn:v1:bluemix:public:iam::::role:Editor"
+                    "crn:v1:bluemix:public:iam::::role:Administrator"
                 ],
                 "notes": "Required to create and edit the OpenShift cluster and the related resources."
             },
@@ -549,6 +549,13 @@
                     "crn:v1:bluemix:public:iam::::role:Editor"
                 ],
                 "notes": "Required to create Cloud Object Storage (COS) instance."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Viewer"
+              ],
+              "service_name": "Resource group only",
+              "notes": "Viewer access is required in the resource group you want to provision in."
             }
           ],
           "architecture": {
