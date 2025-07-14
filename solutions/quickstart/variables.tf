@@ -107,7 +107,7 @@ variable "default_worker_pool_machine_type" {
 variable "default_worker_pool_workers_per_zone" {
   type        = number
   description = "Defines the number of worker nodes to provision in each zone for the default worker pool. Overall cluster must have at least 2 worker nodes, but individual worker pools may have fewer nodes per zone. [Learn More](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui#ai-min)"
-  default     = 2
+  default     = 1
 }
 
 variable "default_worker_pool_operating_system" {
@@ -172,7 +172,7 @@ variable "additional_worker_pools" {
     {
       pool_name        = "gpu"
       machine_type     = "gx3.16x80.l4"
-      workers_per_zone = 2
+      workers_per_zone = 1
       operating_system = "RHCOS"
     },
   ]
