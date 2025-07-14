@@ -71,7 +71,7 @@ variable "cluster_name" {
 variable "address_prefix" {
   description = "The IP range that will be defined for the VPC for a certain location. Use only with manual address prefixes."
   type        = string
-  default     = "10.40.20.0/24"
+  default     = "10.10.10.0/24"
 }
 
 variable "ocp_entitlement" {
