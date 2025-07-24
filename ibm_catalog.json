@@ -5,13 +5,14 @@
       "label": "Cloud automation for Red Hat OpenShift AI",
       "product_kind": "solution",
       "tags": [
-        "containers",
+        "ibm_created",
         "target_terraform",
-        "target_roks",
         "terraform",
         "solution",
-        "ibm_created",
-        "clusters"
+        "containers",
+        "target_roks",
+        "clusters",
+        "converged_infra"
       ],
       "keywords": [
         "openshift",
@@ -109,8 +110,10 @@
             },
             {
               "service_name": "is.vpc",
-              "role_crns": ["crn:v1:bluemix:public:iam::::role:Administrator"],
-               "notes": "[Optional] Required for creating Virtual Private Cloud(VPC)."
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
+              "notes": "[Optional] Required for creating Virtual Private Cloud(VPC)."
             },
             {
               "role_crns": [
@@ -140,7 +143,7 @@
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager"
               ],
-               "notes": "[Optional] Required for consuming Observability deployable architecture, which sets up Logs Routing."
+              "notes": "[Optional] Required for consuming Observability deployable architecture, which sets up Logs Routing."
             },
             {
               "service_name": "atracker",
@@ -154,8 +157,8 @@
           "architecture": {
             "features": [
               {
-                    "title": " ",
-                    "description": "Configured to use IBM secure by default standards, but can be edited to fit your use case."
+                "title": " ",
+                "description": "Configured to use IBM secure by default standards, but can be edited to fit your use case."
               }
             ],
             "diagrams": [
@@ -232,181 +235,183 @@
               "key": "default_worker_pool_machine_type",
               "required": true,
               "options": [
-              {
-                "displayname": "bx2.16x64",
-                "value": "bx2.16x64"
-              },
-              {
-                "displayname": "bx2.32x128",
-                "value": "bx2.32x128"
-              },
-              {
-                "displayname": "bx2.48x192",
-                "value": "bx2.48x192"
-              },
-              {
-                "displayname": "bx2.8x32",
-                "value": "bx2.8x32"
-              },
-              {
-                "displayname": "bx3d.128x640",
-                "value": "bx3d.128x640"
-              },
-              {
-                "displayname": "bx3d.16x80",
-                "value": "bx3d.16x80"
-              },
-              {
-                "displayname": "bx3d.24x120",
-                "value": "bx3d.24x120"
-              },
-              {
-                "displayname": "bx3d.32x160",
-                "value": "bx3d.32x160"
-              },
-              {
-                "displayname": "bx3d.48x240",
-                "value": "bx3d.48x240"
-              },
-              {
-                "displayname": "bx3d.64x320",
-                "value": "bx3d.64x320"
-              },
-              {
-                "displayname": "bx3d.8x40",
-                "value": "bx3d.8x40"
-              },
-              {
-                "displayname": "bx3d.96x480",
-                "value": "bx3d.96x480"
-              },
-              {
-                "displayname": "cx2.16x32",
-                "value": "cx2.16x32"
-              },{
-                "displayname": "cx2.32x64",
-                "value": "cx2.32x64"
-              },
-              {
-                "displayname": "cx2.48x96",
-                "value": "cx2.48x96"
-              },
-              {
-                "displayname": "cx3d.128x320",
-                "value": "cx3d.128x320"
-              },
-              {
-                "displayname": "cx3d.16x40",
-                "value": "cx3d.16x40"
-              },
-              {
-                "displayname": "cx3d.24x60",
-                "value": "cx3d.24x60"
-              },
-              {
-                "displayname": "cx3d.32x80",
-                "value": "cx3d.32x80"
-              },
-              {
-                "displayname": "cx3d.48x120",
-                "value": "cx3d.48x120"
-              },
-              {
-                "displayname": "cx3d.64x160",
-                "value": "cx3d.64x160"
-              },
-              {
-                "displayname": "cx3d.96x240",
-                "value": "cx3d.96x240"
-              },
-              {
-                "displayname": "mx2.128x1024",
-                "value": "mx2.128x1024"
-              },
-              {
-                "displayname": "mx2.16x128",
-                "value": "mx2.16x128"
-              },
-              {
-                "displayname": "mx2.32x256",
-                "value": "mx2.32x256"
-              },
-              {
-                "displayname": "mx2.48x384",
-                "value": "mx2.48x384"
-              },
-              {
-                "displayname": "mx2.64x512",
-                "value": "mx2.64x512"
-              },
-              {
-                "displayname": "mx2.8x64",
-                "value": "mx2.8x64"
-              },
-              {
-                "displayname": "mx3d.128x1280",
-                "value": "mx3d.128x1280"
-              },
-              {
-                "displayname": "mx3d.24x240",
-                "value": "mx3d.24x240"
-              },
-              {
-                "displayname": "mx3d.32x320",
-                "value": "mx3d.32x320"
-              },
-              {
-                "displayname": "mx3d.48x480",
-                "value": "mx3d.48x480"
-              },
-              {
-                "displayname": "mx3d.64x640",
-                "value": "mx3d.64x640"
-              },
-              {
-                "displayname": "mx3d.96x960",
-                "value": "mx3d.96x960"
-              },
-              {
-                "displayname": "bx2d.metal.96x384 (Available in Toronto (ca-tor))",
-                "value": "bx2d.metal.96x384"
-              },
-              {
-                "displayname": "mx2d.metal.96x768 (Available in Toronto (ca-tor))) ",
-                "value": "mx2d.metal.96x768"
-              },
-              {
-                "displayname": "cx2d.metal.96x192 (Available in Toronto (ca-tor)) ",
-                "value": "cx2d.metal.96x192"
-              },
-              { "displayname": "mx2.16x128.2000gb (Not available in Sao Paulo (br-sao), Montreal (ca-mon), Madrid (eu-es), Osaka (jp-osa))",
-                "value": "mx2.16x128.2000gb"
-              },
-              {
-                "displayname": "ox2.128x1024 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
-                "value": "ox2.128x1024"
-              },
-              {
-                "displayname": "ox2.16x128 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
-                "value": "ox2.16x128"
-              },
-              {
-                "displayname": "ox2.32x256 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
-                "value": "ox2.32x256"
-              },
-              {
-                "displayname": "ox2.64x512 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
-                "value": "ox2.64x512"
-              },
-              {
-                "displayname": "ox2.8x64 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
-                "value": "ox2.8x64"
-              },
-              {
-                "displayname": "ox2.96x768 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
-                "value": "ox2.96x768"
-              }
-            ]
+                {
+                  "displayname": "bx2.16x64",
+                  "value": "bx2.16x64"
+                },
+                {
+                  "displayname": "bx2.32x128",
+                  "value": "bx2.32x128"
+                },
+                {
+                  "displayname": "bx2.48x192",
+                  "value": "bx2.48x192"
+                },
+                {
+                  "displayname": "bx2.8x32",
+                  "value": "bx2.8x32"
+                },
+                {
+                  "displayname": "bx3d.128x640",
+                  "value": "bx3d.128x640"
+                },
+                {
+                  "displayname": "bx3d.16x80",
+                  "value": "bx3d.16x80"
+                },
+                {
+                  "displayname": "bx3d.24x120",
+                  "value": "bx3d.24x120"
+                },
+                {
+                  "displayname": "bx3d.32x160",
+                  "value": "bx3d.32x160"
+                },
+                {
+                  "displayname": "bx3d.48x240",
+                  "value": "bx3d.48x240"
+                },
+                {
+                  "displayname": "bx3d.64x320",
+                  "value": "bx3d.64x320"
+                },
+                {
+                  "displayname": "bx3d.8x40",
+                  "value": "bx3d.8x40"
+                },
+                {
+                  "displayname": "bx3d.96x480",
+                  "value": "bx3d.96x480"
+                },
+                {
+                  "displayname": "cx2.16x32",
+                  "value": "cx2.16x32"
+                },
+                {
+                  "displayname": "cx2.32x64",
+                  "value": "cx2.32x64"
+                },
+                {
+                  "displayname": "cx2.48x96",
+                  "value": "cx2.48x96"
+                },
+                {
+                  "displayname": "cx3d.128x320",
+                  "value": "cx3d.128x320"
+                },
+                {
+                  "displayname": "cx3d.16x40",
+                  "value": "cx3d.16x40"
+                },
+                {
+                  "displayname": "cx3d.24x60",
+                  "value": "cx3d.24x60"
+                },
+                {
+                  "displayname": "cx3d.32x80",
+                  "value": "cx3d.32x80"
+                },
+                {
+                  "displayname": "cx3d.48x120",
+                  "value": "cx3d.48x120"
+                },
+                {
+                  "displayname": "cx3d.64x160",
+                  "value": "cx3d.64x160"
+                },
+                {
+                  "displayname": "cx3d.96x240",
+                  "value": "cx3d.96x240"
+                },
+                {
+                  "displayname": "mx2.128x1024",
+                  "value": "mx2.128x1024"
+                },
+                {
+                  "displayname": "mx2.16x128",
+                  "value": "mx2.16x128"
+                },
+                {
+                  "displayname": "mx2.32x256",
+                  "value": "mx2.32x256"
+                },
+                {
+                  "displayname": "mx2.48x384",
+                  "value": "mx2.48x384"
+                },
+                {
+                  "displayname": "mx2.64x512",
+                  "value": "mx2.64x512"
+                },
+                {
+                  "displayname": "mx2.8x64",
+                  "value": "mx2.8x64"
+                },
+                {
+                  "displayname": "mx3d.128x1280",
+                  "value": "mx3d.128x1280"
+                },
+                {
+                  "displayname": "mx3d.24x240",
+                  "value": "mx3d.24x240"
+                },
+                {
+                  "displayname": "mx3d.32x320",
+                  "value": "mx3d.32x320"
+                },
+                {
+                  "displayname": "mx3d.48x480",
+                  "value": "mx3d.48x480"
+                },
+                {
+                  "displayname": "mx3d.64x640",
+                  "value": "mx3d.64x640"
+                },
+                {
+                  "displayname": "mx3d.96x960",
+                  "value": "mx3d.96x960"
+                },
+                {
+                  "displayname": "bx2d.metal.96x384 (Available in Toronto (ca-tor))",
+                  "value": "bx2d.metal.96x384"
+                },
+                {
+                  "displayname": "mx2d.metal.96x768 (Available in Toronto (ca-tor))) ",
+                  "value": "mx2d.metal.96x768"
+                },
+                {
+                  "displayname": "cx2d.metal.96x192 (Available in Toronto (ca-tor)) ",
+                  "value": "cx2d.metal.96x192"
+                },
+                {
+                  "displayname": "mx2.16x128.2000gb (Not available in Sao Paulo (br-sao), Montreal (ca-mon), Madrid (eu-es), Osaka (jp-osa))",
+                  "value": "mx2.16x128.2000gb"
+                },
+                {
+                  "displayname": "ox2.128x1024 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
+                  "value": "ox2.128x1024"
+                },
+                {
+                  "displayname": "ox2.16x128 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
+                  "value": "ox2.16x128"
+                },
+                {
+                  "displayname": "ox2.32x256 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
+                  "value": "ox2.32x256"
+                },
+                {
+                  "displayname": "ox2.64x512 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
+                  "value": "ox2.64x512"
+                },
+                {
+                  "displayname": "ox2.8x64 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
+                  "value": "ox2.8x64"
+                },
+                {
+                  "displayname": "ox2.96x768 (Not available in Sao Paulo (br-sao), Montreal (ca-mon))",
+                  "value": "ox2.96x768"
+                }
+              ]
             },
             {
               "key": "default_worker_pool_workers_per_zone",
@@ -434,10 +439,10 @@
               "key": "additional_worker_pools",
               "type": "array",
               "custom_config": {
-                  "type": "textarea",
-                  "grouping": "deployment",
-                  "original_grouping": "deployment"
-                }
+                "type": "textarea",
+                "grouping": "deployment",
+                "original_grouping": "deployment"
+              }
             }
           ],
           "dependencies": [
@@ -455,10 +460,10 @@
                 {
                   "dependency_input": "addons",
                   "value": {
-                    "openshift-ai":{
-                      "version" : "416"
+                    "openshift-ai": {
+                      "version": "416"
+                    }
                   }
-                }
                 },
                 {
                   "dependency_input": "prefix",
@@ -501,8 +506,8 @@
                   "reference_version": true
                 },
                 {
-                  "dependency_input":"region",
-                  "version_input":"region",
+                  "dependency_input": "region",
+                  "version_input": "region",
                   "reference_version": true
                 }
               ],
@@ -520,27 +525,27 @@
           "working_directory": "solutions/quickstart",
           "iam_permissions": [
             {
-                "service_name": "containers-kubernetes",
-                "role_crns": [
-                    "crn:v1:bluemix:public:iam::::serviceRole:Manager",
-                    "crn:v1:bluemix:public:iam::::role:Administrator"
-                ],
-                "notes": "Required to create and edit the OpenShift cluster and the related resources."
+              "service_name": "containers-kubernetes",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
+              "notes": "Required to create and edit the OpenShift cluster and the related resources."
             },
             {
-                "service_name": "iam-identity",
-                "role_crns": [
-                    "crn:v1:bluemix:public:iam::::role:Administrator",
-                    "crn:v1:bluemix:public:iam-identity::::serviceRole:UserApiKeyCreator"
-                ],
-                "notes": "Required to create the containers-kubernetes-key needed by the OpenShift cluster on IBM Cloud."
+              "service_name": "iam-identity",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator",
+                "crn:v1:bluemix:public:iam-identity::::serviceRole:UserApiKeyCreator"
+              ],
+              "notes": "Required to create the containers-kubernetes-key needed by the OpenShift cluster on IBM Cloud."
             },
             {
-                "service_name": "is.vpc",
-                "role_crns": [
-                    "crn:v1:bluemix:public:iam::::role:Administrator"
-                ],
-                "notes": "Required for creating Virtual Private Cloud(VPC)."
+              "service_name": "is.vpc",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
+              "notes": "Required for creating Virtual Private Cloud(VPC)."
             },
             {
                 "service_name": "cloud-object-storage",
@@ -572,10 +577,9 @@
                   "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/main/reference-architecture/deployable-architecture-ocp-ai-cluster-qs.svg",
                   "type": "image/svg+xml"
                 },
-                "description": "This QuickStart Deployable Architecture enables <b>single-click deployment </b> of a GPU-enabled Red Hat OpenShift cluster with the OpenShift AI add-on on IBM Cloud. It streamlines the provisioning of all required components , allowing you to get started with AI workloads quickly and efficiently.The architecture includes a pre-configured <b>Virtual Private Cloud (VPC)</b> with a single-zone, single-subnet layout forming the foundation for your OpenShift cluster.<br><br>To utilize the capabilities of <b>OpenShift AI</b>, you must configure <b>at least one GPU-enabled node</b> within your cluster. The architecture supports a flexible compute environment, allowing you to deploy a mix of </b>GPU </b>and </b>non-GPU</b> nodes across different worker pools. This solution offers two worker pools spread across one zone, with the OpenShift AI add-on set as the default configuration. Each worker pool has a minimum of two worker nodes .<br><br>A <b>Cloud Object Storage (COS)</b> instance is required for the OpenShift cluster. Within this instance, an Object Storage bucket will be created, which serves as the internal registry storage for the OpenShift cluster."}
-
+                "description": "This QuickStart Deployable Architecture enables <b>single-click deployment </b> of a GPU-enabled Red Hat OpenShift cluster with the OpenShift AI add-on on IBM Cloud. It streamlines the provisioning of all required components , allowing you to get started with AI workloads quickly and efficiently.The architecture includes a pre-configured <b>Virtual Private Cloud (VPC)</b> with a single-zone, single-subnet layout forming the foundation for your OpenShift cluster.<br><br>To utilize the capabilities of <b>OpenShift AI</b>, you must configure <b>at least one GPU-enabled node</b> within your cluster. The architecture supports a flexible compute environment, allowing you to deploy a mix of </b>GPU </b>and </b>non-GPU</b> nodes across different worker pools. This solution offers two worker pools spread across one zone, with the OpenShift AI add-on set as the default configuration. Each worker pool has a minimum of two worker nodes .<br><br>A <b>Cloud Object Storage (COS)</b> instance is required for the OpenShift cluster. Within this instance, an Object Storage bucket will be created, which serves as the internal registry storage for the OpenShift cluster."
+              }
             ]
-
           },
           "configuration": [
             {
@@ -597,11 +601,11 @@
             {
               "key": "default_worker_pool_machine_type",
               "options": [
-              {
-                "displayname": "bx2.8x32",
-                "value": "bx2.8x32"
-              }
-            ]
+                {
+                  "displayname": "bx2.8x32",
+                  "value": "bx2.8x32"
+                }
+              ]
             },
             {
               "key": "default_worker_pool_workers_per_zone"
@@ -620,10 +624,10 @@
               "key": "additional_worker_pools",
               "type": "array",
               "custom_config": {
-                  "type": "textarea",
-                  "grouping": "deployment",
-                  "original_grouping": "deployment"
-                }
+                "type": "textarea",
+                "grouping": "deployment",
+                "original_grouping": "deployment"
+              }
             },
             {
               "key": "ibmcloud_api_key"
@@ -693,13 +697,13 @@
             {
               "key": "access_tags",
               "custom_config": {
-                    "type": "array",
-                    "grouping": "deployment",
-                    "original_grouping": "deployment",
-                    "config_constraints": {
-                        "type": "string"
-                    }
-                                  }
+                "type": "array",
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "type": "string"
+                }
+              }
             },
             {
               "key": "manage_all_addons"
@@ -707,11 +711,8 @@
             {
               "key": "addons"
             }
-
-
           ]
         }
-
       ]
     }
   ]
