@@ -70,6 +70,13 @@
           "iam_permissions": [
             {
               "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Viewer"
+              ],
+              "service_name": "Resource group only",
+              "notes":"Viewer access is required in the resource group you want to provision in."
+            },
+            {
+              "role_crns": [
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "iam-access-groups",
@@ -81,7 +88,7 @@
                 "crn:v1:bluemix:public:iam::::role:Operator",
                 "crn:v1:bluemix:public:iam-identity::::serviceRole:UserApiKeyCreator"
               ],
-              "notes": "Required to create the containers-kubernetes-key needed by the OpenShift cluster on IBM Cloud."
+              "notes": "Required to create the containers-kubernetes-key needed by the OpenShift cluster on IBM Cloud and for managing and operating resources within the IBM Cloud environment."
             },
             {
               "role_crns": [
@@ -544,33 +551,38 @@
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager",
                 "crn:v1:bluemix:public:iam::::role:Administrator"
-              ]
+              ],
+              "notes": "Required to create and edit the OpenShift cluster and the related resources."
             },
             {
               "service_name": "iam-identity",
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::role:Administrator",
                 "crn:v1:bluemix:public:iam-identity::::serviceRole:UserApiKeyCreator"
-              ]
+              ],
+              "notes": "Required to create the containers-kubernetes-key needed by the OpenShift cluster on IBM Cloud and for managing and operating resources within the IBM Cloud environment."
             },
             {
               "service_name": "is.vpc",
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::role:Editor"
-              ]
+              ],
+              "notes": "Required for creating Virtual Private Cloud(VPC)."
             },
             {
                 "service_name": "cloud-object-storage",
                 "role_crns": [
                     "crn:v1:bluemix:public:iam::::serviceRole:Writer",
                     "crn:v1:bluemix:public:iam::::role:Editor"
-                ]
+                ],
+                "notes": "Required if Cloud Object Storage is selected to store data from the OpenShift AI add-on, Cloud logs, or Activity Tracker events."
             },
             {
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::role:Viewer"
               ],
-              "service_name": "Resource group only"
+              "service_name": "Resource group only",
+              "notes":"Viewer access is required in the resource group you want to provision in."
             }
           ],
           "architecture": {
