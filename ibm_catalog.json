@@ -69,12 +69,26 @@
           "working_directory": "solutions/fully-configurable",
           "iam_permissions": [
             {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Viewer"
+              ],
+              "service_name": "Resource group only",
+              "notes":"Viewer access is required in the resource group you want to provision in."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "iam-access-groups",
+              "notes": "[optional] Required for managing IAM access groups."
+            },
+            {
               "service_name": "iam-identity",
               "role_crns": [
-                "crn:v1:bluemix:public:iam::::role:Administrator",
+                "crn:v1:bluemix:public:iam::::role:Operator",
                 "crn:v1:bluemix:public:iam-identity::::serviceRole:UserApiKeyCreator"
               ],
-              "notes": "Required to create the containers-kubernetes-key needed by the OpenShift cluster on IBM Cloud."
+              "notes": "Required to create the containers-kubernetes-key needed by the OpenShift cluster on IBM Cloud and for managing and operating resources within the IBM Cloud environment."
             },
             {
               "role_crns": [
@@ -94,29 +108,30 @@
             },
             {
               "role_crns": [
-                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::serviceRole:Writer",
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "cloud-object-storage",
-              "notes": "[Optional] Required if Cloud Object Storage is selected to store data from the OpenShift AI add-on, Cloud logs, or Activity Tracker events."
+              "notes": "[Optional] Required to write data and manage the OpenShift cluster's internal registry storage bucket."
             },
             {
               "service_name": "containers-kubernetes",
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager",
-                "crn:v1:bluemix:public:iam::::role:Editor"
+                "crn:v1:bluemix:public:iam::::role:Administrator"
               ],
-              "notes": "Required to create and edit the OpenShift cluster and the related resources."
+              "notes": "Required to reset API keys, create and edit the OpenShift cluster, and manage all related resources."
             },
             {
               "service_name": "is.vpc",
               "role_crns": [
-                "crn:v1:bluemix:public:iam::::role:Administrator"
+                "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "notes": "[Optional] Required for creating Virtual Private Cloud(VPC)."
             },
             {
               "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator",
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager"
               ],
               "service_name": "secrets-manager",
@@ -125,7 +140,7 @@
             {
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager",
-                "crn:v1:bluemix:public:iam::::role:Editor"
+                "crn:v1:bluemix:public:iam::::role:Administrator"
               ],
               "service_name": "sysdig-monitor",
               "notes": "[Optional] Required for consuming Observability deployable architecture, which sets up Cloud Monitoring."
@@ -152,6 +167,13 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "notes": "[Optional] Required for consuming Observability deployable architecture, which sets up Activity Tracker Event Routing."
+            },
+            {
+              "service_name": "metrics-router",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
+              "notes": "[Optional] Required if metrics routing to cloud monitoring instance is enabled."
             }
           ],
           "architecture": {
@@ -528,9 +550,9 @@
               "service_name": "containers-kubernetes",
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager",
-                "crn:v1:bluemix:public:iam::::role:Editor"
+                "crn:v1:bluemix:public:iam::::role:Administrator"
               ],
-              "notes": "Required to create and edit the OpenShift cluster and the related resources."
+              "notes": "Required to reset API keys, create and edit the OpenShift cluster, and manage all related resources."
             },
             {
               "service_name": "iam-identity",
@@ -538,22 +560,29 @@
                 "crn:v1:bluemix:public:iam::::role:Administrator",
                 "crn:v1:bluemix:public:iam-identity::::serviceRole:UserApiKeyCreator"
               ],
-              "notes": "Required to create the containers-kubernetes-key needed by the OpenShift cluster on IBM Cloud."
+              "notes": "Required to create the containers-kubernetes-key needed by the OpenShift cluster on IBM Cloud and for managing and operating resources within the IBM Cloud environment."
             },
             {
               "service_name": "is.vpc",
               "role_crns": [
-                "crn:v1:bluemix:public:iam::::role:Administrator"
+                "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "notes": "Required for creating Virtual Private Cloud(VPC)."
             },
             {
-              "service_name": "cloud-object-storage",
+                "service_name": "cloud-object-storage",
+                "role_crns": [
+                    "crn:v1:bluemix:public:iam::::serviceRole:Writer",
+                    "crn:v1:bluemix:public:iam::::role:Editor"
+                ],
+                "notes": "Required to write data and manage the OpenShift cluster's internal registry storage bucket."
+            },
+            {
               "role_crns": [
-                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
-                "crn:v1:bluemix:public:iam::::role:Editor"
+                "crn:v1:bluemix:public:iam::::role:Viewer"
               ],
-              "notes": "Required to create Cloud Object Storage (COS) instance."
+              "service_name": "Resource group only",
+              "notes":"Viewer access is required in the resource group you want to provision in."
             }
           ],
           "architecture": {
