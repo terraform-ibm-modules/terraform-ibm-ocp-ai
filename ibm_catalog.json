@@ -120,7 +120,7 @@
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager",
                 "crn:v1:bluemix:public:iam::::role:Administrator"
               ],
-              "notes": "Required to create and edit the OpenShift cluster and the related resources."
+              "notes": "Required to reset API keys, create and edit the OpenShift cluster, and manage all related resources."
             },
             {
               "service_name": "is.vpc",
@@ -552,7 +552,7 @@
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager",
                 "crn:v1:bluemix:public:iam::::role:Administrator"
               ],
-              "notes": "Required to create and edit the OpenShift cluster and the related resources."
+              "notes": "Required to reset API keys, create and edit the OpenShift cluster, and manage all related resources."
             },
             {
               "service_name": "iam-identity",
