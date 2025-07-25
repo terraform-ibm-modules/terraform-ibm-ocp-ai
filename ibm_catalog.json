@@ -112,7 +112,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "cloud-object-storage",
-              "notes": "[Optional] Required if Cloud Object Storage is selected to store data from the OpenShift AI add-on, Cloud logs, or Activity Tracker events."
+              "notes": "[Optional] Required to write data and manage the OpenShift cluster's internal registry storage bucket."
             },
             {
               "service_name": "containers-kubernetes",
@@ -575,7 +575,7 @@
                     "crn:v1:bluemix:public:iam::::serviceRole:Writer",
                     "crn:v1:bluemix:public:iam::::role:Editor"
                 ],
-                "notes": "Required if Cloud Object Storage is selected to store data from the OpenShift AI add-on, Cloud logs, or Activity Tracker events."
+                "notes": "Required to write data and manage the OpenShift cluster's internal registry storage bucket."
             },
             {
               "role_crns": [
