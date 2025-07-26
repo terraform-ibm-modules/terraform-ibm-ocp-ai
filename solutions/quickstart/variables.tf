@@ -170,10 +170,11 @@ variable "additional_worker_pools" {
   description = "List of additional worker pools configured exclusively for the GPU machine type to support AI workload requirements within the cluster. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-ocp-ai/blob/main/solutions/quickstart/DA_docs.md#options-with-worker-pools)"
   default = [
     {
-      pool_name        = "gpu"
-      machine_type     = "gx3.16x80.l4"
-      workers_per_zone = 1
-      operating_system = "RHCOS"
+      pool_name         = "gpu"
+      machine_type      = "bx3d.4x20"
+      workers_per_zone  = 1
+      operating_system  = "RHCOS"
+      secondary_storage = "300gb.5iops-tier"
     },
   ]
 
