@@ -171,7 +171,7 @@ variable "additional_worker_pools" {
   default = [
     {
       pool_name         = "gpu"
-      machine_type      = "bx3d.4x20"
+      machine_type      = "gx3.16x80.l4"
       workers_per_zone  = 1
       operating_system  = "RHCOS"
       secondary_storage = "300gb.5iops-tier"
