@@ -77,6 +77,20 @@
             },
             {
               "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
+              "service_name": "All Account Management services",
+              "notes": "[Optional] Required when setting up foundational IBM Cloud account components such as IAM settings, trusted profiles, access groups, and resource groups."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
+              "service_name": "All Identity and Access enabled services",
+              "notes": "[Optional] Required for consuming Account Configuration deployable architecture which creates resource group with account setting or enabling `enable_config_aggregator` flag that creates trusted profile for authentication."
+            },
+            {
+              "role_crns": [
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "iam-access-groups",
@@ -108,11 +122,11 @@
             },
             {
               "role_crns": [
-                "crn:v1:bluemix:public:iam::::serviceRole:Writer",
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "cloud-object-storage",
-              "notes": "[Optional] Required to write data and manage the OpenShift cluster's internal registry storage bucket."
+              "notes": "[Optional] Required to edit data and manage the OpenShift cluster's internal registry storage bucket."
             },
             {
               "service_name": "containers-kubernetes",
@@ -174,6 +188,14 @@
                 "crn:v1:bluemix:public:iam::::role:Administrator"
               ],
               "notes": "[Optional] Required if metrics routing to cloud monitoring instance is enabled."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "event-notifications",
+              "notes": "[Optional] Required if you are creating an Event Notifications Instance"
             }
           ],
           "architecture": {
@@ -572,10 +594,10 @@
             {
                 "service_name": "cloud-object-storage",
                 "role_crns": [
-                    "crn:v1:bluemix:public:iam::::serviceRole:Writer",
+                    "crn:v1:bluemix:public:iam::::serviceRole:Manager",
                     "crn:v1:bluemix:public:iam::::role:Editor"
                 ],
-                "notes": "Required to write data and manage the OpenShift cluster's internal registry storage bucket."
+                "notes": "Required to edit data and manage the OpenShift cluster's internal registry storage bucket."
             },
             {
               "role_crns": [
@@ -589,7 +611,7 @@
             "features": [
               {
                 "title": " ",
-                "description": "Configured for getting started with OpenShift AI, offering limited customization options."
+                "description": "Configures a QuickStart Deployable Architecture on IBM Cloud that enables single-click deployment of a GPU-enabled Red Hat OpenShift cluster with the OpenShift AI add-on."
               }
             ],
             "diagrams": [
