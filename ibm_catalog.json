@@ -733,7 +733,8 @@
             {
               "key": "addons"
             }
-          ]
+          ],
+          "terraform_version": "1.10.5"
         }
       ]
     }
