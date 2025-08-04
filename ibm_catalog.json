@@ -553,7 +553,7 @@
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager",
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
-              "notes": "[Optional] Required if Cloud Object Storage is selected to store data for OpenShift internal registry storage."
+              "notes": "Required to create Cloud Object Storage (COS) instance."
             }
           ],
           "architecture": {
