@@ -80,7 +80,7 @@
                 "crn:v1:bluemix:public:iam::::role:Administrator"
               ],
               "service_name": "All Account Management services",
-              "notes": "[Optional] Required when setting up foundational IBM Cloud account components such as IAM settings, trusted profiles, access groups, and resource groups."
+              "notes": "[Optional] Required for consuming Account Configuration deployable architecture which creates resource group."
             },
             {
               "role_crns": [
