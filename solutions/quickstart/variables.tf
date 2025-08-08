@@ -10,8 +10,8 @@ variable "ibmcloud_api_key" {
 }
 variable "existing_resource_group_name" {
   type        = string
-  description = "Name of the existing resource group. Required if not creating new resource group"
-  default     = "Default"
+  description = "The name of an existing resource group to provision the resources. If not provided the default resource group will be used."
+  default     = null
 }
 variable "provider_visibility" {
   description = "Set the visibility value for the IBM terraform provider. [Learn more](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/guides/custom-service-endpoints)."
