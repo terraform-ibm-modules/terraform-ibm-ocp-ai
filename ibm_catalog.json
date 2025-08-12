@@ -611,7 +611,7 @@
             "features": [
               {
                 "title": " ",
-                "description": "Configures a QuickStart Deployable Architecture on IBM Cloud that enables single-click deployment of a GPU-enabled Red Hat OpenShift cluster with the OpenShift AI add-on."
+                "description": "Configures QuickStart deployment of a GPU-enabled Red Hat OpenShift cluster with the OpenShift AI add-on with limited options."
               }
             ],
             "diagrams": [
