@@ -10,8 +10,8 @@
         "terraform",
         "solution",
         "target_roks",
-        "platform_engineering",
-        "converged_infra"
+        "converged_infra",
+        "platform_engineering"
       ],
       "keywords": [
         "openshift",
