@@ -446,13 +446,13 @@
           ],
           "dependencies": [
             {
-              "name": "add-ons-beta-deploy-arch-ibm-base-ocp-vpc",
+              "name": "deploy-arch-ibm-base-ocp-vpc",
               "description": "Configure the Red Hat OpenShift cluster on IBM Cloud required to install the OpenShift AI add-on. ",
-              "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
+              "catalog_id": "05d96467-8697-4751-98af-81fbfc2864e2",
               "flavors": [
                 "fully-configurable"
               ],
-              "id": "1728a4fd-f561-4cf9-82ef-2b1eeb5da1a8-global",
+              "id": "95a82d27-5d11-4d43-99d6-a473816c9f50",
               "optional": false,
               "on_by_default": true,
               "input_mapping": [
@@ -510,7 +510,7 @@
                   "reference_version": true
                 }
               ],
-              "version": "v3.50.0"
+              "version": "v1.0.0"
             }
           ],
           "dependency_version_2": true,
