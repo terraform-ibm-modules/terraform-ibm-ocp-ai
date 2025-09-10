@@ -55,21 +55,21 @@ variable "region" {
   description = "Region in which all the resources will be deployed. [Learn More](https://terraform-ibm-modules.github.io/documentation/#/region)."
   default     = "jp-tok"
 }
-variable "ocp_version" {
+variable "openshift_version" {
   type        = string
   description = "The version of the OpenShift cluster."
   default     = "4.17"
 
   validation {
     condition = anytrue([
-      var.ocp_version == null,
-      var.ocp_version == "default",
-      var.ocp_version == "4.18",
-      var.ocp_version == "4.15",
-      var.ocp_version == "4.16",
-      var.ocp_version == "4.17",
+      var.openshift_version == null,
+      var.openshift_version == "default",
+      var.openshift_version == "4.18",
+      var.openshift_version == "4.15",
+      var.openshift_version == "4.16",
+      var.openshift_version == "4.17",
     ])
-    error_message = "The specified ocp_version is not of the valid versions."
+    error_message = "The specified openshift_version is not of the valid versions."
   }
 }
 variable "cluster_name" {

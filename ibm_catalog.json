@@ -126,7 +126,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "cloud-object-storage",
-              "notes": "Required to manage Object storage bucket for the cluster internal registry."
+              "notes": "Required to manage Object Storage for the cluster internal registry."
             },
             {
               "service_name": "containers-kubernetes",
@@ -165,7 +165,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "logs",
-              "notes": "[Optional] Required to create an instance of Cloud logs."
+              "notes": "[Optional] Required to create an instance of Cloud Logs."
             },
             {
               "service_name": "logs-router",
@@ -260,7 +260,7 @@
               "default_value": "us-south"
             },
             {
-              "key": "ocp_version",
+              "key": "openshift_version",
               "required": true,
               "options": [
                 {
@@ -549,8 +549,8 @@
                   "reference_version": true
                 },
                 {
-                  "dependency_input": "ocp_version",
-                  "version_input": "ocp_version",
+                  "dependency_input": "openshift_version",
+                  "version_input": "openshift_version",
                   "reference_version": true
                 },
                 {
@@ -564,7 +564,7 @@
                   "reference_version": true
                 }
               ],
-              "version": "v3.50.0"
+              "version": "v3.57.1"
             }
           ],
           "dependency_version_2": true,
@@ -606,7 +606,7 @@
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager",
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
-              "notes": "Required to manage Object storage bucket for the cluster internal registry."
+              "notes": "Required to manage Object Storage for the cluster internal registry."
             },
             {
               "role_crns": [
@@ -699,7 +699,7 @@
               }
             },
             {
-              "key": "ocp_version",
+              "key": "openshift_version",
               "required": true,
               "options": [
                 {

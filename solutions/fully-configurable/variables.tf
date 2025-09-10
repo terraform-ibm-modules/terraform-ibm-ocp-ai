@@ -40,9 +40,9 @@ variable "existing_resource_group_name" {
 }
 
 # tflint-ignore: all
-variable "ocp_version" {
+variable "openshift_version" {
   type        = string
-  description = "Version of the OCP cluster to provision."
+  description = "Version of the OpenShift cluster to provision."
   default     = "4.17"
 }
 
@@ -88,7 +88,7 @@ variable "default_worker_pool_operating_system" {
     error_message = "Invalid operating system. Allowed values are: 'REDHAT_8_64', 'RHCOS', 'RHEL_9_64'."
   }
   validation {
-    condition     = tonumber(var.ocp_version) < 4.18 || var.default_worker_pool_operating_system == "RHCOS"
+    condition     = tonumber(var.openshift_version) < 4.18 || var.default_worker_pool_operating_system == "RHCOS"
     error_message = "Invalid operating system. For OpenShift version 4.18 or higher, the worker node operating system must be 'RHCOS'. [Learn more](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui#ai-min)"
   }
 }
@@ -201,7 +201,7 @@ variable "additional_worker_pools" {
 
   validation {
     condition = alltrue([
-      for pool in var.additional_worker_pools : tonumber(var.ocp_version) < 4.18 || pool.operating_system == "RHCOS"
+      for pool in var.additional_worker_pools : tonumber(var.openshift_version) < 4.18 || pool.operating_system == "RHCOS"
     ])
     error_message = "Invalid operating system. For OpenShift version 4.18 or higher, the worker node operating system must be 'RHCOS'. [Learn more](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui#ai-min)"
   }

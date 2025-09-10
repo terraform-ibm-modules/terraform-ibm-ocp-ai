@@ -94,11 +94,11 @@ locals {
 ########################################################################################################################
 module "ocp_base" {
   source                              = "terraform-ibm-modules/base-ocp-vpc/ibm"
-  version                             = "3.56.0"
+  version                             = "3.57.1"
   cluster_name                        = local.cluster_name
   resource_group_id                   = module.resource_group.resource_group_id
   region                              = var.region
-  ocp_version                         = var.ocp_version
+  ocp_version                         = var.openshift_version
   ocp_entitlement                     = var.ocp_entitlement
   vpc_id                              = module.vpc.vpc_id
   vpc_subnets                         = module.vpc.subnet_detail_map
