@@ -40,7 +40,7 @@
         },
         {
           "title": "Virtual Private Cloud",
-          "description": "Configures a [Virtual Private Cloud (VPC)]((https://cloud.ibm.com/docs/vpc?topic=vpc-getting-started&interface=cli#create-and-configure-vpc) network to deploy the OpenShift cluster."
+          "description": "Configures a [Virtual Private Cloud (VPC)](https://cloud.ibm.com/docs/vpc?topic=vpc-getting-started&interface=cli#create-and-configure-vpc) network to deploy the OpenShift cluster."
         },
         {
           "title": "Object Storage",
