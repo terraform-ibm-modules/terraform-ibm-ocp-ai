@@ -48,7 +48,7 @@
         },
         {
           "title": "Key encryption",
-          "description": "Optionally, you can enable [key encryption](https://cloud.ibm.com/docs/event-notifications?topic=event-notifications-en-managing-encryption) for the Event Notifications instance and the Object Storage bucket by creating a key or using an existing one."
+          "description": "Optionally you can integrate key encryption such as [Key Protect](https://cloud.ibm.com/docs/openshift?topic=openshift-encryption-setup&interface=ui), [Hyper Protect Crypto Services](https://cloud.ibm.com/catalog/services/hyper-protect-crypto-services) to encrypt the OpenShift cluster and its boot volumes."
         },
         {
           "title": "Secrets Manager",
@@ -512,13 +512,13 @@
           ],
           "dependencies": [
             {
-              "name": "add-ons-beta-deploy-arch-ibm-base-ocp-vpc",
+              "name": "deploy-arch-ibm-slz-ocp",
               "description": "Configure the Red Hat OpenShift cluster on IBM Cloud required to install the OpenShift AI add-on. ",
-              "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
+              "catalog_id": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc",
               "flavors": [
                 "fully-configurable"
               ],
-              "id": "1728a4fd-f561-4cf9-82ef-2b1eeb5da1a8-global",
+              "id": "95fccffc-ae3b-42df-b6d9-80be5914d852-global",
               "optional": false,
               "on_by_default": true,
               "input_mapping": [
@@ -576,7 +576,7 @@
                   "reference_version": true
                 }
               ],
-              "version": "v3.57.1"
+              "version": "v3.58.2"
             }
           ],
           "dependency_version_2": true,
