@@ -508,6 +508,24 @@
                 "grouping": "deployment",
                 "original_grouping": "deployment"
               }
+            },
+            {
+              "key": "secrets_manager_service_plan",
+              "required": true,
+              "virtual": true,
+              "type": "string",
+              "options": [
+                {
+                  "displayname": "Standard",
+                  "value": "standard"
+                },
+                {
+                  "displayname": "Trial",
+                  "value": "trial"
+                }
+              ],
+              "default_value": "__NOT_SET__",
+              "description": "The pricing plan to use when provisioning a Secrets Manager instance. Possible values: `standard`, `trial`. You can create only one Trial instance of Secrets Manager per account. Before you can create a new Trial instance, you must delete the existing Trial instance and its reclamation. [Learn more](https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-create-instance&interface=ui#upgrade-instance-standard)."
             }
           ],
           "dependencies": [
@@ -573,6 +591,11 @@
                 {
                   "dependency_input": "region",
                   "version_input": "region",
+                  "reference_version": true
+                },
+                {
+                  "dependency_input": "service_plan",
+                  "version_input": "secrets_manager_service_plan",
                   "reference_version": true
                 }
               ],
