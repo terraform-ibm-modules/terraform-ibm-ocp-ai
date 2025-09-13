@@ -594,7 +594,7 @@
                   "reference_version": true
                 },
                 {
-                  "dependency_input": "service_plan",
+                  "dependency_input": "secrets_manager_service_plan",
                   "version_input": "secrets_manager_service_plan",
                   "reference_version": true
                 }
