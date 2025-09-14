@@ -14,7 +14,7 @@ variable "existing_resource_group_name" {
   default     = null
 }
 variable "provider_visibility" {
-  description = "Set the visibility value for the IBM terraform provider. Supported values are `public`, `private`, `public-and-private`. [Learn more](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/guides/custom-service-endpoints)."
+  description = "Set the visibility value for the IBM terraform provider. [Learn more](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/guides/custom-service-endpoints)."
   type        = string
   default     = "private"
 
@@ -25,9 +25,15 @@ variable "provider_visibility" {
 }
 variable "prefix" {
   type        = string
-  description = "The prefix to be added to all resources created by this solution. To skip using a prefix, set this value to null or an empty string. The prefix must begin with a lowercase letter and may contain only lowercase letters, digits, and hyphens '-'. It should not exceed 16 characters, must not end with a hyphen('-'), and cannot contain consecutive hyphens ('--'). Example: `prod-0205-ocpqs`."
   nullable    = true
+  description = "The prefix to be added to all resources created by this solution. To skip using a prefix, set this value to null or an empty string. The prefix must begin with a lowercase letter and may contain only lowercase letters, digits, and hyphens '-'. It should not exceed 16 characters, must not end with a hyphen('-'), and can not contain consecutive hyphens ('--'). Example: prod-0205-ocpai. [Learn more](https://terraform-ibm-modules.github.io/documentation/#/prefix.md)."
+
   validation {
+    # - null and empty string is allowed
+    # - Must not contain consecutive hyphens (--): length(regexall("--", var.prefix)) == 0
+    # - Starts with a lowercase letter: [a-z]
+    # - Contains only lowercase letters (a–z), digits (0–9), and hyphens (-)
+    # - Must not end with a hyphen (-): [a-z0-9]
     condition = (var.prefix == null || var.prefix == "" ? true :
       alltrue([
         can(regex("^[a-z][-a-z0-9]*[a-z0-9]$", var.prefix)),
@@ -36,31 +42,34 @@ variable "prefix" {
     )
     error_message = "Prefix must begin with a lowercase letter and may contain only lowercase letters, digits, and hyphens '-'. It must not end with a hyphen('-'), and cannot contain consecutive hyphens ('--')."
   }
+
   validation {
-    condition     = length(var.prefix) <= 16
+    # must not exceed 16 characters in length
+    condition     = var.prefix == null || var.prefix == "" ? true : length(var.prefix) <= 16
     error_message = "Prefix must not exceed 16 characters."
   }
 }
+
 variable "region" {
   type        = string
   description = "Region in which all the resources will be deployed. [Learn More](https://terraform-ibm-modules.github.io/documentation/#/region)."
-  default     = "au-syd"
+  default     = "jp-tok"
 }
-variable "ocp_version" {
+variable "openshift_version" {
   type        = string
   description = "The version of the OpenShift cluster."
   default     = "4.17"
 
   validation {
     condition = anytrue([
-      var.ocp_version == null,
-      var.ocp_version == "default",
-      var.ocp_version == "4.18",
-      var.ocp_version == "4.15",
-      var.ocp_version == "4.16",
-      var.ocp_version == "4.17",
+      var.openshift_version == null,
+      var.openshift_version == "default",
+      var.openshift_version == "4.18",
+      var.openshift_version == "4.15",
+      var.openshift_version == "4.16",
+      var.openshift_version == "4.17",
     ])
-    error_message = "The specified ocp_version is not of the valid versions."
+    error_message = "The specified openshift_version is not of the valid versions."
   }
 }
 variable "cluster_name" {
@@ -71,7 +80,7 @@ variable "cluster_name" {
 variable "address_prefix" {
   description = "The IP range that will be defined for the VPC for a certain location. Use only with manual address prefixes."
   type        = string
-  default     = "10.245.0.0/24"
+  default     = "10.10.10.0/24"
 }
 
 variable "ocp_entitlement" {
@@ -119,7 +128,7 @@ variable "default_worker_pool_operating_system" {
     error_message = "Invalid operating system. Allowed values are: 'REDHAT_8_64', 'RHCOS', 'RHEL_9_64'."
   }
   validation {
-    condition     = tonumber(var.ocp_version) < 4.18 || var.default_worker_pool_operating_system == "RHCOS"
+    condition     = tonumber(var.openshift_version) < 4.18 || var.default_worker_pool_operating_system == "RHCOS"
     error_message = "Invalid operating system. For OpenShift version 4.18 or higher, the worker node operating system must be 'RHCOS'. [Learn more](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui#ai-min)"
   }
 }
@@ -213,7 +222,7 @@ variable "additional_worker_pools" {
 
   validation {
     condition = alltrue([
-      for pool in var.additional_worker_pools : tonumber(var.ocp_version) < 4.18 || pool.operating_system == "RHCOS"
+      for pool in var.additional_worker_pools : tonumber(var.openshift_version) < 4.18 || pool.operating_system == "RHCOS"
     ])
     error_message = "Invalid operating system. For OpenShift version 4.18 or higher, the worker node operating system must be 'RHCOS'. [Learn more](https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-install&interface=ui#ai-min)"
   }
