@@ -561,14 +561,6 @@
               }
             },
             {
-              "key": "subnets",
-              "type": "object",
-              "default_value": "{\n    zone-1 = [\n      {\n        name           = \"subnet-a\"\n        cidr           = \"10.10.10.0/24\"\n        public_gateway = true\n        acl_name       = \"vpc-acl\"\n        no_addr_prefix = false\n      }\n    ],\n    zone-2 = [\n      {\n        name           = \"subnet-b\"\n        cidr           = \"10.20.10.0/24\"\n        public_gateway = false\n        acl_name       = \"vpc-acl\"\n        no_addr_prefix = false\n      }\n    ],\n    zone-3 = [\n      {\n        name           = \"subnet-c\"\n        cidr           = \"10.30.10.0/24\"\n        public_gateway = false\n        acl_name       = \"vpc-acl\"\n        no_addr_prefix = false\n      }\n    ]\n  }",
-              "description": "List of subnets for the vpc. For each item in each array, a subnet will be created. Items can be either CIDR blocks or total ipv4 addresses. Public gateways will be enabled only in zones where a gateway has been created. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone-vpc/blob/main/solutions/fully-configurable/DA-types.md#subnets-).",
-              "required": false,
-              "virtual": true
-            },
-            {
               "key": "network_acls",
               "type": "list(object)",
               "default_value": "[\n  {\n    name                         = \"vpc-acl\"\n    add_ibm_cloud_internal_rules = true\n    add_vpc_connectivity_rules   = true\n    prepend_ibm_rules            = true\n    rules = [\n      {\n        name      = \"allow-all-443-inbound\"\n        action    = \"allow\"\n        direction = \"inbound\"\n        tcp = {\n          port_min = 443\n          port_max = 443\n        }\n        destination = \"0.0.0.0/0\"\n        source      = \"0.0.0.0/0\"\n      },\n      {\n        name      = \"allow-all-80-inbound\"\n        action    = \"allow\"\n        direction = \"inbound\"\n        tcp = {\n          port_min        = 80\n          port_max        = 80\n          source_port_min = 80\n          source_port_max = 80\n        }\n        destination = \"0.0.0.0/0\"\n        source      = \"0.0.0.0/0\"\n      },\n      {\n        name      = \"allow-all-ingress-inbound\"\n        action    = \"allow\"\n        direction = \"inbound\"\n        tcp = {\n          source_port_min = 30000\n          source_port_max = 32767\n        }\n        destination = \"0.0.0.0/0\"\n        source      = \"0.0.0.0/0\"\n      },\n      {\n        name      = \"allow-all-443-outbound\"\n        action    = \"allow\"\n        direction = \"outbound\"\n        tcp = {\n          source_port_min = 443\n          source_port_max = 443\n        }\n        destination = \"0.0.0.0/0\"\n        source      = \"0.0.0.0/0\"\n      },\n      {\n        name      = \"allow-all-80-outbound\"\n        action    = \"allow\"\n        direction = \"outbound\"\n        tcp = {\n          source_port_min = 80\n          source_port_max = 80\n          port_min        = 80\n          port_max        = 80\n        }\n        destination = \"0.0.0.0/0\"\n        source      = \"0.0.0.0/0\"\n      },\n      {\n        name      = \"allow-all-ingress-outbound\"\n        action    = \"allow\"\n        direction = \"outbound\"\n        tcp = {\n          port_min = 30000\n          port_max = 32767\n        }\n        destination = \"0.0.0.0/0\"\n        source      = \"0.0.0.0/0\"\n      }\n    ]\n  }\n]",
@@ -653,11 +645,6 @@
                   "reference_version": true
                 },
                 {
-                  "dependency_input": "subnets",
-                  "version_input": "subnets",
-                  "reference_version": true
-                },
-                {
                   "dependency_input": "network_acls",
                   "version_input": "network_acls",
                   "reference_version": true
@@ -672,7 +659,6 @@
                   "version_input": "enable_platform_metrics",
                   "reference_version": true
                 }
-
               ],
               "version": "v3.58.2"
             }
