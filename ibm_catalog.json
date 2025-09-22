@@ -12,7 +12,7 @@
         "containers",
         "target_roks",
         "clusters",
-        "converged_infra"
+        "platform_engineering"
       ],
       "keywords": [
         "openshift",
