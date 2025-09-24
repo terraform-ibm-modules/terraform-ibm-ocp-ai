@@ -716,7 +716,11 @@
             "features": [
               {
                 "title": " ",
-                "description": "Configures of a GPU-enabled Red Hat OpenShift cluster with the OpenShift AI add-on with limited options."
+                "description": "Ideal for users new to IBM Cloud or OpenShift who want to get started without configuring underlying infrastructure."
+              },
+              {
+                "title": " ",
+                "description": "A lightweight, experimental configuration for quickly provisioning a GPU-enabled OpenShift cluster with the OpenShift AI add-on. Not certified, not upgradeable, and not intended for production use."
               }
             ],
             "diagrams": [
