@@ -233,7 +233,7 @@
             "diagrams": [
               {
                 "diagram": {
-                  "caption": "Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on",
+                  "caption": "Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on - Fully configurable",
                   "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/main/reference-architecture/deployable-architecture-ocp-ai-cluster.svg",
                   "type": "image/svg+xml"
                 },
@@ -671,7 +671,7 @@
           "terraform_version": "1.10.5"
         },
         {
-          "label": "Quickstart",
+          "label": "QuickStart",
           "name": "quickstart",
           "index": 1,
           "install_type": "fullstack",
