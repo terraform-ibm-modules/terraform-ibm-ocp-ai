@@ -298,7 +298,12 @@
               ]
             },
             {
-              "key": "subnets"
+              "key": "subnets",
+              "custom_config": {
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "type": "code_editor"
+              }
             },
             {
               "key": "default_worker_pool_machine_type",
@@ -319,6 +324,10 @@
                 {
                   "displayname": "bx2.8x32",
                   "value": "bx2.8x32"
+                },
+                {
+                  "displayname": "bx2.4x16",
+                  "value": "bx2.4x16"
                 },
                 {
                   "displayname": "bx3d.128x640",
@@ -528,7 +537,7 @@
                   "value": "trial"
                 }
               ],
-              "default_value": "__NOT_SET__",
+              "default_value": "standard",
               "description": "The pricing plan to use when provisioning a Secrets Manager instance. Possible values: `standard`, `trial`. You can create only one Trial instance of Secrets Manager per account. Before you can create a new Trial instance, you must delete the existing Trial instance and its reclamation. [Learn more](https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-create-instance&interface=ui#upgrade-instance-standard)."
             },
             {
