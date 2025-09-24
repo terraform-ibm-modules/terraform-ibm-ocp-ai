@@ -223,7 +223,11 @@
             "features": [
               {
                 "title": " ",
-                "description": "Configured to use IBM secure by default standards, but can be edited to fit your use case."
+                "description": "Ideal for users who want flexibility with a reliable starting point."
+              },
+              {
+                "title": " ",
+                "description": "Offers full control over architecture parameters, with well-chosen defaults that enable a functional OpenShift cluster and integrated IBM Cloud services without requiring manual adjustments."
               }
             ],
             "diagrams": [
