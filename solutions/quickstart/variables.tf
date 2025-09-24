@@ -92,7 +92,7 @@ variable "ocp_entitlement" {
 variable "default_worker_pool_machine_type" {
   type        = string
   description = "Specifies the machine type for the default worker pool. This determines the CPU, memory, and disk resources available to each worker node. For OpenShift AI installation, machines should have atleast 8 vcpu, 32GB RAM and GPU. Refer [IBM Cloud documentation for available machine types](https://cloud.ibm.com/docs/openshift?topic=openshift-vpc-flavors)"
-  default     = "bx2.8x32"
+  default     = "bx2.4x16"
 
   # Validate machine type
   validation {
