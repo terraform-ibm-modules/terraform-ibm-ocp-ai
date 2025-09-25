@@ -223,13 +223,17 @@
             "features": [
               {
                 "title": " ",
-                "description": "Configured to use IBM secure by default standards, but can be edited to fit your use case."
+                "description": "Ideal for users who want flexibility with a reliable starting point."
+              },
+              {
+                "title": " ",
+                "description": "Offers full control over architecture parameters, with well-chosen defaults that enable a functional OpenShift cluster and integrated IBM Cloud services without requiring manual adjustments."
               }
             ],
             "diagrams": [
               {
                 "diagram": {
-                  "caption": "Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on",
+                  "caption": "Red Hat OpenShift cluster on IBM Cloud with the OpenShift AI add-on - Fully configurable",
                   "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-ocp-ai/main/reference-architecture/deployable-architecture-ocp-ai-cluster.svg",
                   "type": "image/svg+xml"
                 },
@@ -296,7 +300,12 @@
               ]
             },
             {
-              "key": "subnets"
+              "key": "subnets",
+              "custom_config": {
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "type": "code_editor"
+              }
             },
             {
               "key": "default_worker_pool_machine_type",
@@ -526,7 +535,7 @@
                   "value": "trial"
                 }
               ],
-              "default_value": "__NOT_SET__",
+              "default_value": "standard",
               "description": "The pricing plan to use when provisioning a Secrets Manager instance. Possible values: `standard`, `trial`. You can create only one Trial instance of Secrets Manager per account. Before you can create a new Trial instance, you must delete the existing Trial instance and its reclamation. [Learn more](https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-create-instance&interface=ui#upgrade-instance-standard)."
             },
             {
@@ -669,7 +678,7 @@
           "terraform_version": "1.10.5"
         },
         {
-          "label": "Quickstart",
+          "label": "QuickStart",
           "name": "quickstart",
           "index": 1,
           "install_type": "fullstack",
@@ -718,7 +727,11 @@
             "features": [
               {
                 "title": " ",
-                "description": "Configures of a GPU-enabled Red Hat OpenShift cluster with the OpenShift AI add-on with limited options."
+                "description": "Ideal for users new to IBM Cloud or OpenShift who want to get started without configuring underlying infrastructure."
+              },
+              {
+                "title": " ",
+                "description": "A lightweight, experimental configuration for quickly provisioning a GPU-enabled OpenShift cluster with the OpenShift AI add-on. Not certified, not upgradeable, and not intended for production use."
               }
             ],
             "diagrams": [
