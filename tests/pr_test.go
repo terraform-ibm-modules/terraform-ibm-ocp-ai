@@ -160,9 +160,7 @@ func TestAddonDefaultConfiguration(t *testing.T) {
 		options.Prefix,
 		"deploy-arch-ibm-ocp-ai",
 		"fully-configurable",
-		map[string]interface{}{
-			"prefix": options.Prefix,
-		},
+		map[string]interface{}{},
 	)
 
 	options.AddonConfig.Dependencies = []cloudinfo.AddonConfig{
