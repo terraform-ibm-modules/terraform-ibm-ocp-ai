@@ -24,7 +24,7 @@ const resourceGroup = "geretain-test-resources"
 
 const fullyConfigurableTerraformDir = "solutions/fully-configurable"
 const quickStartTerraformDir = "solutions/quickstart"
-const terraformVersion = "terraform_v1.10" // This should match the version in the ibm_catalog.json
+const terraformVersion = "terraform_v1.12.2" // This should match the version in the ibm_catalog.json
 
 // Define a struct with fields that match the structure of the YAML data
 const yamlLocation = "../common-dev-assets/common-go-assets/common-permanent-resources.yaml"
