@@ -313,16 +313,12 @@
             },
             {
               "key": "default_worker_pool_machine_type",
-              "type": "string",
-              "default_value": "",
-              "description": "A worker node flavor that defines the architecture, virtual CPU, memory, and disk space in the default worker pool.",
               "required": true,
               "custom_config": {
                 "type": "worker_node_flavors",
                 "grouping": "deployment",
                 "original_grouping": "deployment"
-              },
-              "virtual": false
+              }
             },
             {
               "key": "default_worker_pool_workers_per_zone",
@@ -613,16 +609,12 @@
             },
             {
               "key": "default_worker_pool_machine_type",
-              "type": "string",
-              "default_value": "bx2.8x32",
-              "description": "A worker node flavor that defines the architecture, virtual CPU, memory, and disk space in the default worker pool.",
               "required": true,
               "custom_config": {
                 "type": "worker_node_flavors",
                 "grouping": "deployment",
                 "original_grouping": "deployment"
-              },
-              "virtual": false
+              }
             },
             {
               "key": "default_worker_pool_workers_per_zone"
