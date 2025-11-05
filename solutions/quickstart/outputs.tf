@@ -56,3 +56,28 @@ output "master_status" {
   description = "The current status of the Kubernetes master node in the cluster."
   value       = module.ocp_base.master_status
 }
+
+output "next_steps_text" {
+  value       = "Your Red Hat OpenShift cluster with the OpenShift AI add-on is ready."
+  description = "Next steps text"
+}
+
+output "next_step_primary_label" {
+  value       = "Go to Red Hat OpenShift Cluster"
+  description = "Primary label"
+}
+
+output "next_step_primary_url" {
+  value       = "https://cloud.ibm.com/containers/cluster-management/clusters/${module.ocp_base.cluster_id}/overview"
+  description = "Primary URL"
+}
+
+output "next_step_secondary_label" {
+  value       = "Learn more about OpenShift AI add-on"
+  description = "Secondary label"
+}
+
+output "next_step_secondary_url" {
+  value       = "https://cloud.ibm.com/docs/openshift?topic=openshift-ai-addon-about"
+  description = "Secondary URL"
+}
