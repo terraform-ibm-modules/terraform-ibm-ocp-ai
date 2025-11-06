@@ -64,6 +64,7 @@ variable "openshift_version" {
     condition = anytrue([
       var.openshift_version == null,
       var.openshift_version == "default",
+      var.openshift_version == "4.19",
       var.openshift_version == "4.18",
       var.openshift_version == "4.15",
       var.openshift_version == "4.16",

@@ -286,6 +286,10 @@
               "required": true,
               "options": [
                 {
+                  "displayname": "4.19",
+                  "value": "4.19"
+                },
+                {
                   "displayname": "4.18",
                   "value": "4.18"
                 },
@@ -675,7 +679,7 @@
                   "reference_version": true
                 }
               ],
-              "version": "v3.66.0"
+              "version": "v3.71.3"
             }
           ],
           "dependency_version_2": true,
