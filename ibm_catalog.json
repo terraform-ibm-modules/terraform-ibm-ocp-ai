@@ -321,7 +321,15 @@
               "custom_config": {
                 "type": "worker_node_flavors",
                 "grouping": "deployment",
-                "original_grouping": "deployment"
+                "original_grouping": "deployment",
+                "associations": {
+                  "parameters": [
+                    {
+                      "name": "region",
+                      "optionsRefresh": true
+                    }
+                  ]
+                }
               }
             },
             {
@@ -506,11 +514,11 @@
                   "reference_version": true
                 }
               ],
-              "version": "v3.71.3"
+              "version": "v3.66.0"
             }
           ],
           "dependency_version_2": true,
-          "terraform_version": "1.12.2",
+          "terraform_version": "1.10.5",
           "ignore_readme": true
         },
         {
@@ -617,7 +625,15 @@
               "custom_config": {
                 "type": "worker_node_flavors",
                 "grouping": "deployment",
-                "original_grouping": "deployment"
+                "original_grouping": "deployment",
+                "associations": {
+                  "parameters": [
+                    {
+                      "name": "region",
+                      "optionsRefresh": true
+                    }
+                  ]
+                }
               }
             },
             {
@@ -726,7 +742,7 @@
             }
           ],
           "dependency_version_2": true,
-          "terraform_version": "1.12.2",
+          "terraform_version": "1.10.5",
           "ignore_readme": true
         }
       ]
