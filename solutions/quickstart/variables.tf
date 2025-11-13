@@ -158,6 +158,16 @@ variable "addons" {
       version = "416"
     }
   }
+
+  validation {
+    condition     = (var.addons.openshift-ai == null) || (var.addons.openshift-ai.version != "416") || (can(regex("^\\d+\\.\\d+(\\.\\d+)?$", var.openshift_version)) && tonumber(split(".", var.openshift_version)[0]) == 4 && tonumber(split(".", var.openshift_version)[1]) >= 16 && tonumber(split(".", var.openshift_version)[1]) < 18)
+    error_message = "OCP AI add-on version ${var.addons.openshift-ai.version} requires OCP version >=4.16.0 and <4.18.0"
+  }
+
+  validation {
+    condition     = (var.addons.openshift-ai == null) || (var.addons.openshift-ai.version != "417") || (can(regex("^\\d+\\.\\d+(\\.\\d+)?$", var.openshift_version)) && tonumber(split(".", var.openshift_version)[0]) == 4 && tonumber(split(".", var.openshift_version)[1]) >= 17 && tonumber(split(".", var.openshift_version)[1]) < 19)
+    error_message = "OCP AI add-on version ${var.addons.openshift-ai.version} requires OCP version >=4.17.0 and <4.19.0"
+  }
 }
 variable "additional_worker_pools" {
   type = list(object({
