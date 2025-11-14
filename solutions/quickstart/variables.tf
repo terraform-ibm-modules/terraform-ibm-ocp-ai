@@ -144,6 +144,16 @@ variable "manage_all_addons" {
   nullable    = false # null values are set to default value
   description = "Instructs Terraform to manage all cluster addons, even if addons were installed outside of the module. If set to 'true' this module destroys any addons that were installed by other sources."
 }
+
+locals {
+  ocp_ai_addons = {
+    "416" = { min_ocp_ver = 16, max_ocp_ver = 18 } # i.e >=4.16.x and <4.18 as per constraints given.
+    "417" = { min_ocp_ver = 17, max_ocp_ver = 19 } # i.e. >=4.17.x and <4.19
+
+    # "418" = { min_ocp_ver = 18, max_ocp_ver = 20 } # For other versions, just add an entry here.
+  }
+}
+
 variable "addons" {
   type = object({
     openshift-ai = optional(object({
@@ -160,13 +170,15 @@ variable "addons" {
   }
 
   validation {
-    condition     = (var.addons.openshift-ai == null) || (var.addons.openshift-ai.version != "416") || (can(regex("^\\d+\\.\\d+(\\.\\d+)?$", var.openshift_version)) && tonumber(split(".", var.openshift_version)[0]) == 4 && tonumber(split(".", var.openshift_version)[1]) >= 16 && tonumber(split(".", var.openshift_version)[1]) < 18)
-    error_message = "OCP AI add-on version ${var.addons.openshift-ai.version} requires OCP version >=4.16.0 and <4.18.0"
-  }
-
-  validation {
-    condition     = (var.addons.openshift-ai == null) || (var.addons.openshift-ai.version != "417") || (can(regex("^\\d+\\.\\d+(\\.\\d+)?$", var.openshift_version)) && tonumber(split(".", var.openshift_version)[0]) == 4 && tonumber(split(".", var.openshift_version)[1]) >= 17 && tonumber(split(".", var.openshift_version)[1]) < 19)
-    error_message = "OCP AI add-on version ${var.addons.openshift-ai.version} requires OCP version >=4.17.0 and <4.19.0"
+    condition = (
+      var.addons.openshift-ai == null || var.addons.openshift-ai.version == null || !contains(keys(local.ocp_ai_addons), var.addons.openshift-ai.version) ||
+      (
+        can(regex("^\\d+\\.\\d+(\\.\\d+)?$", var.openshift_version)) && tonumber(split(".", var.openshift_version)[0]) == 4 &&
+        tonumber(split(".", var.openshift_version)[1]) >= local.ocp_ai_addons[var.addons.openshift-ai.version].min_ocp_ver &&
+        tonumber(split(".", var.openshift_version)[1]) < local.ocp_ai_addons[var.addons.openshift-ai.version].max_ocp_ver
+      )
+    )
+    error_message = "Providing an openshift-ai addon version requires using it's compatible openshift_version. [Learn more](https://cloud.ibm.com/docs/containers?topic=containers-supported-cluster-addon-versions#openshift-ai-416)"
   }
 }
 variable "additional_worker_pools" {
