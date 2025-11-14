@@ -86,7 +86,7 @@ func setupQuickstartOptions(t *testing.T, prefix string) *testschematic.TestSche
 		{Name: "prefix", Value: options.Prefix, DataType: "string"},
 		{Name: "existing_resource_group_name", Value: resourceGroup, DataType: "string"},
 		{Name: "region", Value: region, DataType: "string"},
-		{Name: "addons", Value: "{openshift-ai = {version = '417'}}", DataType: "string"},
+		{Name: "addons", Value: map[string]interface{}{"openshift-ai": map[string]interface{}{"version": "417"}}, DataType: "map"},
 		{Name: "openshift_version", Value: "4.18", DataType: "string"},
 	}
 	return options
