@@ -66,7 +66,6 @@ variable "openshift_version" {
       var.openshift_version == "default",
       var.openshift_version == "4.19",
       var.openshift_version == "4.18",
-      var.openshift_version == "4.15",
       var.openshift_version == "4.16",
       var.openshift_version == "4.17",
     ])
