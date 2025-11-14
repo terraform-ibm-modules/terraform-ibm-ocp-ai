@@ -177,7 +177,7 @@ variable "addons" {
         tonumber(split(".", var.openshift_version)[1]) < local.ocp_ai_addons[var.addons.openshift-ai.version].max_ocp_ver
       )
     )
-    error_message = "Providing an openshift-ai addon version requires using it's compatible openshift_version. [Learn more](https://cloud.ibm.com/docs/containers?topic=containers-supported-cluster-addon-versions#openshift-ai-416)"
+    error_message = "The openshift-ai addon if enabled, requires an OpenShift cluster version that falls within the supported compatibility range for the selected addon version. Refer [here]([Learn more](https://cloud.ibm.com/docs/containers?topic=containers-supported-cluster-addon-versions#openshift-ai-416) to check supported Openshift AI addon versions."
   }
 }
 variable "additional_worker_pools" {
