@@ -621,20 +621,12 @@
             },
             {
               "key": "default_worker_pool_machine_type",
-              "required": true,
-              "custom_config": {
-                "type": "worker_node_flavors",
-                "grouping": "deployment",
-                "original_grouping": "deployment",
-                "associations": {
-                  "parameters": [
-                    {
-                      "name": "region",
-                      "optionsRefresh": true
-                    }
-                  ]
+              "options": [
+                {
+                  "displayname": "bx2.8x32",
+                  "value": "bx2.8x32"
                 }
-              }
+              ]
             },
             {
               "key": "default_worker_pool_workers_per_zone"
