@@ -148,8 +148,7 @@ locals {
   ocp_ai_addons = {
     "416" = { min_ocp_ver = 16, max_ocp_ver = 18 } # i.e >=4.16.x and <4.18 as per constraints given.
     "417" = { min_ocp_ver = 17, max_ocp_ver = 19 } # i.e. >=4.17.x and <4.19
-
-    # "418" = { min_ocp_ver = 18, max_ocp_ver = 20 } # For other versions, just add an entry here.
+    "418" = { min_ocp_ver = 18, max_ocp_ver = 20 } # i.e. >=4.18.x and <4.20
   }
 }
 
