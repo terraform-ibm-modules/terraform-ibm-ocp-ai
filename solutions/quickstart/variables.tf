@@ -58,7 +58,7 @@ variable "region" {
 variable "openshift_version" {
   type        = string
   description = "The version of the OpenShift cluster."
-  default     = "4.17"
+  default     = "4.19"
 
   validation {
     condition = anytrue([

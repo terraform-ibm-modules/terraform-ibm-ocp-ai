@@ -440,7 +440,7 @@
                   "dependency_input": "addons",
                   "value": {
                     "openshift-ai": {
-                      "version": "416"
+                      "version": "418"
                     }
                   }
                 },
