@@ -163,7 +163,7 @@ variable "addons" {
   nullable    = false
   default = {
     openshift-ai = {
-      version = "416"
+      version = "418"
     }
   }
 
