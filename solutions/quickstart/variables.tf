@@ -144,14 +144,6 @@ variable "manage_all_addons" {
   description = "Instructs Terraform to manage all cluster addons, even if addons were installed outside of the module. If set to 'true' this module destroys any addons that were installed by other sources."
 }
 
-locals {
-  ocp_ai_addons = {
-    "416" = { min_ocp_ver = 16, max_ocp_ver = 18 } # i.e >=4.16.x and <4.18 as per constraints given.
-    "417" = { min_ocp_ver = 17, max_ocp_ver = 19 } # i.e. >=4.17.x and <4.19
-    "418" = { min_ocp_ver = 18, max_ocp_ver = 20 } # i.e. >=4.18.x and <4.20
-  }
-}
-
 variable "addons" {
   type = object({
     openshift-ai = optional(object({
@@ -165,18 +157,6 @@ variable "addons" {
     openshift-ai = {
       version = "418"
     }
-  }
-
-  validation {
-    condition = (
-      var.addons.openshift-ai == null || var.addons.openshift-ai.version == null || !contains(keys(local.ocp_ai_addons), var.addons.openshift-ai.version) ||
-      (
-        can(regex("^\\d+\\.\\d+(\\.\\d+)?$", var.openshift_version)) && tonumber(split(".", var.openshift_version)[0]) == 4 &&
-        tonumber(split(".", var.openshift_version)[1]) >= local.ocp_ai_addons[var.addons.openshift-ai.version].min_ocp_ver &&
-        tonumber(split(".", var.openshift_version)[1]) < local.ocp_ai_addons[var.addons.openshift-ai.version].max_ocp_ver
-      )
-    )
-    error_message = "The openshift-ai addon if enabled, requires an OpenShift cluster version that falls within the supported compatibility range for the selected addon version. Refer [here]([Learn more](https://cloud.ibm.com/docs/containers?topic=containers-supported-cluster-addon-versions#openshift-ai-416) to check supported Openshift AI addon versions."
   }
 }
 variable "additional_worker_pools" {
