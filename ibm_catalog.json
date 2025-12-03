@@ -304,10 +304,6 @@
                 {
                   "displayname": "4.16",
                   "value": "4.16"
-                },
-                {
-                  "displayname": "4.15",
-                  "value": "4.15"
                 }
               ]
             },
@@ -448,7 +444,7 @@
                   "dependency_input": "addons",
                   "value": {
                     "openshift-ai": {
-                      "version": "416"
+                      "version": "418"
                     }
                   }
                 },
@@ -689,10 +685,6 @@
                 {
                   "displayname": "4.16",
                   "value": "4.16"
-                },
-                {
-                  "displayname": "4.15",
-                  "value": "4.15"
                 }
               ]
             },

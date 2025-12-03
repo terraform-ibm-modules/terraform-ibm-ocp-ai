@@ -58,7 +58,7 @@ variable "region" {
 variable "openshift_version" {
   type        = string
   description = "The version of the OpenShift cluster."
-  default     = "4.17"
+  default     = "4.19"
 
   validation {
     condition = anytrue([
@@ -66,7 +66,6 @@ variable "openshift_version" {
       var.openshift_version == "default",
       var.openshift_version == "4.19",
       var.openshift_version == "4.18",
-      var.openshift_version == "4.15",
       var.openshift_version == "4.16",
       var.openshift_version == "4.17",
     ])
@@ -144,6 +143,7 @@ variable "manage_all_addons" {
   nullable    = false # null values are set to default value
   description = "Instructs Terraform to manage all cluster addons, even if addons were installed outside of the module. If set to 'true' this module destroys any addons that were installed by other sources."
 }
+
 variable "addons" {
   type = object({
     openshift-ai = optional(object({
@@ -155,7 +155,7 @@ variable "addons" {
   nullable    = false
   default = {
     openshift-ai = {
-      version = "416"
+      version = "418"
     }
   }
 }
