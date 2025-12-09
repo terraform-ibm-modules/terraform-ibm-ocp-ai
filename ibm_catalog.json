@@ -81,6 +81,7 @@
         {
           "label": "Fully configurable",
           "name": "fully-configurable",
+          "short_description": "Ideal for users who want flexibility with a reliable starting point.",
           "index": 2,
           "install_type": "fullstack",
           "working_directory": "solutions/fully-configurable",
@@ -524,6 +525,7 @@
         {
           "label": "QuickStart",
           "name": "quickstart",
+          "short_description": "Ideal for users new to IBM Cloud or OpenShift AI who want to get started without configuring underlying infrastructure.",
           "index": 1,
           "install_type": "fullstack",
           "working_directory": "solutions/quickstart",
