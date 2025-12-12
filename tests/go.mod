@@ -1,13 +1,11 @@
 module github.com/terraform-ibm-modules/terraform-ibm-ocp-ai
 
-go 1.24.0
-
-toolchain go1.25.4
+go 1.25.5
 
 require (
 	github.com/IBM/go-sdk-core/v5 v5.21.2
 	github.com/stretchr/testify v1.11.1
-	github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper v1.60.34
+	github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper v1.63.0
 )
 
 require (
@@ -36,7 +34,7 @@ require (
 	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-openapi/analysis v0.23.0 // indirect
-	github.com/go-openapi/errors v0.22.4 // indirect
+	github.com/go-openapi/errors v0.22.5 // indirect
 	github.com/go-openapi/jsonpointer v0.21.1 // indirect
 	github.com/go-openapi/jsonreference v0.21.0 // indirect
 	github.com/go-openapi/loads v0.22.0 // indirect
