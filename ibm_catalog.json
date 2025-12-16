@@ -81,6 +81,7 @@
         {
           "label": "Fully configurable",
           "name": "fully-configurable",
+          "short_description": "Ideal for users who want flexibility with a reliable starting point.",
           "index": 2,
           "install_type": "fullstack",
           "working_directory": "solutions/fully-configurable",
@@ -304,10 +305,6 @@
                 {
                   "displayname": "4.16",
                   "value": "4.16"
-                },
-                {
-                  "displayname": "4.15",
-                  "value": "4.15"
                 }
               ]
             },
@@ -364,7 +361,12 @@
               "custom_config": {
                 "type": "code_editor",
                 "grouping": "deployment",
-                "original_grouping": "deployment"
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "supportedLanguages": [
+                    "hcl"
+                  ]
+                }
               }
             },
             {
@@ -448,7 +450,7 @@
                   "dependency_input": "addons",
                   "value": {
                     "openshift-ai": {
-                      "version": "416"
+                      "version": "418"
                     }
                   }
                 },
@@ -528,6 +530,7 @@
         {
           "label": "QuickStart",
           "name": "quickstart",
+          "short_description": "Ideal for users new to IBM Cloud or OpenShift AI who want to get started without configuring underlying infrastructure.",
           "index": 1,
           "install_type": "fullstack",
           "working_directory": "solutions/quickstart",
@@ -651,7 +654,12 @@
               "custom_config": {
                 "type": "code_editor",
                 "grouping": "deployment",
-                "original_grouping": "deployment"
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "supportedLanguages": [
+                    "hcl"
+                  ]
+                }
               }
             },
             {
@@ -689,10 +697,6 @@
                 {
                   "displayname": "4.16",
                   "value": "4.16"
-                },
-                {
-                  "displayname": "4.15",
-                  "value": "4.15"
                 }
               ]
             },
