@@ -85,7 +85,6 @@
           "index": 2,
           "install_type": "fullstack",
           "working_directory": "solutions/fully-configurable",
-          "short_description": "Ideal for users who want flexibility with a reliable starting point.",
           "iam_permissions": [
             {
               "role_crns": [
@@ -541,11 +540,10 @@
         {
           "label": "QuickStart",
           "name": "quickstart",
-          "short_description": "Ideal for users new to IBM Cloud or OpenShift AI who want to get started without configuring underlying infrastructure.",
+          "short_description": "Ideal for users who want to get started without configuring underlying infrastructure.",
           "index": 1,
           "install_type": "fullstack",
           "working_directory": "solutions/quickstart",
-          "short_description": "Ideal for users who want to get started without configuring underlying infrastructure.",
           "iam_permissions": [
             {
               "service_name": "containers-kubernetes",
