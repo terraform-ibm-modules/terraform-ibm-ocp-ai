@@ -43,7 +43,7 @@ variable "existing_resource_group_name" {
 variable "openshift_version" {
   type        = string
   description = "Version of the OpenShift cluster to provision."
-  default     = "4.17"
+  default     = "4.19"
 }
 
 # tflint-ignore: all
