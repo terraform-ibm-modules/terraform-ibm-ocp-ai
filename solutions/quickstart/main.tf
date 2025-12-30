@@ -90,6 +90,24 @@ locals {
 }
 
 ########################################################################################################################
+# Get OCP Addons Versions
+########################################################################################################################
+
+data "ibm_iam_auth_token" "tokendata" {}
+
+data "external" "ocp_addon_versions" {
+  program = ["python3", "${path.module}/../../scripts/get_ocp_addon_versions.py"]
+  query = {
+    IAM_TOKEN = sensitive(data.ibm_iam_auth_token.tokendata.iam_access_token)
+    REGION    = var.region
+  }
+}
+
+locals {
+  ocp_ai_addon_supported_versions = jsondecode(data.external.ocp_addon_versions.result["openshift-ai"])
+}
+
+########################################################################################################################
 # OCP VPC cluster (single zone)
 ########################################################################################################################
 module "ocp_base" {

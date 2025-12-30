@@ -158,7 +158,34 @@ variable "addons" {
       version = "418"
     }
   }
+
+  ########################################################################################################################
+  # OCP AI addon version validation
+  ########################################################################################################################
+
+  validation {
+    condition = (
+      try(var.addons["openshift-ai"].version, null) == null ||
+      (
+        contains(keys(local.ocp_ai_addon_supported_versions), try(var.addons["openshift-ai"].version, "") != null ? try(var.addons["openshift-ai"].version, "") : "") &&
+        (
+          var.openshift_version >= tonumber(regexall("\\d+\\.\\d+", split(" ", lookup(local.ocp_ai_addon_supported_versions, try(var.addons["openshift-ai"].version, "") != null ? try(var.addons["openshift-ai"].version, "") : "", { supported_openshift_range = "0.0 0.0" }).supported_openshift_range)[0])[0])
+        ) &&
+        (
+          var.openshift_version < tonumber(regexall("\\d+\\.\\d+", split(" ", lookup(local.ocp_ai_addon_supported_versions, try(var.addons["openshift-ai"].version, "") != null ? try(var.addons["openshift-ai"].version, "") : "", { supported_openshift_range = "0.0 0.0" }).supported_openshift_range)[1])[0])
+        )
+      )
+    )
+
+    error_message = (
+      try(var.addons["openshift-ai"].version, null) != null ?
+      (contains(keys(local.ocp_ai_addon_supported_versions), try(var.addons["openshift-ai"].version, "")) ?
+        format("OCP AI add-on version %s requires OCP version %s", try(var.addons["openshift-ai"].version, ""), lookup(local.ocp_ai_addon_supported_versions, try(var.addons["openshift-ai"].version, ""), { supported_openshift_range = "" }).supported_openshift_range) :
+      format("OCP AI add-on version %s is not supported.", try(var.addons["openshift-ai"].version, ""))) : "Invalid OCP AI configuration."
+    )
+  }
 }
+
 variable "additional_worker_pools" {
   type = list(object({
     vpc_subnets = optional(list(object({

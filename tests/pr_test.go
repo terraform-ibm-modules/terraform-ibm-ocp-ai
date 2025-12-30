@@ -71,6 +71,7 @@ func setupQuickstartOptions(t *testing.T, prefix string) *testschematic.TestSche
 		TarIncludePatterns: []string{
 			"*.tf",
 			quickStartTerraformDir + "/*.tf",
+			"scripts/*.*",
 		},
 
 		TemplateFolder:             quickStartTerraformDir,
