@@ -2,11 +2,13 @@
 package test
 
 import (
+	"bytes"
 	"crypto/rand"
 	"fmt"
 	"log"
 	"math/big"
 	"os"
+	"os/exec"
 	"testing"
 
 	"github.com/IBM/go-sdk-core/v5/core"
@@ -47,6 +49,31 @@ func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
 
+func validateEnvVariable(t *testing.T, varName string) string {
+	val, present := os.LookupEnv(varName)
+	require.True(t, present, "%s environment variable not set", varName)
+	require.NotEqual(t, "", val, "%s environment variable is empty", varName)
+	return val
+}
+
+func createContainersApikey(t *testing.T, region string, rg string) {
+
+	err := os.Setenv("IBMCLOUD_API_KEY", validateEnvVariable(t, "TF_VAR_ibmcloud_api_key"))
+	require.NoError(t, err, "Failed to set IBMCLOUD_API_KEY environment variable")
+	scriptPath := "../common-dev-assets/scripts/iks-api-key-reset/reset_iks_api_key.sh"
+	cmd := exec.Command("bash", scriptPath, region, rg)
+	var stdout, stderr bytes.Buffer
+	cmd.Stdout = &stdout
+	cmd.Stderr = &stderr
+
+	// Execute the command
+	if err := cmd.Run(); err != nil {
+		log.Fatalf("Failed to execute script: %v\nStderr: %s", err, stderr.String())
+	}
+	// Print script output
+	fmt.Println(stdout.String())
+}
+
 func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptions {
 	options := testhelper.TestOptionsDefaultWithVars(&testhelper.TestOptions{
 		Testing:                    t,
@@ -80,11 +107,12 @@ func setupQuickstartOptions(t *testing.T, prefix string) *testschematic.TestSche
 		Region:                     region,
 		TerraformVersion:           terraformVersion,
 		CheckApplyResultForUpgrade: true,
+		ResourceGroup:              resourceGroup,
 	})
 	options.TerraformVars = []testschematic.TestSchematicTerraformVar{
 		{Name: "ibmcloud_api_key", Value: options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"], DataType: "string", Secure: true},
 		{Name: "prefix", Value: options.Prefix, DataType: "string"},
-		{Name: "existing_resource_group_name", Value: resourceGroup, DataType: "string"},
+		{Name: "existing_resource_group_name", Value: options.ResourceGroup, DataType: "string"},
 		{Name: "region", Value: region, DataType: "string"},
 	}
 	return options
@@ -99,6 +127,10 @@ func TestRunFullyConfigurable(t *testing.T) {
 		"prefix":                       options.Prefix,
 		"existing_resource_group_name": resourceGroup,
 	}
+
+	// Temp workaround for https://cloud.ibm.com/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-known-issues#ki-apikey-error
+	createContainersApikey(t, options.Region, resourceGroup)
+
 	output, err := options.RunTestConsistency()
 	assert.Nil(t, err, "This should not have errored")
 	assert.NotNil(t, output, "Expected some output")
@@ -113,6 +145,10 @@ func TestRunUpgradeExample(t *testing.T) {
 		"prefix":                       options.Prefix,
 		"existing_resource_group_name": resourceGroup,
 	}
+
+	// Temp workaround for https://cloud.ibm.com/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-known-issues#ki-apikey-error
+	createContainersApikey(t, options.Region, resourceGroup)
+
 	output, err := options.RunTestUpgrade()
 	if !options.UpgradeTestSkipped {
 		assert.Nil(t, err, "This should not have errored")
@@ -127,6 +163,10 @@ func TestRunQuickstartSchematics(t *testing.T) {
 	t.Parallel()
 
 	options := setupQuickstartOptions(t, "ai-qs")
+
+	// Temp workaround for https://cloud.ibm.com/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-known-issues#ki-apikey-error
+	createContainersApikey(t, options.Region, options.ResourceGroup)
+
 	err := options.RunSchematicTest()
 	assert.Nil(t, err, "This should not have errored")
 }
@@ -149,6 +189,8 @@ func TestRunQuickstartUpgradeSchematics(t *testing.T) {
 func TestAddonDefaultConfiguration(t *testing.T) {
 	t.Parallel()
 
+	region := "au-syd"
+
 	options := testaddons.TestAddonsOptionsDefault(&testaddons.TestAddonOptions{
 		Testing:       t,
 		Prefix:        "ai-add",
@@ -160,7 +202,10 @@ func TestAddonDefaultConfiguration(t *testing.T) {
 		options.Prefix,
 		"deploy-arch-ibm-ocp-ai",
 		"fully-configurable",
-		map[string]interface{}{},
+		map[string]interface{}{
+			"region":                       region,
+			"existing_resource_group_name": options.ResourceGroup,
+		},
 	)
 
 	options.AddonConfig.Dependencies = []cloudinfo.AddonConfig{
@@ -193,6 +238,9 @@ func TestAddonDefaultConfiguration(t *testing.T) {
 			Enabled: core.BoolPtr(true),
 		},
 	}
+
+	// Temp workaround for https://cloud.ibm.com/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-known-issues#ki-apikey-error
+	createContainersApikey(t, region, options.ResourceGroup)
 
 	err := options.RunAddonTest()
 	require.NoError(t, err)
