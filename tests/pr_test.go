@@ -192,10 +192,11 @@ func TestAddonDefaultConfiguration(t *testing.T) {
 	region := "au-syd"
 
 	options := testaddons.TestAddonsOptionsDefault(&testaddons.TestAddonOptions{
-		Testing:       t,
-		Prefix:        "ai-add",
-		ResourceGroup: resourceGroup,
-		QuietMode:     false, // Suppress logs except on failure
+		Testing:               t,
+		Prefix:                "ai-add",
+		ResourceGroup:         resourceGroup,
+		OverrideInputMappings: core.BoolPtr(true),
+		QuietMode:             true, // Suppress logs except on failure
 	})
 
 	options.AddonConfig = cloudinfo.NewAddonConfigTerraform(
