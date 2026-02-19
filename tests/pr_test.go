@@ -3,10 +3,7 @@ package test
 
 import (
 	"bytes"
-	"crypto/rand"
-	"fmt"
 	"log"
-	"math/big"
 	"os"
 	"os/exec"
 	"testing"
@@ -71,7 +68,7 @@ func createContainersApikey(t *testing.T, region string, rg string) {
 		log.Fatalf("Failed to execute script: %v\nStderr: %s", err, stderr.String())
 	}
 	// Print script output
-	fmt.Println(stdout.String())
+	log.Println(stdout.String())
 }
 
 func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptions {
@@ -86,12 +83,9 @@ func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptio
 }
 
 func setupQuickstartOptions(t *testing.T, prefix string) *testschematic.TestSchematicOptions {
-	rand, err := rand.Int(rand.Reader, big.NewInt(int64(len(validClusterRegions))))
-	if err != nil {
-		fmt.Println("Error generating random number:", err)
-		return nil
-	}
-	region := validClusterRegions[rand.Int64()]
+
+	var region = validClusterRegions[common.CryptoIntn(len(validClusterRegions))]
+
 	options := testschematic.TestSchematicOptionsDefault(&testschematic.TestSchematicOptions{
 		Testing: t,
 		Prefix:  prefix,
@@ -113,7 +107,7 @@ func setupQuickstartOptions(t *testing.T, prefix string) *testschematic.TestSche
 		{Name: "ibmcloud_api_key", Value: options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"], DataType: "string", Secure: true},
 		{Name: "prefix", Value: options.Prefix, DataType: "string"},
 		{Name: "existing_resource_group_name", Value: options.ResourceGroup, DataType: "string"},
-		{Name: "region", Value: region, DataType: "string"},
+		{Name: "region", Value: options.Region, DataType: "string"},
 	}
 	return options
 }
@@ -189,7 +183,7 @@ func TestRunQuickstartUpgradeSchematics(t *testing.T) {
 func TestAddonDefaultConfiguration(t *testing.T) {
 	t.Parallel()
 
-	region := "au-syd"
+	var region = validClusterRegions[common.CryptoIntn(len(validClusterRegions))]
 
 	options := testaddons.TestAddonsOptionsDefault(&testaddons.TestAddonOptions{
 		Testing:               t,
