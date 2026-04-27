@@ -292,12 +292,12 @@
               "required": true,
               "options": [
                 {
-                  "displayname": "4.19",
-                  "value": "4.19"
-                },
-                {
                   "displayname": "4.20",
                   "value": "4.20"
+                },
+                {
+                  "displayname": "4.19",
+                  "value": "4.19"
                 },
                 {
                   "displayname": "4.18",
@@ -465,7 +465,7 @@
                   "dependency_input": "addons",
                   "value": {
                     "openshift-ai": {
-                      "version": "418"
+                      "version": "419"
                     }
                   }
                 },
@@ -699,12 +699,12 @@
               "required": true,
               "options": [
                 {
-                  "displayname": "4.19",
-                  "value": "4.19"
-                },
-                {
                   "displayname": "4.20",
                   "value": "4.20"
+                },
+                {
+                  "displayname": "4.19",
+                  "value": "4.19"
                 },
                 {
                   "displayname": "4.18",

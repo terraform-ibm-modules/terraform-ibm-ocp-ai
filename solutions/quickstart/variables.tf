@@ -57,7 +57,7 @@ variable "region" {
 variable "openshift_version" {
   type        = string
   description = "The version of the OpenShift cluster. Any add-on versions specified in the `addons` input must be compatible with the selected OpenShift cluster version."
-  default     = "4.19"
+  default     = "4.20"
 }
 variable "cluster_name" {
   type        = string
@@ -142,7 +142,7 @@ variable "addons" {
   nullable    = false
   default = {
     openshift-ai = {
-      version = "418"
+      version = "419"
     }
   }
 }
